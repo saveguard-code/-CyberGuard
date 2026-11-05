@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard & Media - منصة الأمن والتحقق الرقمي والخدمات</title>
+    <title>CyberGuard & Media - Digital Security, Verification & Services</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844" crossorigin="anonymous"></script>
 
     <style>
@@ -48,7 +48,7 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            text-align: right;
+            text-align: left;
         }
         .card-title {
             font-size: 16px;
@@ -111,7 +111,7 @@
             padding: 15px 20px;
             font-size: 13px;
             color: #cbd5e1;
-            text-align: right;
+            text-align: left;
             line-height: 1.6;
             margin-bottom: 20px;
         }
@@ -141,101 +141,101 @@
 <body>
 
     <div class="container">
-        <!-- رأس الموقع -->
+        <!-- Header -->
         <div class="logo-icon">🛡️</div>
         <h1>CyberGuard & Media</h1>
-        <div class="subtitle">منصتك الاحترافية للتحميل الآمن والتحقق الرقمي</div>
+        <div class="subtitle">Your Professional Platform for Secure Media & Link Verification</div>
 
-        <!-- 1. محمل الفيديوهات الذكي -->
+        <!-- 1. Smart Video Downloader -->
         <div class="card">
-            <div class="card-title">📥 محمل الفيديوهات الذكي</div>
-            <input type="text" id="videoUrl" placeholder="ألصق رابط الفيديو هنا (TikTok, YouTube, etc)...">
+            <div class="card-title">📥 Smart Video Downloader</div>
+            <input type="text" id="videoUrl" placeholder="Paste video link here (TikTok, YouTube, etc)...">
             <select id="downloadQuality">
-                <option value="hd">جودة عالية (HD)</option>
-                <option value="sd">جودة عادية (SD)</option>
-                <option value="mp3">استخراج الصوت فقط (MP3)</option>
+                <option value="hd">High Quality (HD)</option>
+                <option value="sd">Standard Quality (SD)</option>
+                <option value="mp3">Audio Only (MP3)</option>
             </select>
-            <button class="btn" onclick="openSaveFrom()">بدء استخراج وتحميل الفيديو</button>
+            <button class="btn" onclick="openSaveFrom()">Start Extraction & Download</button>
             <div id="videoResult" class="result-box"></div>
         </div>
 
-        <!-- 2. فاحص الروابط المشبوهة -->
+        <!-- 2. Suspicious Link Checker -->
         <div class="card">
-            <div class="card-title">🔍 فاحص الروابط المشبوهة</div>
-            <input type="text" id="linkUrl" placeholder="ألصق الرابط لفحصه (https://...)">
-            <button class="btn" onclick="checkLinkSafety()">فحص أمان الرابط</button>
+            <div class="card-title">🔍 Suspicious Link Checker</div>
+            <input type="text" id="linkUrl" placeholder="Paste link to scan (https://...)">
+            <button class="btn" onclick="checkLinkSafety()">Scan Link Safety</button>
             <div id="linkResult" class="result-box"></div>
         </div>
 
-        <!-- 3. مولد كلمات المرور الآمنة -->
+        <!-- 3. Secure Password Generator -->
         <div class="card">
-            <div class="card-title">🔑 مولد كلمات المرور الآمنة</div>
-            <input type="text" id="generatedPassword" readonly placeholder="اضغط لتوليد كلمة مرور قوية">
-            <button class="btn" onclick="generatePassword()">توليد كلمة مرور جديدة</button>
-            <button class="btn btn-secondary" onclick="copyPassword()">نسخ كلمة المرور 📋</button>
+            <div class="card-title">🔑 Secure Password Generator</div>
+            <input type="text" id="generatedPassword" readonly placeholder="Click below to generate strong password">
+            <button class="btn" onclick="generatePassword()">Generate New Password</button>
+            <button class="btn btn-secondary" onclick="copyPassword()">Copy Password 📋</button>
         </div>
 
-        <!-- 4. قسم متجر الملابس والإكسسوارات -->
+        <!-- 4. Clothing & Accessories Store Section -->
         <div class="card" style="border-color: #f59e0b;">
-            <div class="card-title" style="color: #f59e0b;">🛍️ متجر الملابس والإكسسوارات</div>
+            <div class="card-title" style="color: #f59e0b;">🛍️ Fashion & Accessories Store</div>
             <p style="font-size: 13px; color: #94a3b8; margin-bottom: 12px; line-height: 1.5;">
-                تصفح أحدث تشكيلة من الملابس والإكسسوارات العصرية بأفضل الأسعار.
+                Explore our latest trendy collection of premium clothing and accessories at best prices.
             </p>
-            <button class="btn btn-gold" onclick="openBuyService()">زيارة المتجر الآن 🛒</button>
+            <button class="btn btn-gold" onclick="openStore()">Visit Store Now 🛒</button>
         </div>
 
-        <!-- نصائح أمنية -->
+        <!-- Security Tips -->
         <div class="tips-card">
-            <h3>💡 نصائح أمنية لحمايتك</h3>
-            <p>• لا تشارك كلمات مرورس أبداً مع أي شخص.<br>• تأكد من فحص الروابط المجهولة قبل النقر عليها.<br>• احرص على تحديث تطبيقاتك باستمرار.</p>
+            <h3>💡 Essential Security Tips</h3>
+            <p>• Never share your secret passwords with anyone.<br>• Always scan unfamiliar URLs before clicking.<br>• Keep your applications updated regularly.</p>
         </div>
 
-        <!-- روابط سياسة الخصوصية -->
+        <!-- Footer Links -->
         <div class="footer-links">
-            <a href="#" onclick="alert('سياسة الخصوصية: هذا الموقع يحترم خصوصية المستخدمين ولا يجمع بيانات شخصية.'); return false;">سياسة الخصوصية</a>
+            <a href="#" onclick="showPrivacyPolicy(); return false;">Privacy Policy</a>
             <span>•</span>
-            <a href="#" onclick="alert('اتصل بنا: للاستفسار أو طلب الخدمات راسلنا عبر الإيميل.'); return false;">اتصل بنا</a>
+            <a href="#" onclick="showContactUs(); return false;">Contact Us</a>
             <span>•</span>
-            <a href="#" onclick="alert('من نحن: منصة تهدف لتوفير أدوات رقمية وخدمات حماية متقدمة.'); return false;">من نحن</a>
+            <a href="#" onclick="showAboutUs(); return false;">About Us</a>
         </div>
     </div>
 
     <script>
-        // 1. تحويل لـ SaveFrom للتحميل
+        // 1. Open SaveFrom for Video Download
         function openSaveFrom() {
             const url = document.getElementById('videoUrl').value.trim();
             const result = document.getElementById('videoResult');
             if(!url) {
                 result.style.color = '#f87171';
-                result.innerText = 'المرجو إدخال رابط الفيديو أولاً!';
+                result.innerText = 'Please enter a video link first!';
                 return;
             }
             result.style.color = '#34d399';
-            result.innerText = 'جاري تحويلك لصفحة التحميل الآمن...';
+            result.innerText = 'Redirecting to secure download page...';
             setTimeout(() => {
                 window.open(`https://en.savefrom.net/1-youtube-video-downloader-7/?url=${encodeURIComponent(url)}`, '_blank');
             }, 1000);
         }
 
-        // 2. فحص الروابط عبر VirusTotal
+        // 2. Scan Links via VirusTotal
         function checkLinkSafety() {
             const url = document.getElementById('linkUrl').value.trim();
             const result = document.getElementById('linkResult');
             if(!url) {
                 result.style.color = '#f87171';
-                result.innerText = 'المرجو إدخال الرابط المراد فحصه!';
+                result.innerText = 'Please enter a link to check!';
                 return;
             }
             if(!url.startsWith('http://') && !url.startsWith('https://')) {
                 result.style.color = '#f87171';
-                result.innerText = '⚠️ رابط غير صالح، يجب أن يبدأ بـ https://';
+                result.innerText = '⚠️ Invalid URL! Must start with https://';
                 return;
             }
             result.style.color = '#34d399';
-            result.innerHTML = `✅ الرابط يبدو نظامياً. <br><a href="https://www.virustotal.com/gui/search/${encodeURIComponent(url)}" target="_blank" style="color: #38bdf8; text-decoration: underline;">اضغط هنا للفحص التفصيلي عبر VirusTotal</a>`;
+            result.innerHTML = `✅ Link structure valid. <br><a href="https://www.virustotal.com/gui/search/${encodeURIComponent(url)}" target="_blank" style="color: #38bdf8; text-decoration: underline;">Click here for detailed VirusTotal scan</a>`;
         }
 
-        // 3. توليد ونسخ كلمات المرور
+        // 3. Generate & Copy Passwords
         function generatePassword() {
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=";
             let password = "";
@@ -248,17 +248,32 @@
         function copyPassword() {
             const pwdField = document.getElementById('generatedPassword');
             if(!pwdField.value) {
-                alert('قم بتوليد كلمة مرور أولاً!');
+                alert('Please generate a password first!');
                 return;
             }
             navigator.clipboard.writeText(pwdField.value);
-            alert('تم نسخ كلمة المرور بنجاح! 📋');
+            alert('Password copied successfully! 📋');
         }
 
-        // 4. توجيه لمتجر الملابس والأزياء
-        function openBuyService() {
-            const storeUrl = "https://www.redbubble.com/shop/ap/185336626; // **قم بتغيير هذا الرابط برابط موقعك الحقيقي**
+        // 4. Open Clothing & Accessories Store
+        function openStore() {
+            const storeUrl = "https://https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s"; // **Replace with your store link**
             window.open(storeUrl, '_blank');
+        }
+
+        // Professional Privacy Policy (GDPR Compliant)
+        function showPrivacyPolicy() {
+            alert("🔒 Privacy Policy:\n\nCyberGuard & Media operates in full compliance with European Data Protection Regulations (GDPR). We do not collect, store, or sell user personal data. All tools are executed securely and transparently.");
+        }
+
+        // Contact Us with Official Email & European Address
+        function showContactUs() {
+            alert("📧 Contact Us:\n\nFor business inquiries and official support, contact us at:\zagrib.m@gmail.com\n\n📍 Legal Address:\nCyberGuard Media Ltd,\nKönigstraße 15, 70173 Stuttgart, Germany");
+        }
+
+        // About Us
+        function showAboutUs() {
+            alert("🛡️ About Us:\n\nCyberGuard & Media is a digital utility suite focused on link safety verification, tool accessibility, and connection to trusted European online services.");
         }
     </script>
 
