@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberGuard & Media | Digital Security & Store</title>
+    
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844"
+     crossorigin="anonymous"></script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -260,7 +265,7 @@
             </div>
         </div>
 
-        <!-- 2. Link Verification Box (تم تعديلها لتصبح بحال خانة التحميل) -->
+        <!-- 2. Link Verification Box -->
         <div class="card">
             <h3><i class="fa-solid fa-shield-halved"></i> Link & URL Security Checker</h3>
             <p>Ensure any link is safe from malware and phishing before opening it:</p>
@@ -316,10 +321,9 @@
         function openVirusTotal() {
             const url = document.getElementById('checkUrl').value.trim();
             if(url) {
-                // فتح موقع VirusTotal للبحث
                 window.open('https://www.virustotal.com/gui/search/' + encodeURIComponent(url), '_blank');
             } else {
-                alert('Please paste a valid URL to verify!');
+                alert('Please paste a URL to verify!');
             }
         }
 
