@@ -9,7 +9,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Announcement Bar */
+        /* Announcement Bar (الإشهار المتحرك) */
         .announcement-bar {
             background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: #ffffff;
@@ -20,9 +20,18 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             width: 100%;
             box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
         }
 
-        .announcement-content {
+        .announcement-slider {
+            display: flex;
+            width: 200%;
+            animation: slideAds 12s linear infinite;
+        }
+
+        .announcement-item {
+            width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,6 +54,14 @@
             background-color: #f1f1f1;
             color: #d32f2f;
             transform: translateY(-1px);
+        }
+
+        @keyframes slideAds {
+            0% { transform: translateX(0); }
+            45% { transform: translateX(0); }
+            50% { transform: translateX(50%); }
+            95% { transform: translateX(50%); }
+            100% { transform: translateX(0); }
         }
 
         /* Base Styles */
@@ -214,11 +231,17 @@
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
+    <!-- Top Announcement Bar (إشهارات متحركة) -->
     <div class="announcement-bar">
-        <div class="announcement-content">
-            <span>🔥 Limited Time Offer: Exclusive Winter Collection Live Now!</span>
-            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Shop Now 🛒</a>
+        <div class="announcement-slider">
+            <div class="announcement-item">
+                <span>🔥 Limited Time Offer: Exclusive Winter Collection Live Now!</span>
+                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Shop Now 🛒</a>
+            </div>
+            <div class="announcement-item">
+                <span>⚡ Discover Premium Quality Apparel & Special Discounts!</span>
+                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Explore Store 🚀</a>
+            </div>
         </div>
     </div>
 
@@ -237,11 +260,14 @@
             </div>
         </div>
 
-        <!-- 2. Link Verification Box -->
+        <!-- 2. Link Verification Box (تم تعديلها لتصبح بحال خانة التحميل) -->
         <div class="card">
             <h3><i class="fa-solid fa-shield-halved"></i> Link & URL Security Checker</h3>
             <p>Ensure any link is safe from malware and phishing before opening it:</p>
-            <a href="https://www.virustotal.com" target="_blank" rel="noopener noreferrer" class="action-btn" style="width: 100%; margin-top: 5px;"><i class="fa-solid fa-globe"></i> Open VirusTotal Scanner</a>
+            <div class="input-group">
+                <input type="text" id="checkUrl" class="custom-input" placeholder="Paste URL to verify...">
+                <button class="action-btn" onclick="openVirusTotal()"><i class="fa-solid fa-magnifying-glass"></i> Verify URL</button>
+            </div>
         </div>
 
         <!-- 3. Mobile Security Tips -->
@@ -280,10 +306,20 @@
         function openSaveFrom() {
             const url = document.getElementById('videoUrl').value.trim();
             if(url) {
-                // Yوجه المستخدم مباشرة لخدمة التحميل مع الرابط
                 window.open('https://en.savefrom.net/1-youtube-video-downloader-740/?url=' + encodeURIComponent(url), '_blank');
             } else {
-                alert('Please paste a valid link first!');
+                alert('Please paste a valid video link first!');
+            }
+        }
+
+        // Link Checker Redirect Logic (VirusTotal)
+        function openVirusTotal() {
+            const url = document.getElementById('checkUrl').value.trim();
+            if(url) {
+                // فتح موقع VirusTotal للبحث
+                window.open('https://www.virustotal.com/gui/search/' + encodeURIComponent(url), '_blank');
+            } else {
+                alert('Please paste a valid URL to verify!');
             }
         }
 
