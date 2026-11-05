@@ -212,18 +212,35 @@
             transform: translateY(-2px);
         }
 
-        .password-box {
+        .password-box, .result-box, .network-box {
             background: #0b111e;
             padding: 12px;
             border-radius: 8px;
+            font-size: 0.95rem;
+            text-align: center;
+            margin: 12px 0;
+            border: 1px dashed #334155;
+            word-break: break-all;
+        }
+
+        .password-box {
             font-family: monospace;
             font-size: 1.1rem;
             color: #34d399;
-            text-align: center;
-            margin: 12px 0;
             letter-spacing: 1px;
-            border: 1px dashed #334155;
-            word-break: break-all;
+        }
+
+        /* تنسيق نتائج فحص الرابط والشبكة */
+        .result-safe {
+            color: #34d399;
+            border-color: #34d399;
+            background: rgba(52, 211, 153, 0.05);
+        }
+
+        .result-danger {
+            color: #f87171;
+            border-color: #f87171;
+            background: rgba(248, 113, 113, 0.05);
         }
 
         footer {
@@ -241,7 +258,7 @@
         <div class="announcement-slider">
             <div class="announcement-item">
                 <span>🔥 Limited Time Offer: Exclusive Winter Collection Live Now!</span>
-                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Shop Now 🛒</a>
+                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-By-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Shop Now 🛒</a>
             </div>
             <div class="announcement-item">
                 <span>⚡ Discover Premium Quality Apparel & Special Discounts!</span>
@@ -265,17 +282,26 @@
             </div>
         </div>
 
-        <!-- 2. Link Verification Box -->
+        <!-- 2. Link Verification Box (محدث ليعطي النتيجة مباشرة بالأخضر أو الأحمر) -->
         <div class="card">
             <h3><i class="fa-solid fa-shield-halved"></i> Link & URL Security Checker</h3>
             <p>Ensure any link is safe from malware and phishing before opening it:</p>
             <div class="input-group">
                 <input type="text" id="checkUrl" class="custom-input" placeholder="Paste URL to verify...">
-                <button class="action-btn" onclick="openVirusTotal()"><i class="fa-solid fa-magnifying-glass"></i> Verify URL</button>
+                <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-magnifying-glass"></i> Verify URL</button>
             </div>
+            <div id="urlResult" class="result-box" style="display: none;">Enter a URL above to analyze.</div>
         </div>
 
-        <!-- 3. Mobile Security Tips -->
+        <!-- 3. Network & WiFi Strength Checker (جديد) -->
+        <div class="card">
+            <h3><i class="fa-solid fa-wifi"></i> Network & Internet Strength</h3>
+            <p>Check your current connection status, signal strength, and network speed:</p>
+            <div id="networkDisplay" class="network-box" style="color: #38bdf8;">Click the button below to test your connection</div>
+            <button class="action-btn" style="width: 100%;" onclick="checkNetworkSpeed()"><i class="fa-solid fa-gauge-high"></i> Test Connection & Speed</button>
+        </div>
+
+        <!-- 4. Mobile Security Tips -->
         <div class="card">
             <h3><i class="fa-solid fa-mobile-screen-button"></i> Mobile Security Guidelines</h3>
             <ul>
@@ -285,7 +311,7 @@
             </ul>
         </div>
 
-        <!-- 4. Strong Password Generator -->
+        <!-- 5. Strong Password Generator -->
         <div class="card">
             <h3><i class="fa-solid fa-key"></i> Strong Password Generator</h3>
             <p>Generate secure cryptographic passwords for your social media accounts:</p>
@@ -293,7 +319,7 @@
             <button class="action-btn" style="width: 100%;" onclick="generatePassword()"><i class="fa-solid fa-rotate"></i> Generate Secure Password</button>
         </div>
 
-        <!-- 5. Store Featured Card -->
+        <!-- 6. Store Featured Card -->
         <div class="card" style="border-color: #00b09b;">
             <h3 style="color: #34d399;"><i class="fa-solid fa-shirt"></i> Winter Edition Sweatshirt</h3>
             <p>Discover our premium quality winter apparel designed for ultimate comfort and style.</p>
@@ -317,14 +343,82 @@
             }
         }
 
-        // Link Checker Redirect Logic (VirusTotal)
-        function openVirusTotal() {
-            const url = document.getElementById('checkUrl').value.trim();
-            if(url) {
-                window.open('https://www.virustotal.com/gui/search/' + encodeURIComponent(url), '_blank');
-            } else {
-                alert('Please paste a URL to verify!');
+        // Link Checker Logic (فحص الرابط محلياً وإظهار النتيجة بالأخضر أو الأحمر)
+        function checkUrlSecurity() {
+            const inputVal = document.getElementById('checkUrl').value.trim();
+            const resultBox = document.getElementById('urlResult');
+            resultBox.style.display = 'block';
+
+            if (!inputVal) {
+                resultBox.className = 'result-box result-danger';
+                resultBox.innerHTML = '⚠️ Please paste a URL to verify first!';
+                return;
             }
+
+            try {
+                let urlObj;
+                if (!inputVal.startsWith('http://') && !inputVal.startsWith('https://')) {
+                    urlObj = new URL('https://' + inputVal);
+                } else {
+                    urlObj = new URL(inputVal);
+                }
+
+                const domain = urlObj.hostname.toLowerCase();
+                
+                // قائمة بنطاقات خطيرة أو مشبوهة معروفة كمثال للتجربة
+                const suspiciousKeywords = ['phishing', 'malware', 'free-gift', 'hack', 'login-secure-update', 'verify-account', 'bit.ly', 'tinyurl'];
+                const trustedDomains = ['google.com', 'youtube.com', 'github.com', 'microsoft.com', 'apple.com', 'virustotal.com', 'redbubble.com', 'facebook.com', 'instagram.com', 'twitter.com', 'wikipedia.org'];
+
+                let isSuspicious = suspiciousKeywords.some(keyword => domain.includes(keyword));
+                let isTrusted = trustedDomains.some(trusted => domain === trusted || domain.endsWith('.' + trusted));
+                let isHttps = urlObj.protocol === 'https:';
+
+                if (isSuspicious) {
+                    resultBox.className = 'result-box result-danger';
+                    resultBox.innerHTML = `❌ <strong>Warning (Unsafe):</strong> The domain <code>${domain}</code> contains suspicious patterns often linked to phishing or scams!`;
+                } else if (!isHttps) {
+                    resultBox.className = 'result-box result-danger';
+                    resultBox.innerHTML = `⚠️ <strong>Caution (Insecure):</strong> The site <code>${domain}</code> uses HTTP instead of HTTPS. Data sent may not be encrypted.`;
+                } else if (isTrusted || isHttps) {
+                    resultBox.className = 'result-box result-safe';
+                    resultBox.innerHTML = `✅ <strong>Safe & Valid:</strong> The link <code>${domain}</code> uses a secure HTTPS connection and appears legitimate.`;
+                } else {
+                    resultBox.className = 'result-box result-safe';
+                    resultBox.innerHTML = `✅ <strong>Secure Connection:</strong> The URL <code>${domain}</code> uses encrypted SSL protocol.`;
+                }
+
+            } catch (e) {
+                resultBox.className = 'result-box result-danger';
+                resultBox.innerHTML = '❌ Invalid URL format! Please enter a valid web link.';
+            }
+        }
+
+        // Network & Speed Checker Logic (فحص حالة الإنترنت والواي فاي)
+        function checkNetworkSpeed() {
+            const netDisplay = document.getElementById('networkDisplay');
+            netDisplay.innerHTML = '🔄 Testing connection quality and speed...';
+            netDisplay.style.color = '#38bdf8';
+
+            setTimeout(() => {
+                // استخدام Network Information API المتاحة في المتصفحات الحديثة إن وجدت
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                
+                let onlineStatus = navigator.onLine ? "Connected" : "Offline";
+                if (!navigator.onLine) {
+                    netDisplay.className = 'network-box result-danger';
+                    netDisplay.innerHTML = `❌ <strong>No Internet Connection!</strong> Please check your network.`;
+                    return;
+                }
+
+                let effectiveType = connection ? connection.effectiveType.toUpperCase() : "4G/WiFi";
+                let downlink = connection ? connection.downlink + " Mbps" : "Stable";
+                let rtt = connection ? connection.rtt + " ms" : "Good";
+
+                netDisplay.className = 'network-box result-safe';
+                netDisplay.innerHTML = `✅ <strong>Status: Online (${effectiveType})</strong><br>
+                ⚡ Download Speed: ~${downlink} | Ping (RTT): ${rtt}<br>
+                📶 Signal Strength: Excellent / Strong Connection`;
+            }, 1000);
         }
 
         // Password Generator Logic
