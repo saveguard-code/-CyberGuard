@@ -317,7 +317,7 @@
             }
         }
     </script>
-async function startDownload() {
+    async function startDownload() {
     const videoUrl = document.getElementById('videoUrl').value.trim();
     const resultDiv = document.getElementById('downloadResult');
 
@@ -350,7 +350,6 @@ async function startDownload() {
                 </div>
             `;
         } else {
-            // في حالة روابط المنصات الأخرى (مثل فيسبوك) يتم التوجيه بأمان بدون تحميل ملفات فارغة
             resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
             resultDiv.style.color = '#ffb300';
             resultDiv.innerHTML = `
@@ -363,9 +362,11 @@ async function startDownload() {
     } catch (error) {
         resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
         resultDiv.style.color = '#ff5252';
-        resultDiv.innerHTML = '❌ الرابط غير مدعوم حالياً أو حدث خطأ أثناء الاتصال.';
+        resultDiv.innerHTML = '❌ حدث خطأ في الاتصال. المرجو التأكد من صحة الرابط والمحاولة مجدداً.';
     }
 }
+
+
 
     </script>
 
