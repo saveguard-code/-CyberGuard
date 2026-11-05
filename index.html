@@ -11,9 +11,53 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
+/* 1. تصميم الشريط العلوي في الـ CSS */
+.announcement-bar {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #ffffff;
+    padding: 10px 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.announcement-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.announcement-btn {
+    background-color: #ffffff;
+    color: #ff416c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* 2. باقي تنسيق الـ body */
+body {
+    background-color: #0b111e;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+
+            
+
             background-color: #0b0f19;
             color: #ffffff;
             display: flex;
@@ -137,8 +181,113 @@
             color: #38bdf8;
         }
     </style>
+    <style>
+/* تصميم الشريط العلوي */
+.announcement-bar {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #ffffff;
+    padding: 10px 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1000;
+}
+
+/* حركة بسيطة لجذب الانتباه (تنبض بسلاسة) */
+.announcement-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; transform: scale(1.01); }
+    100% { opacity: 0.9; }
+}
+
+/* زر التسوّق داخل الشريط */
+.announcement-btn {
+    background-color: #ffffff;
+    color: #ff416c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.announcement-btn:hover {
+    background-color: #f1f1f1;
+    color: #d32f2f;
+}
+</style>
+<style>
+/* تصميم الشريط العلوي */
+.announcement-bar {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #ffffff;
+    padding: 10px 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1000;
+}
+
+/* حركة بسيطة لجذب الانتباه (تنبض بسلاسة) */
+.announcement-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; transform: scale(1.01); }
+    100% { opacity: 0.9; }
+}
+
+/* زر التسوّق داخل الشريط */
+.announcement-btn {
+    background-color: #ffffff;
+    color: #ff416c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.announcement-btn:hover {
+    background-color: #f1f1f1;
+    color: #d32f2f;
+}
+</style>
+
 </head>
-<body>
+<body>    <!-- شريط الإعلانات المتحرك -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <span>🔥 خصم لفترة محدودة على جميع التصاميم الشتوية في متجرنا!</span>
+            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">تسوّق الآن 🛒</a>
+        </div>
+    </div>
+
+    
 
     <div class="container">
         <!-- Header -->
