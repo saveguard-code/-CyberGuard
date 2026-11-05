@@ -306,59 +306,57 @@
             }
         }
     </script>
-</body>
-        <!-- قسم تحميل الفيديوهات -->
-    <section id="downloader" style="padding: 40px 20px; background-color: #161f31; text-align: center; font-family: 'Tajawal', sans-serif; border-radius: 10px; margin: 20px auto; max-width: 800px; border: 1px solid rgba(255,255,255,0.1);">
-        <h2 style="color: #f1f5f9; margin-bottom: 10px;">تحميل الفيديوهات بدون علامة مائية</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">أدخل رابط الفيديو من منصات التواصل الاجتماعي لتحميله بسهولة.</p>
-        
-        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-            <input type="url" id="videoUrl" placeholder="ألصق الرابط هنا (TikTok, Instagram, Facebook...)" style="padding: 12px; width: 65%; max-width: 400px; background-color: #0b0f19; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; outline: none; font-size: 14px;">
-            <button onclick="startDownload()" style="padding: 12px 20px; background-color: #00d2ff; color: #0b0f19; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px;">تحميل</button>
-        </div>
-        
-        <div id="downloadResult" style="margin-top: 15px; color: #fff; font-size: 14px;"></div>
-    </section>
-
-    <script>
-    async function startDownload() {
+async function startDownload() {
     const videoUrl = document.getElementById('videoUrl').value.trim();
     const resultDiv = document.getElementById('downloadResult');
 
-    // 1. التحقق من أن الحقل ليس فارغاً وبأن الرابط يبدو صحيحاً
+    // 1. التحقق من أن الرابط ليس فارغاً
     if (!videoUrl) {
-        resultDiv.innerHTML = '<span style="color: #ff4d4d; font-weight: bold;">⚠️ المرجو إدخال رابط صالح أولاً!</span>';
+        resultDiv.style.display = 'block';
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو أولاً!';
         return;
     }
 
-    // 2. إظهار رسالة التحميل بشكل عصري وآمن للمستخدم
-    resultDiv.innerHTML = '<span style="color: #00d2ff;">⏳ جاري فحص الرابط ومعالجته بأمان...</span>';
+    // 2. إظهار رسالة جاري المعالجة
+    resultDiv.style.display = 'block';
+    resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
+    resultDiv.style.color = '#00d2ff';
+    resultDiv.innerHTML = '⏳ جاري استخراج رابط التحميل المباشر...';
 
     try {
-        // 3. هنا يتم ربط الطلب بـ API آمن (يمكنك استبدال الرابط أدناه بخدمة API حقيقية وموثوقة لتحميل الفيديوهات)
-        // مثال لطلب آمن عبر fetch:
-        /*
-        const apiResponse = await fetch(`https://api.secure-downloader.com/v1/extract?url=${encodeURIComponent(videoUrl)}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-        const data = await apiResponse.json();
-        */
+        // استخدام API مجاني مفتوح لجلب فيديوهات منصات التواصل الاجتماعي
+        const apiUrl = `https://api.tikwm.com/api/?url=${encodeURIComponent(videoUrl)}`;
+        
+        const response = await fetch(apiUrl);
+        const resData = await response.json();
 
-        // محاكاة استجابة ناجحة وآمنة ريثما تربطه بالـ API الفعلي الذي تختاره:
-        setTimeout(() => {
+        if (resData && resData.data && resData.data.play) {
+            const directVideoUrl = resData.data.play;
+            
+            // عرض زر التحميل المباشر الحقيقي
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
             resultDiv.innerHTML = `
-                <div style="background: #0b0f19; padding: 15px; border-radius: 8px; border: 1px solid rgba(0,210,255,0.3); margin-top: 10px; text-align: right;">
-                    <p style="color: #4ade80; margin-bottom: 10px; font-weight: bold;">✨ تم تجهيز الفيديو بنجاح وأمان!</p>
-                    <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #00d2ff; color: #0b0f19; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">اضغط هنا لتحميل الفيديو</a>
+                <div style="text-align: right;">
+                    <p style="color: #00e676; margin-bottom: 8px; font-weight: bold;">✨ تم تجهيز الفيديو بنجاح!</p>
+                    <a href="${directVideoUrl}" target="_blank" download="video.mp4" style="display: inline-block; background: #00e676; color: #0b0f19; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">اضغط هنا لتحميل الفيديو مباشرة</a>
                 </div>
             `;
-        }, 1200);
+        } else {
+            // حل بديل إذا كان الرابط لفيسبوك أو منصة أخرى لا يدعمها هذا الـ API المباشر، يوجهه لطريقة آمنة
+            resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
+            resultDiv.style.color = '#ffb300';
+            resultDiv.innerHTML = `
+                <p style="margin-bottom: 8px;">🔗 تم تجهيز رابط المعاينة:</p>
+                <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" style="color: #00d2ff; text-decoration: underline; font-weight: bold;">فتح الفيديو في نافذة جديدة للتحميل</a>
+            `;
+        }
 
     } catch (error) {
-        resultDiv.innerHTML = '<span style="color: #ff4d4d;">❌ حدث خطأ في الاتصال الآمن، المرجو المحاولة لاحقاً.</span>';
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '❌ حدث خطأ في الاتصال، المرجو التأكد من صحة الرابط والمحاولة مجدداً.';
     }
 }
 
