@@ -235,42 +235,41 @@
 
     <script>
         async function startDownload() {
-            const videoUrl = document.getElementById('videoUrl').value.trim();
-            const resultDiv = document.getElementById('downloadResult');
+    const videoUrl = document.getElementById('videoUrl').value.trim();
+    const resultDiv = document.getElementById('downloadResult');
 
-            if (!videoUrl) {
-                resultDiv.style.display = 'block';
-                resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
-                resultDiv.style.color = '#ff5252';
-                resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو';
-                return;
-            }
+    if (!videoUrl) {
+        resultDiv.style.display = 'block';
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو';
+        return;
+    }
 
-            resultDiv.style.display = 'block';
-            resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
-            resultDiv.style.color = '#00d2ff';
-            resultDiv.innerHTML = '⏳ جاري جلب رابط التحميل...';
+    resultDiv.style.display = 'block';
+    resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
+    resultDiv.style.color = '#00d2ff';
+    resultDiv.innerHTML = '⏳ جاري جلب رابط التحميل...';
 
-            try {
-                const apiUrl = `https://api.tikwm.com/api/?url=${encodeURIComponent(videoUrl)}`;
-                const response = await fetch(apiUrl);
-                const resData = await response.json();
+    try {
+        const apiUrl = `https://api.tikwm.com/api/?url=${encodeURIComponent(videoUrl)}&hd=1`;
+        const response = await fetch(apiUrl);
+        const resData = await response.json();
 
-                if (resData && resData.data && resData.data.play) {
-                    const directVideoUrl = resData.data.play;
-                    resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
-                    resultDiv.innerHTML = `✨ تم استخراج الفيديو بنجاح!<br><a href="${directVideoUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#00e676; color:#fff; text-decoration:none; border-radius:5px;">اضغط هنا لتحميل الفيديو</a>`;
-                } else {
-                    resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
-                    resultDiv.style.color = '#ffb300';
-                    resultDiv.innerHTML = '⚠️ لم يتم العثور على الفيديو، التأكد من صحة الرابط.';
-                }
-            } catch (error) {
-                resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
-                resultDiv.style.color = '#ff5252';
-                resultDiv.innerHTML = '❌ حدث خطأ في الاتصال. المرجو التأكد من صحة الرابط والمحاولة مجدداً.';
-            }
+        if (resData && resData.code === 0 && resData.data) {
+            const videoData = resData.data;
+            const directVideoUrl = videoData.play || videoData.hdplay;
+            
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
+            resultDiv.innerHTML = `✨ تم استخراج الفيديو بنجاح!<br><a href="${directVideoUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#00e676; color:#fff; text-decoration:none; border-radius:5px;">اضغط هنا لتحميل الفيديو</a>`;
+        } else {
+            resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
+            resultDiv.style.color = '#ffb300';
+            resultDiv.innerHTML = '⚠️ لم يتم العثور على الفيديو، تأكد من صحة الرابط أو جرب رابطاً آخر.';
         }
-    </script>
-</body>
-</html>
+    } catch (error) {
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '❌ حدث خطأ في الاتصال بالسيرفر. حاول مجدداً لاحقاً.';
+    }
+}
