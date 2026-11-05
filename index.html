@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard & Media | Winter Collection</title>
+    <title>CyberGuard & Media | Digital Security & Store</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Announcement Bar */
         .announcement-bar {
@@ -11,7 +15,6 @@
             color: #ffffff;
             padding: 12px 20px;
             text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 14px;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -45,6 +48,12 @@
         }
 
         /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
         body {
             background-color: #0b111e;
             color: #ffffff;
@@ -52,14 +61,12 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 0;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 50px;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             padding: 20px;
             box-sizing: border-box;
             display: flex;
@@ -67,27 +74,96 @@
             align-items: center;
         }
 
-        .card {
-            background-color: #161f30;
-            border-radius: 12px;
-            padding: 25px;
-            width: 100%;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            box-sizing: border-box;
+        .main-title {
+            font-size: 26px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #38bdf8;
             text-align: center;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
         }
 
         .subtitle {
             font-size: 14px;
             color: #94a3b8;
             margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #161f30;
+            border-radius: 12px;
+            padding: 22px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 1px solid #1e293b;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #38bdf8;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p, .card li {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 18px;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .custom-input {
+            flex: 1;
+            background-color: #0b111e;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .custom-input:focus {
+            border-color: #38bdf8;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         .store-btn {
@@ -96,7 +172,7 @@
             border: none;
             padding: 14px 20px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
@@ -104,7 +180,7 @@
             text-decoration: none;
             display: block;
             box-sizing: border-box;
-            margin-top: 15px;
+            margin-top: 12px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,176,155,0.3);
         }
@@ -112,6 +188,27 @@
         .store-btn:hover {
             opacity: 0.95;
             transform: translateY(-2px);
+        }
+
+        .password-box {
+            background: #0b111e;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #34d399;
+            text-align: center;
+            margin: 12px 0;
+            letter-spacing: 1px;
+            border: 1px dashed #334155;
+            word-break: break-all;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            margin-top: 20px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -127,17 +224,80 @@
 
     <div class="container">
         <!-- Header Section -->
-        <h1>CyberGuard & Media</h1>
-        <div class="subtitle">Digital Security & Exclusive Apparel Store</div>
+        <h1 class="main-title">CyberGuard & Media</h1>
+        <div class="subtitle">Digital Security Hub & Exclusive Apparel Store</div>
 
-        <!-- Store Featured Card -->
+        <!-- 1. Video Downloader Box -->
         <div class="card">
-            <h3 style="margin-top: 0; color: #38bdf8; font-size: 18px;">Winter Edition Sweatshirt</h3>
-            <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">Discover our premium quality winter apparel designed for ultimate comfort and style.</p>
+            <h3><i class="fa-solid fa-download"></i> Fast Video Downloader</h3>
+            <p>Paste any video link below to download it quickly and securely:</p>
+            <div class="input-group">
+                <input type="text" id="videoUrl" class="custom-input" placeholder="Paste video link here...">
+                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-arrow-right"></i> Download</button>
+            </div>
+        </div>
+
+        <!-- 2. Link Verification Box -->
+        <div class="card">
+            <h3><i class="fa-solid fa-shield-halved"></i> Link & URL Security Checker</h3>
+            <p>Ensure any link is safe from malware and phishing before opening it:</p>
+            <a href="https://www.virustotal.com" target="_blank" rel="noopener noreferrer" class="action-btn" style="width: 100%; margin-top: 5px;"><i class="fa-solid fa-globe"></i> Open VirusTotal Scanner</a>
+        </div>
+
+        <!-- 3. Mobile Security Tips -->
+        <div class="card">
+            <h3><i class="fa-solid fa-mobile-screen-button"></i> Mobile Security Guidelines</h3>
+            <ul>
+                <li>Keep your system and applications updated to patch vulnerabilities.</li>
+                <li>Avoid downloading untrusted APK files from unknown sources.</li>
+                <li>Regularly check and revoke unnecessary app permissions.</li>
+            </ul>
+        </div>
+
+        <!-- 4. Strong Password Generator -->
+        <div class="card">
+            <h3><i class="fa-solid fa-key"></i> Strong Password Generator</h3>
+            <p>Generate secure cryptographic passwords for your social media accounts:</p>
+            <div class="password-box" id="passwordDisplay">Click generate below</div>
+            <button class="action-btn" style="width: 100%;" onclick="generatePassword()"><i class="fa-solid fa-rotate"></i> Generate Secure Password</button>
+        </div>
+
+        <!-- 5. Store Featured Card -->
+        <div class="card" style="border-color: #00b09b;">
+            <h3 style="color: #34d399;"><i class="fa-solid fa-shirt"></i> Winter Edition Sweatshirt</h3>
+            <p>Discover our premium quality winter apparel designed for ultimate comfort and style.</p>
             <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn">Visit Official Store 🛍️</a>
         </div>
 
     </div>
+
+    <footer>
+        <p>&copy; 2026 CyberGuard & Media. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Downloader Redirect Logic
+        function openSaveFrom() {
+            const url = document.getElementById('videoUrl').value.trim();
+            if(url) {
+                // Yوجه المستخدم مباشرة لخدمة التحميل مع الرابط
+                window.open('https://en.savefrom.net/1-youtube-video-downloader-740/?url=' + encodeURIComponent(url), '_blank');
+            } else {
+                alert('Please paste a valid link first!');
+            }
+        }
+
+        // Password Generator Logic
+        function generatePassword() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&!*-_";
+            let password = "";
+            const length = 16;
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("passwordDisplay").innerText = password;
+        }
+    </script>
 
 </body>
 </html>
