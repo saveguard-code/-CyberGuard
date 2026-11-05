@@ -229,48 +229,42 @@
     </footer>
 
     <script>
-        // فحص الروابط المشبوهة
-        function checkURL() {
-            const url = document.getElementById('urlInput').value.trim();
-            const resultBox = document.getElementById('urlResult');
-            resultBox.style.display = "block";
-            
-            if (!url) {
-                resultBox.style.backgroundColor = "#ff525222";
-                resultBox.style.color = "var(--danger)";
-                resultBox.innerText = "⚠️ عرجاء، يرجى إدخال رابط صحيح لفحصه.";
-                return;
-            }
+        async function startDownload() {
+    const videoUrl = document.getElementById('videoUrl').value.trim();
+    const resultDiv = document.getElementById('downloadResult');
 
-            if (url.includes("http://") || url.startsWith("www.")) {
-                resultBox.style.backgroundColor = "#ffb30022";
-                resultBox.style.color = "var(--warning)";
-                resultBox.innerText = "⚠️ تحذير: الرابط غير آمن (لا يستخدم تشفير HTTPS). تجنب إدخال بياناتك الشخصية.";
-            } else {
-                resultBox.style.backgroundColor = "#00e67622";
-                resultBox.style.color = "var(--success)";
-                resultBox.innerText = "✅ الرابط يبدو آمناً مبدئياً (يستخدم بروتوكول HTTPS المشفر).";
-            }
-        }
-
-        // محمل الفيديوهات
-        function startDownload() {
-            const videoUrl = document.getElementById('videoUrl').value.trim();
-            const resultBox = document.getElementById('downloadResult');
-            resultBox.style.display = "block";
-                    if (!videoUrl || videoUrl.value.trim() === "") {
-        resultBox.style.display = "block";
-        resultBox.style.backgroundColor = "yellow"; // أو اللون المناسب للخطأ
-        resultBox.style.color = "black";
-        resultBox.innerText = "⚠️ الرجاء إدخال رابط صالح!";
+    if (!videoUrl) {
+        resultDiv.style.display = 'block';
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو';
         return;
     }
 
-       // كود بدء التحميل الفعلي
-    resultBox.style.display = "block";
-    resultBox.style.backgroundColor = "green";
-    resultBox.style.color = "white";
-    resultBox.innerText = "✅ جاري التحميل...";
+    resultDiv.style.display = 'block';
+    resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
+    resultDiv.style.color = '#00d2ff';
+    resultDiv.innerHTML = '⏳ جاري جلب رابط التحميل...';
+
+    try {
+        const apiUrl = `https://api.tikwm.com/api/?url=${encodeURIComponent(videoUrl)}`;
+        const response = await fetch(apiUrl);
+        const resData = await response.json();
+
+        if (resData && resData.data && resData.data.play) {
+            const directVideoUrl = resData.data.play;
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
+            resultDiv.innerHTML = `✨ تم استخراج الفيديو بنجاح!<br><a href="${directVideoUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#00e676; color:#fff; text-decoration:none; border-radius:5px;">اضغط هنا لتحميل الفيديو</a>`;
+        } else {
+            resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
+            resultDiv.style.color = '#ffb300';
+            resultDiv.innerHTML = '⚠️ لم يتم العثور على الفيديو، التأكد من صحة الرابط.';
+        }
+    } catch (error) {
+        resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+        resultDiv.style.color = '#ff5252';
+        resultDiv.innerHTML = '❌ حدث خطأ في الاتصال. المرجو التأكد من صحة الرابط والمحاولة مجدداً.';
+    }
 }
 
-
+     
