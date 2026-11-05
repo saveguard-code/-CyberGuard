@@ -307,29 +307,30 @@
         }
     </script>
 </body>
-</<!-- قسم تحميل الفيديوهات -->
-<section id="downloader" style="padding: 40px 20px; background-color: #f9f9f9; text-align: center; font-family: Arial, sans-serif; border-radius: 10px; margin: 20px auto; max-width: 800px;">
-    <h2 style="color: #333; margin-bottom: 10px;">تحميل الفيديوهات بدون علامة مائية</h2>
-    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">أدخل رابط الفيديو من منصات التواصل الاجتماعي لتحميله بسهولة.</p>
-    
-    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-        <input type="url" id="videoUrl" placeholder="ألصق الرابط هنا (TikTok, Instagram, Facebook...)" style="padding: 12px; width: 65%; max-width: 400px; border: 1px solid #ccc; border-radius: 5px; outline: none; font-size: 14px;">
-        <button onclick="startDownload()" style="padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px;">تحميل</button>
-    </div>
-    
-    <div id="downloadResult" style="margin-top: 15px; color: #444; font-size: 14px;"></div>
-</section>
+        <!-- قسم تحميل الفيديوهات -->
+    <section id="downloader" style="padding: 40px 20px; background-color: #161f31; text-align: center; font-family: 'Tajawal', sans-serif; border-radius: 10px; margin: 20px auto; max-width: 800px; border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="color: #f1f5f9; margin-bottom: 10px;">تحميل الفيديوهات بدون علامة مائية</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">أدخل رابط الفيديو من منصات التواصل الاجتماعي لتحميله بسهولة.</p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <input type="url" id="videoUrl" placeholder="ألصق الرابط هنا (TikTok, Instagram, Facebook...)" style="padding: 12px; width: 65%; max-width: 400px; background-color: #0b0f19; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; outline: none; font-size: 14px;">
+            <button onclick="startDownload()" style="padding: 12px 20px; background-color: #00d2ff; color: #0b0f19; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px;">تحميل</button>
+        </div>
+        
+        <div id="downloadResult" style="margin-top: 15px; color: #fff; font-size: 14px;"></div>
+    </section>
 
-<script>
-function startDownload() {
-    const url = document.getElementById('videoUrl').value;
-    const resultDiv = document.getElementById('downloadResult');
-    
-    if(!url) {
-        resultDiv.innerHTML = "<span style='color: red;'>الرجاء إدخال رابط صحيح أولاً!</span>";
-        return;
+    <script>
+    function startDownload() {
+        const url = document.getElementById('videoUrl').value;
+        const resultDiv = document.getElementById('downloadResult');
+        
+        if(!url) {
+            resultDiv.innerHTML = "<span style='color: #ff5252;'>الرجاء إدخال رابط صحيح أولاً!</span>";
+            return;
+        }
+        resultDiv.innerHTML = "<span style='color: #00d2ff;'>جاري معالجة الطلب... (يتطلب ربط السيرفر الخلفي لاحقاً)</span>";
     }
-    
-    resultDiv.innerHTML = "<span style='color: blue;'>جاري معالجة الطلب... (يتطلب ربط السيرفر الخلفي لاحقاً)</span>";
-}
-</script>
+    </script>
+
+
