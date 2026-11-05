@@ -175,13 +175,13 @@
             <button class="btn btn-secondary" onclick="copyPassword()">نسخ كلمة المرور 📋</button>
         </div>
 
-        <!-- 4. قسم الخدمات المدفوعة / الإعلانية للشراء -->
+        <!-- 4. قسم متجر الملابس والإكسسوارات -->
         <div class="card" style="border-color: #f59e0b;">
-            <div class="card-title" style="color: #f59e0b;">⭐ قسم الخدمات المدفوعة والإعلانات</div>
+            <div class="card-title" style="color: #f59e0b;">🛍️ متجر الملابس والإكسسوارات</div>
             <p style="font-size: 13px; color: #94a3b8; margin-bottom: 12px; line-height: 1.5;">
-                احصل على فحص أمني شامل لحساباتك أو أعلن موقعك/قناتك هنا ليراها آلاف الزوار يومياً.
+                تصفح أحدث تشكيلة من الملابس والإكسسوارات العصرية بأفضل الأسعار.
             </p>
-            <button class="btn btn-gold" onclick="openBuyService()">شراء خدمة أو مساحة إعلانية 🛒</button>
+            <button class="btn btn-gold" onclick="openBuyService()">زيارة المتجر الآن 🛒</button>
         </div>
 
         <!-- نصائح أمنية -->
@@ -194,7 +194,7 @@
         <div class="footer-links">
             <a href="#" onclick="alert('سياسة الخصوصية: هذا الموقع يحترم خصوصية المستخدمين ولا يجمع بيانات شخصية.'); return false;">سياسة الخصوصية</a>
             <span>•</span>
-            <a href="#" onclick="alert('اتصل بنا: للاستفسار أو طلب الخدمات المدفوعة راسلنا عبر الإيميل أو واتساب.'); return false;">اتصل بنا</a>
+            <a href="#" onclick="alert('اتصل بنا: للاستفسار أو طلب الخدمات راسلنا عبر الإيميل.'); return false;">اتصل بنا</a>
             <span>•</span>
             <a href="#" onclick="alert('من نحن: منصة تهدف لتوفير أدوات رقمية وخدمات حماية متقدمة.'); return false;">من نحن</a>
         </div>
@@ -255,11 +255,10 @@
             alert('تم نسخ كلمة المرور بنجاح! 📋');
         }
 
-        // 4. توجيه لطلب الشراء أو الإعلان
+        // 4. توجيه لمتجر الملابس والأزياء
         function openBuyService() {
-            const phoneNumber = "212600000000"; // استبدل هذا الرقم برقم هاتفك مع رمز الدولة
-            const message = "سلام، مهتم بشراء خدمة أمنية أو حجز مساحة إعلانية في موقع CyberGuard & Media.";
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            const storeUrl = "https://www.redbubble.com/shop/ap/185336626; // **قم بتغيير هذا الرابط برابط موقعك الحقيقي**
+            window.open(storeUrl, '_blank');
         }
     </script>
 
