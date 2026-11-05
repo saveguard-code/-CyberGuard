@@ -295,10 +295,48 @@
             box-shadow: inset 0 0 10px rgba(255, 65, 108, 0.1);
         }
 
+        /* تنسيق قسم التواصل الاجتماعي أسفل الموقع */
+        .social-footer {
+            margin-top: 25px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-cyber);
+            border-radius: 50%;
+            color: var(--primary-glow);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-glow);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-glow);
+            border-color: var(--primary-glow);
+        }
+
         footer {
             text-align: center;
             color: #64748b;
-            margin-top: 20px;
+            margin-top: 10px;
             font-size: 12px;
             font-family: 'Share Tech Mono', monospace;
         }
@@ -382,11 +420,40 @@
             <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn">Access Official Store 🛍️</a>
         </div>
 
-    </div>
+        <!-- Social Media Icons Section -->
+        <div class="social-footer">
+            <div class="social-icons">
+                <!-- Telegram -->
+                <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" title="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/weguard" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- Twitter / X -->
+                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" title="Twitter / X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <!-- YouTube -->
+                <a href="https://youtube.com/@yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <!-- Facebook -->
+                <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+            <footer>
+                <p>&copy; 2026 CYBER_GUARD_MEDIA // ALL RIGHTS RESERVED.</p>
+            </footer>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 CYBER_GUARD_MEDIA // ALL RIGHTS RESERVED.</p>
-    </footer>
+    </div>
 
     <script>
         // Matrix Rain Effect (تأثير كود ماتريكس المتحرك في الخلفية)
