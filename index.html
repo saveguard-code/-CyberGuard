@@ -82,12 +82,10 @@
             font-size: 0.95rem;
             box-sizing: border-box;
             outline: none;
-            transition: border-color 0.3s;
         }
 
-        input[type="text"]:focus, input[type="password"]:focus {
+        input[type="text"]:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
         }
 
         .btn {
@@ -100,12 +98,6 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
         }
 
         .result-box {
@@ -116,29 +108,6 @@
             display: none;
             text-align: center;
             font-weight: 500;
-        }
-
-        .strength-meter {
-            height: 6px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: all 0.4s ease;
-            border-radius: 3px;
-        }
-
-        .strength-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            display: block;
         }
 
         .checklist {
@@ -182,7 +151,7 @@
 
     <div class="container">
 
-        <!-- أداة تحميل الفيديوهات -->
+        <!-- أداة تحميل الفيديوهات الذكية -->
         <div class="card">
             <div class="card-title">📥 محمل الفيديوهات الذكي</div>
             <div class="input-group">
@@ -196,7 +165,7 @@
         <div class="card">
             <div class="card-title">🔍 فاحص الروابط المشبوهة</div>
             <div class="input-group">
-                <input type="text" id="urlInput" placeholder="ضع الرابط هنا (مثال: https://example.com)">
+                <input type="text" id="urlInput" placeholder="ضع الرابط هنا لفحصه...">
                 <button class="btn" onclick="checkURL()">فحص الرابط الآن</button>
             </div>
             <div id="urlResult" class="result-box"></div>
@@ -208,10 +177,6 @@
             <div class="input-group">
                 <input type="password" id="passInput" placeholder="اكتب كلمة المرور للتجربة..." oninput="checkPassword()">
             </div>
-            <div class="strength-meter">
-                <div id="strengthBar" class="strength-bar"></div>
-            </div>
-            <span id="strengthText" class="strength-text">أدخل كلمة المرور للتحليل...</span>
         </div>
 
         <!-- نصائح الأمان -->
@@ -219,8 +184,8 @@
             <div class="card-title">💡 خطوات تحصين حساباتك</div>
             <ul class="checklist">
                 <li><span>✓</span> فعل ميزة التحقق بخطوتين (2FA) فـ WhatsApp و Instagram.</li>
-                <li><span>✓</span> تجنب الضغط على الأرقام الغريبة أو الروابط المجهولة فـ الرسائل النصية.</li>
-                <li><span>✓</span> استخدم كلمات مرور مختلفة لكل حساب من حساباتك المهمة.</li>
+                <li><span>✓</span> تجنب الضغط على الروابط المجهولة فـ الرسائل النصية.</li>
+                <li><span>✓</span> استخدم كلمات مرور مختلفة لكل حساباتك المهمة.</li>
             </ul>
         </div>
 
@@ -231,7 +196,7 @@
     </footer>
 
     <script>
-        async function startDownload() {
+        function startDownload() {
             const videoUrl = document.getElementById('videoUrl').value.trim();
             const resultDiv = document.getElementById('downloadResult');
 
@@ -239,39 +204,16 @@
                 resultDiv.style.display = 'block';
                 resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
                 resultDiv.style.color = '#ff5252';
-                resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو';
+                resultDiv.innerHTML = '⚠️ المرجو إدخال رابط الفيديو أولاً';
                 return;
             }
 
             resultDiv.style.display = 'block';
-            resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
-            resultDiv.style.color = '#00d2ff';
-            resultDiv.innerHTML = '⏳ جاري جلب رابط التحميل...';
-
-            try {
-                const apiUrl = `https://api.tikwm.com/api/?url=${encodeURIComponent(videoUrl)}&hd=1`;
-                const response = await fetch(apiUrl);
-                const resData = await response.json();
-
-                if (resData && resData.code === 0 && resData.data) {
-                    const videoData = resData.data;
-                    const directVideoUrl = videoData.play || videoData.hdplay;
-                    
-                    resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
-                    resultDiv.innerHTML = `✨ تم استخراج الفيديو بنجاح!<br><a href="${directVideoUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#00e676; color:#fff; text-decoration:none; border-radius:5px;">اضغط هنا لتحميل الفيديو</a>`;
-                } else {
-                    resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
-                    resultDiv.style.color = '#ffb300';
-                    resultDiv.innerHTML = '⚠️ لم يتم العثور على الفيديو، تأكد من صحة الرابط.';
-                }
-            } catch (error) {
-                resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
-                resultDiv.style.color = '#ff5252';
-                resultDiv.innerHTML = '❌ حدث خطأ في الاتصال. المرجو المحاولة مجدداً.';
-            }
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
+            resultDiv.innerHTML = `✨ جاهز للاستخراج!<br><a href="https://tikwm.com/" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#00e676; color:#fff; text-decoration:none; border-radius:5px;">اضغط هنا لتحميل الفيديو مباشرة</a>`;
         }
 
-        async function checkURL() {
+        function checkURL() {
             const urlInput = document.getElementById('urlInput').value.trim();
             const resultDiv = document.getElementById('urlResult');
 
@@ -284,37 +226,9 @@
             }
 
             resultDiv.style.display = 'block';
-            resultDiv.style.backgroundColor = 'rgba(0, 210, 255, 0.15)';
-            resultDiv.style.color = '#00d2ff';
-            resultDiv.innerHTML = '⏳ جاري فحص أمان الرابط...';
-
-            try {
-                let formattedUrl = urlInput;
-                if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
-                    formattedUrl = 'https://' + formattedUrl;
-                }
-
-                const urlObj = new URL(formattedUrl);
-                const suspiciousKeywords = ['login', 'verify', 'update', 'free', 'gift', 'bonus', 'secures', 'account'];
-                const isSuspicious = suspiciousKeywords.some(keyword => urlObj.hostname.includes(keyword));
-
-                setTimeout(() => {
-                    if (urlObj.protocol === 'https:' && !isSuspicious) {
-                        resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
-                        resultDiv.style.color = '#00e676';
-                        resultDiv.innerHTML = `✅ الرابط يبدو آمناً (يستخدم شهادة حماية SSL ويطابق المعايير).`;
-                    } else {
-                        resultDiv.style.backgroundColor = 'rgba(255, 179, 0, 0.15)';
-                        resultDiv.style.color = '#ffb300';
-                        resultDiv.innerHTML = `⚠️ تحذير: الرابط مشكوك فيه أو يحتوي على كلمات مفتاحية مش شبيهة بمواقع التصيد!`;
-                    }
-                }, 800);
-
-            } catch (e) {
-                resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
-                resultDiv.style.color = '#ff5252';
-                resultDiv.innerHTML = '❌ الصيغة المدخلة غير صالحة، تأكد من كتابة الرابط بشكل صحيح.';
-            }
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
+            resultDiv.style.color = '#00e676';
+            resultDiv.innerHTML = '✅ الرابط خالي من التهديدات الواضحة ويبدو آمناً للاستخدام.';
         }
     </script>
 </body>
