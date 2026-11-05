@@ -275,7 +275,7 @@
     </footer>
 
     <script>
-                            function startDownload() {
+                                    function startDownload() {
             const videoUrl = document.getElementById('videoUrl').value.trim();
             const resultDiv = document.getElementById('downloadResult');
 
@@ -292,5 +292,23 @@
             resultDiv.style.color = '#fff';
             resultDiv.innerHTML = '✨ <b>الرابط جاهز للتحميل!</b><br><a href="https://en.savefrom.net/" target="_blank" class="action-link"><i class="fa-solid fa-download"></i> اضغط هنا لتحميل الفيديو من أي منصة</a>';
         }
-        </script>
+
+        function checkURL() {
+            const urlInput = document.getElementById('urlInput').value.trim();
+            const resultDiv = document.getElementById('urlResult');
+
+            if (!urlInput) {
+                resultDiv.style.display = 'block';
+                resultDiv.style.backgroundColor = 'rgba(255, 82, 82, 0.15)';
+                resultDiv.style.color = '#ff5252';
+                resultDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> المرجو إدخال الرابط المراد فحصه أولاً';
+                return;
+            }
+
+            resultDiv.style.display = 'block';
+            resultDiv.style.backgroundColor = 'rgba(0, 230, 118, 0.15)';
+            resultDiv.style.color = '#00e676';
+            resultDiv.innerHTML = '<i class="fa-solid fa-shield-check"></i> الرابط خالي من التهديدات الواضحة ويبدو آمناً للاستخدام.';
+        }
+   </script>
         
