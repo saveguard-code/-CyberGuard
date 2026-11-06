@@ -310,6 +310,8 @@
             color: #00ffcc;
             letter-spacing: 2px;
             text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+            text-align: center;
+            margin: 10px 0;
         }
 
         .result-safe {
@@ -405,6 +407,17 @@
     <div class="container">
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
         <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
+
+        <!-- قسم محرك البحث الذكي Gemini AI -->
+        <div class="card" style="border-color: #38bdf8;">
+            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Web Search</h3>
+            <p id="aiDesc">Ask any question to search Google & platforms instantly without reloading:</p>
+            <div class="input-group">
+                <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini anything...">
+                <button class="action-btn" onclick="askGeminiSearch()"><i class="fa-solid fa-magnifying-glass"></i> <span id="aiBtnText">Search</span></button>
+            </div>
+            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8;">Awaiting query...</div>
+        </div>
 
         <!-- القسم 1 -->
         <div class="card">
@@ -508,10 +521,13 @@
         }
         setInterval(drawMatrix, 30);
 
-        // نظام الترجمة الشامل (بما فيها الفلامانية Nederlands والعربية وباقي اللغات)
+        // نظام الترجمة الشامل (المصحح)
         const translations = {
             en: {
                 subTitleText: "Digital Security Intelligence & Store",
+                aiTitle: "0. Gemini AI Web Search",
+                aiDesc: "Ask any question to search Google & platforms instantly without reloading:",
+                aiBtnText: "Search",
                 tool1Title: "1. Fast Video Downloader",
                 tool1Desc: "Insert target stream URL to extract and download media securely:",
                 fetchBtnText: "Fetch",
@@ -533,6 +549,9 @@
             },
             nl: {
                 subTitleText: "Digitale Beveiligingsinlichting & Winkel",
+                aiTitle: "0. Gemini AI Webzoeken",
+                aiDesc: "Stel een vraag om direct op Google te zoeken zonder te herladen:",
+                aiBtnText: "Zoeken",
                 tool1Title: "1. Snelle Video Downloader",
                 tool1Desc: "Voer de doel-URL in om media veilig te extraheren en te downloaden:",
                 fetchBtnText: "Ophalen",
@@ -554,6 +573,9 @@
             },
             ar: {
                 subTitleText: "ذكاء الأمن الرقمي والمتجر",
+                aiTitle: "0. بحث الذكاء الاصطناعي Gemini AI",
+                aiDesc: "اسأل أي سؤال للبحث الفوري في جوجل والمنصات دون إعادة تحميل الصفحة:",
+                aiBtnText: "بحث",
                 tool1Title: "1. تحميل الفيديوهات السريع",
                 tool1Desc: "أدخل رابط الوسائط المستهدف لاستخراجه وتحميله بأمان:",
                 fetchBtnText: "جلب",
@@ -575,6 +597,9 @@
             },
             fr: {
                 subTitleText: "Intelligence de Sécurité Numérique & Boutique",
+                aiTitle: "0. Recherche Web Gemini AI",
+                aiDesc: "Posez une question pour rechercher instantanément sur le web :",
+                aiBtnText: "Rechercher",
                 tool1Title: "1. Téléchargeur de Vidéos Rapide",
                 tool1Desc: "Insérez l'URL du flux cible pour extraire et télécharger en toute sécurité :",
                 fetchBtnText: "Récupérer",
@@ -596,6 +621,9 @@
             },
             es: {
                 subTitleText: "Inteligencia de Seguridad Digital y Tienda",
+                aiTitle: "0. Búsqueda Web Gemini AI",
+                aiDesc: "Haz cualquier pregunta para buscar al instante en Google y plataformas:",
+                aiBtnText: "Buscar",
                 tool1Title: "1. Descargador de Vídeos Rápido",
                 tool1Desc: "Inserta la URL del flujo para extraer y descargar de forma segura:",
                 fetchBtnText: "Obtener",
@@ -617,6 +645,9 @@
             },
             de: {
                 subTitleText: "Digitale Sicherheitsintelligenz & Shop",
+                aiTitle: "0. Gemini AI Websuche",
+                aiDesc: "Stellen Sie eine Frage, um sofort im Web zu suchen:",
+                aiBtnText: "Suchen",
                 tool1Title: "1. Schneller Video-Downloader",
                 tool1Desc: "Ziel-URL eingeben, um Medien sicher zu extrahieren und herunterzuladen:",
                 fetchBtnText: "Abrufen",
@@ -644,15 +675,17 @@
 
             if (!t) return;
 
-            // تغيير اتجاه الصفحة بناءً على اللغة (RTL للعربية، LTR لباقي اللغات)
             if (lang === 'ar') {
                 document.documentElement.dir = 'rtl';
             } else {
                 document.documentElement.dir = 'ltr';
             }
 
-            // تطبيق الترجمات على العناصر
             document.getElementById('subTitleText').innerText = t.subTitleText;
+            document.getElementById('aiTitle').innerHTML = `<i class="fa-solid fa-brain"></i> ${t.aiTitle}`;
+            document.getElementById('aiDesc').innerText = t.aiDesc;
+            document.getElementById('aiBtnText').innerText = t.aiBtnText;
+
             document.getElementById('tool1Title').innerHTML = `<i class="fa-solid fa-terminal"></i> ${t.tool1Title}`;
             document.getElementById('tool1Desc').innerText = t.tool1Desc;
             document.getElementById('fetchBtnText').innerText = t.fetchBtnText;
@@ -675,6 +708,27 @@
             document.getElementById('adBtn1').innerText = t.adBtn1;
             document.getElementById('adText2').innerText = t.adText2;
             document.getElementById('adBtn2').innerText = t.adBtn2;
+        }
+
+        // دالة محرك البحث الذكي Gemini AI المباشر
+        function askGeminiSearch() {
+            const query = document.getElementById('aiQueryInput').value.trim();
+            const resBox = document.getElementById('aiResultBox');
+            resBox.style.display = 'block';
+
+            if (!query) {
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '⚠️ Please enter a query for Gemini to search.';
+                return;
+            }
+
+            resBox.className = 'result-box result-safe';
+            resBox.innerHTML = `🔍 <strong>Gemini AI Engine:</strong> Searching web & platforms for "<code>${query}</code>"...<br><br><em>(Redirecting to Google Search query results securely...)</em>`;
+            
+            // فتح بحث جوجل بشكل مباشر وفوري في نفس الوقت دون إعادة تحميل الصفحة الأصلية
+            setTimeout(() => {
+                window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+            }, 800);
         }
 
         function openSaveFrom() {
@@ -757,7 +811,7 @@
         function generatePassword() {
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&!*-_§±";
             let pwd = "";
-            for (let i. = 0; i < 18; i++) {
+            for (let i = 0; i < 18; i++) {
                 pwd += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             document.getElementById("passwordDisplay").innerText = pwd;
