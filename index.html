@@ -374,7 +374,7 @@
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- رأس الموقع يضم الإعلان الم يتحرك + قائمة اللغات الشاملة -->
+    <!-- رأس الموقع يضم الإعلان المتحرك + قائمة اللغات (زادت الفلامانية Nederlands) -->
     <div class="header-top">
         <div class="announcement-bar">
             <div class="announcement-slider">
@@ -389,11 +389,12 @@
             </div>
         </div>
 
-        <!-- أداة اختيار اللغات (تضم تقريباً جميع اللغات العالمية) -->
+        <!-- أداة اختيار اللغات (مضافة معها الفلامانية Nederlands) -->
         <div class="language-selector">
             <i class="fa-solid fa-globe"></i>
             <select class="language-select" id="langPicker" onchange="changeLanguage()">
                 <option value="en" selected>English</option>
+                <option value="nl">Nederlands (Flemish)</option>
                 <option value="ar">العربية</option>
                 <option value="fr">Français</option>
                 <option value="es">Español</option>
@@ -515,7 +516,6 @@
         }
         setInterval(drawMatrix, 30);
 
-        // دالة تغيير اللغة (يمكنك ربطها لاحقاً بخدمات الترجمة أو تغيير اتجاه الصفحة إذا اخترت العربية)
         function changeLanguage() {
             const selectedLang = document.getElementById('langPicker').value;
             if(selectedLang === 'ar') {
