@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
-    <!-- Google AdSense Code - تم وضعه في أعلى الـ Head مباشرة لتحقيق أفضل توافق -->
+    <!-- Google AdSense Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-4493514633554844">
 
@@ -451,6 +451,218 @@
         }
         setInterval(drawMatrix, 30);
 
+        // --- نظام ترجمة اللغات الحقيقي ---
+        const translations = {
+            en: {
+                topStore: "Store 🛒",
+                subTitle: "Digital Security Intelligence & Store",
+                pingTitle: "Network & Ping Monitor",
+                pingDesc: "Test your connection latency (Ping) and check your active network status in real-time:",
+                pingBtn: "Run Ping Test",
+                aiTitle: "0. Gemini AI Cyber Expert",
+                aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:",
+                aiInputPlaceholder: "Ask Gemini security questions...",
+                aiBtn: "Ask AI",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Insert target stream URL to extract and download media in Full HD:",
+                videoInputPlaceholder: "Paste YouTube/Social link...",
+                fetchBtn: "Download",
+                tool2Title: "2. Safe URL & Phishing Inspector",
+                tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:",
+                urlInputPlaceholder: "Enter link or domain...",
+                scanBtn: "Scan",
+                tool3Title: "3. Password Strength & Leak Check",
+                tool3Desc: "Test your password locally for strength and entropy levels:",
+                passInputPlaceholder: "Type password...",
+                auditBtn: "Audit",
+                tool3SubDesc: "Need a secure token instead?",
+                genBtn: "Generate Token",
+                storeTitle: "CyberGuard Official Apparel Store",
+                storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.",
+                storeBtn: "Visit Store 🚀"
+            },
+            ar: {
+                topStore: "المتجر 🛒",
+                subTitle: "ذكاء الأمن الرقمي والمتجر الرسمي",
+                pingTitle: "مراقب الشبكة وسرعة الاتصال (Ping)",
+                pingDesc: "اختبر سرعة الاستجابة واتصال الإنترنت الخاص بك في الوقت الفعلي:",
+                pingBtn: "بدء اختبار البينغ",
+                aiTitle: "0. خبير الأمان الذكي (Gemini AI)",
+                aiDesc: "اطرح أي سؤال تقني أو سيبراني واحصل على تحليل فوري ومباشر:",
+                aiInputPlaceholder: "اسأل خبير الأمان عن أي شيء...",
+                aiBtn: "اسأل الذكاء الاصطناعي",
+                tool1Title: "1. محمل الفيديوهات بدقة عالية",
+                tool1Desc: "أدخل رابط الفيديو لاستخراج وسائط التحميل بجودة Full HD:",
+                videoInputPlaceholder: "الصق رابط يوتيوب أو مواقع التواصل...",
+                fetchBtn: "تحميل",
+                tool2Title: "2. فاحص الروابط وروابط التصيد",
+                tool2Desc: "قم بتحليل الروابط المشبوهة أو كشف الروابط المختصرة قبل النقر عليها:",
+                urlInputPlaceholder: "أدخل الرابط أو النطاق هنا...",
+                scanBtn: "فحص",
+                tool3Title: "3. فحص قوة كلمات المرور",
+                tool3Desc: "اختبر كلمة المرور الخاصة بك محلياً لمعرفة مدى قوتها وتعقيدها:",
+                passInputPlaceholder: "اكتب كلمة المرور...",
+                auditBtn: "تدقيق",
+                tool3SubDesc: "تحتاج إلى رمز سري آمن وعشوائي بدلاً من ذلك؟",
+                genBtn: "توليد رمز آمن",
+                storeTitle: "متجر ملابس CyberGuard الرسمي",
+                storeDesc: "احصل على معدات تقنية عالية الجودة، هوديز، ومرشانديز حصرية.",
+                storeBtn: "زيارة المتجر 🚀"
+            },
+            fr: {
+                topStore: "Boutique 🛒",
+                subTitle: "Intelligence de Sécurité Numérique & Boutique",
+                pingTitle: "Moniteur Réseau & Ping",
+                pingDesc: "Testez la latence de votre connexion (Ping) et l'état du réseau en temps réel:",
+                pingBtn: "Lancer le test Ping",
+                aiTitle: "0. Expert IA Cyber Gemini",
+                aiDesc: "Posez n'importe quelle question technique ou de cybersécurité pour une analyse instantanée:",
+                aiInputPlaceholder: "Posez vos questions de sécurité...",
+                aiBtn: "Demander à l'IA",
+                tool1Title: "1. Téléchargeur de Flux Vidéo HD",
+                tool1Desc: "Insérez l'URL du flux pour extraire et télécharger en Full HD:",
+                videoInputPlaceholder: "Collez le lien YouTube/Réseaux...",
+                fetchBtn: "Télécharger",
+                tool2Title: "2. Inspecteur d'URLs & Phishing",
+                tool2Desc: "Analysez les liens cibles ou les URLs suspectes avant de cliquer:",
+                urlInputPlaceholder: "Entrez le lien ou domaine...",
+                scanBtn: "Analyser",
+                tool3Title: "3. Vérification de Mot de Passe",
+                tool3Desc: "Testez localement la force et le niveau d'entropie de votre mot de passe:",
+                passInputPlaceholder: "Tapez le mot de passe...",
+                auditBtn: "Auditer",
+                tool3SubDesc: "Besoin d'un jeton sécurisé à la place ?",
+                genBtn: "Générer un jeton",
+                storeTitle: "Boutique Officielle CyberGuard",
+                storeDesc: "Obtenez des équipements high-tech, des sweats à capuche et des articles exclusifs.",
+                storeBtn: "Visiter la boutique 🚀"
+            },
+            nl: {
+                topStore: "Winkel 🛒",
+                subTitle: "Digitale Beveiligingsintelligentie & Winkel",
+                pingTitle: "Netwerk & Ping Monitor",
+                pingDesc: "Test uw verbindingslatencies (Ping) en actieve netwerkstatus in realtime:",
+                pingBtn: "Ping-test uitvoeren",
+                aiTitle: "0. Gemini AI Cyber Expert",
+                aiDesc: "Stel elke beveiligings- of technische vraag voor direct expert-advies:",
+                aiInputPlaceholder: "Stel beveiligingsvragen...",
+                aiBtn: "Vraag AI",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Voer doelstream-URL in om media te downloaden in Full HD:",
+                videoInputPlaceholder: "Plak YouTube/sociale link...",
+                fetchBtn: "Downloaden",
+                tool2Title: "2. Veilige URL & Phishing Inspector",
+                tool2Desc: "Analyseer doelkoppelingen of verdachte URL's voordat u klikt:",
+                urlInputPlaceholder: "Voer link of domein in...",
+                scanBtn: "Scannen",
+                tool3Title: "3. Wachtwoordsterkte & Lekcontrole",
+                tool3Desc: "Test uw wachtwoord lokaal op sterkte en entropieniveaus:",
+                passInputPlaceholder: "Typ wachtwoord...",
+                auditBtn: "Audit",
+                tool3SubDesc: "Heeft u in plaats daarvan een beveiligde token nodig?",
+                genBtn: "Token genereren",
+                storeTitle: "CyberGuard Officiële Kledingwinkel",
+                storeDesc: "Ontvang hightechuitrusting, hoodies en exclusieve beveiligingsmerchandise.",
+                storeBtn: "Bezoek winkel 🚀"
+            },
+            es: {
+                topStore: "Tienda 🛒",
+                subTitle: "Inteligencia de Seguridad Digital y Tienda",
+                pingTitle: "Monitor de Red y Ping",
+                pingDesc: "Pruebe la latencia de su conexión (Ping) y estado de red en tiempo real:",
+                pingBtn: "Ejecutar prueba de Ping",
+                aiTitle: "0. Experto Cibernético de IA Gemini",
+                aiDesc: "Haga cualquier pregunta técnica o de ciberseguridad para un análisis inmediato:",
+                aiInputPlaceholder: "Pregunte a Gemini sobre seguridad...",
+                aiBtn: "Preguntar a IA",
+                tool1Title: "1. Descargador de Streaming HD",
+                tool1Desc: "Inserte la URL del flujo para extraer y descargar medios en Full HD:",
+                videoInputPlaceholder: "Pegue enlace de YouTube/Social...",
+                fetchBtn: "Descargar",
+                tool2Title: "2. Inspector de URLs y Phishing",
+                tool2Desc: "Analice enlaces objetivo o URLs sospechosas antes de hacer clic:",
+                urlInputPlaceholder: "Ingrese enlace o dominio...",
+                scanBtn: "Escanear",
+                tool3Title: "3. Comprobación de Contraseña",
+                tool3Desc: "Pruebe su contraseña localmente para verificar su fuerza y entropía:",
+                passInputPlaceholder: "Escriba contraseña...",
+                auditBtn: "Auditar",
+                tool3SubDesc: "¿Necesita un token seguro en su lugar?",
+                genBtn: "Generar token",
+                storeTitle: "Tienda Oficial de Ropa CyberGuard",
+                storeDesc: "Obtenga equipo de alta tecnología, sudaderas y mercancía de seguridad exclusiva.",
+                storeBtn: "Visitar tienda 🚀"
+            },
+            de: {
+                topStore: "Shop 🛒",
+                subTitle: "Digitale Sicherheitsintelligenz & Shop",
+                pingTitle: "Netzwerk- & Ping-Monitor",
+                pingDesc: "Testen Sie Ihre Latenz (Ping) und den Netzwerkstatus in Echtzeit:",
+                pingBtn: "Ping-Test starten",
+                aiTitle: "0. Gemini KI Cyber-Experte",
+                aiDesc: "Stellen Sie technische oder Cyber-Sicherheitsfragen für direkte Analysen:",
+                aiInputPlaceholder: "Sicherheitsfragen an Gemini stellen...",
+                aiBtn: "KI fragen",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Stream-URL eingeben, um Medien in Full HD herunterzuladen:",
+                videoInputPlaceholder: "YouTube/Social-Link einfügen...",
+                fetchBtn: "Herunterladen",
+                tool2Title: "2. Sichere URL & Phishing Inspector",
+                tool2Desc: "Analysieren Sie Ziel-Links oder verdächtige URLs vor dem Klicken:",
+                urlInputPlaceholder: "Link oder Domain eingeben...",
+                scanBtn: "Scannen",
+                tool3Title: "3. Passwort-Stärke & Leck-Prüfung",
+                tool3Desc: "Testen Sie Ihr Passwort lokal auf Stärke und Entropie:",
+                passInputPlaceholder: "Passwort eingeben...",
+                auditBtn: "Prüfen",
+                tool3SubDesc: "Benötigen Sie stattdessen ein sicheres Token?",
+                genBtn: "Token generieren",
+                storeTitle: "CyberGuard Offizieller Bekleidungsshop",
+                storeDesc: "Holen Sie sich High-Tech-Ausrüstung, Hoodies und exklusive Sicherheitsartikel.",
+                storeBtn: "Shop besuchen 🚀"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('langPicker').value;
+            const t = translations[lang] || translations.en;
+            const htmlRoot = document.getElementById('htmlRoot');
+
+            // تغيير اتجاه الصفحة تلقائياً حسب اللغة (RTL للعربية)
+            if (lang === 'ar') {
+                htmlRoot.setAttribute('dir', 'rtl');
+            } else {
+                htmlRoot.setAttribute('dir', 'ltr');
+            }
+
+            document.getElementById('topStoreText').innerText = t.topStore;
+            document.getElementById('subTitleText').innerText = t.subTitle;
+            document.getElementById('pingTitle').innerHTML = `<i class="fa-solid fa-network-wired"></i> ${t.pingTitle}`;
+            document.getElementById('pingDesc').innerText = t.pingDesc;
+            document.getElementById('pingBtnText').innerText = t.pingBtn;
+            document.getElementById('aiTitle').innerHTML = `<i class="fa-solid fa-brain"></i> ${t.aiTitle}`;
+            document.getElementById('aiDesc').innerText = t.aiDesc;
+            document.getElementById('aiQueryInput').placeholder = t.aiInputPlaceholder;
+            document.getElementById('aiBtnText').innerText = t.aiBtn;
+            document.getElementById('tool1Title').innerHTML = `<i class="fa-solid fa-video"></i> ${t.tool1Title}`;
+            document.getElementById('tool1Desc').innerText = t.tool1Desc;
+            document.getElementById('videoUrl').placeholder = t.videoInputPlaceholder;
+            document.getElementById('fetchBtnText').innerText = t.fetchBtn;
+            document.getElementById('tool2Title').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${t.tool2Title}`;
+            document.getElementById('tool2Desc').innerText = t.tool2Desc;
+            document.getElementById('checkUrl').placeholder = t.urlInputPlaceholder;
+            document.getElementById('scanBtnText').innerText = t.scanBtn;
+            document.getElementById('tool3Title').innerHTML = `<i class="fa-solid fa-key"></i> ${t.tool3Title}`;
+            document.getElementById('tool3Desc').innerText = t.tool3Desc;
+            document.getElementById('passInput').placeholder = t.passInputPlaceholder;
+            document.getElementById('auditBtnText').innerText = t.auditBtn;
+            document.getElementById('tool3SubDesc').innerText = t.tool3SubDesc;
+            document.getElementById('genBtnText').innerText = t.genBtn;
+            document.getElementById('storeTitle').innerText = t.storeTitle;
+            document.getElementById('storeDesc').innerText = t.storeDesc;
+            document.getElementById('storeBtnText').innerText = t.storeBtn;
+        }
+
         // وظيفة فحص الـ Ping المحلية السريعة والآمنة
         function checkNetworkPing() {
             const resBox = document.getElementById('pingResultBox');
@@ -558,10 +770,6 @@
                 password += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             document.getElementById('passwordDisplay').innerText = password;
-        }
-
-        function changeLanguage() {
-            // دالة تغيير اللغات المستقبلية
         }
     </script>
 </body>
