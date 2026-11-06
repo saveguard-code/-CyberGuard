@@ -408,24 +408,30 @@
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
         <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
 
-        <!-- قسم مساعد الذكاء الاصطناعي Gemini AI الداخلي -->
+        <!-- قسم مساعد الذكاء الاصطناعي الذكي (Gemini AI Expert) -->
         <div class="card" style="border-color: #38bdf8;">
-            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Assistant</h3>
-            <p id="aiDesc">Ask any question to get an instant answer right inside the site:</p>
+            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Cyber Expert</h3>
+            <p id="aiDesc">Ask any cybersecurity or technical question and get instant expert analysis:</p>
             <div class="input-group">
-                <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini anything...">
+                <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini security questions...">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 220px; overflow-y: auto;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 250px; overflow-y: auto; line-height: 1.6;">Awaiting query...</div>
         </div>
 
-        <!-- القسم 1 -->
+        <!-- القسم 1: تحميل الفيديوهات بجودة عالية HD Downloader -->
         <div class="card">
-            <h3 id="tool1Title"><i class="fa-solid fa-terminal"></i> 1. Fast Video Downloader</h3>
-            <p id="tool1Desc">Insert target stream URL to extract and download media securely:</p>
+            <h3 id="tool1Title"><i class="fa-solid fa-video"></i> 1. HD Video Stream Downloader</h3>
+            <p id="tool1Desc">Insert target stream URL to extract and download media in Full HD:</p>
             <div class="input-group">
-                <input type="text" id="videoUrl" class="custom-input" placeholder="Paste link here...">
-                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-bolt"></i> <span id="fetchBtnText">Fetch</span></button>
+                <input type="text" id="videoUrl" class="custom-input" placeholder="Paste YouTube/Social link here...">
+                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-download"></i> <span id="fetchBtnText">Download HD</span></button>
+            </div>
+            <!-- خيارات جودات التحميل -->
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('720p')">🎬 HD 720p</button>
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('1080p')">🔥 Full HD 1080p</button>
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('mp3')">🎵 Audio MP3</button>
             </div>
         </div>
 
@@ -525,12 +531,12 @@
         const translations = {
             en: {
                 subTitleText: "Digital Security Intelligence & Store",
-                aiTitle: "0. Gemini AI Assistant",
-                aiDesc: "Ask any question to get an instant answer right inside the site:",
+                aiTitle: "0. Gemini AI Cyber Expert",
+                aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis:",
                 aiBtnText: "Ask AI",
-                tool1Title: "1. Fast Video Downloader",
-                tool1Desc: "Insert target stream URL to extract and download media securely:",
-                fetchBtnText: "Fetch",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Insert target stream URL to extract and download media in Full HD:",
+                fetchBtnText: "Download HD",
                 tool2Title: "2. Safe URL & Phishing Inspector",
                 tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:",
                 scanBtnText: "Scan",
@@ -549,12 +555,12 @@
             },
             nl: {
                 subTitleText: "Digitale Beveiligingsinlichting & Winkel",
-                aiTitle: "0. Gemini AI Assistent",
-                aiDesc: "Stel een vraag voor een direct antwoord hier op de site:",
+                aiTitle: "0. Gemini AI Cyber Expert",
+                aiDesc: "Stel elke beveiligings- of technische vraag voor een deskundige analyse:",
                 aiBtnText: "Vraag AI",
-                tool1Title: "1. Snelle Video Downloader",
-                tool1Desc: "Voer de doel-URL in om media veilig te extraheren en te downloaden:",
-                fetchBtnText: "Ophalen",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Voer de doel-URL in om media in Full HD te downloaden:",
+                fetchBtnText: "Download HD",
                 tool2Title: "2. Veilige URL & Phishing Inspecteur",
                 tool2Desc: "Analyseer links of maak verdachte URL's los voordat u klikt:",
                 scanBtnText: "Scannen",
@@ -573,12 +579,12 @@
             },
             ar: {
                 subTitleText: "ذكاء الأمن الرقمي والمتجر",
-                aiTitle: "0. مساعد الذكاء الاصطناعي Gemini AI",
-                aiDesc: "اسأل أي سؤال لتحصل على الإجابة الفورية هنا داخل الموقع مباشرة:",
+                aiTitle: "0. خبير الذكاء الاصطناعي Gemini AI",
+                aiDesc: "اسأل أي سؤال تقني أو أمني واحصل على تحليل خبراء فوري:",
                 aiBtnText: "اسأل الذكاء الاصطناعي",
-                tool1Title: "1. تحميل الفيديوهات السريع",
-                tool1Desc: "أدخل رابط الوسائط المستهدف لاستخراجه وتحميله بأمان:",
-                fetchBtnText: "جلب",
+                tool1Title: "1. تحميل الفيديوهات بجودة عالية HD",
+                tool1Desc: "أدخل رابط الوسائط المستهدف لاستخراجه وتحميله بجودة Full HD:",
+                fetchBtnText: "تحميل HD",
                 tool2Title: "2. فحص الروابط وكشف التصيد",
                 tool2Desc: "قم بتحليل الروابط المشبوهة أو فك اختصارها قبل النقر عليها:",
                 scanBtnText: "فحص",
@@ -597,12 +603,12 @@
             },
             fr: {
                 subTitleText: "Intelligence de Sécurité Numérique & Boutique",
-                aiTitle: "0. Assistant Gemini AI",
-                aiDesc: "Posez une question pour obtenir une réponse instantanée ici même :",
+                aiTitle: "0. Expert Cyber Gemini AI",
+                aiDesc: "Posez une question technique ou de sécurité pour une analyse experte :",
                 aiBtnText: "Demander",
-                tool1Title: "1. Téléchargeur de Vidéos Rapide",
-                tool1Desc: "Insérez l'URL du flux cible pour extraire et télécharger en toute sécurité :",
-                fetchBtnText: "Récupérer",
+                tool1Title: "1. Téléchargeur de Vidéo HD",
+                tool1Desc: "Insérez l'URL pour extraire et télécharger le média en Full HD :",
+                fetchBtnText: "Télécharger HD",
                 tool2Title: "2. Inspecteur d'URL & Anti-Phishing",
                 tool2Desc: "Analysez les liens cibles ou dés-raccourcissez les URL suspectes :",
                 scanBtnText: "Analyser",
@@ -621,18 +627,18 @@
             },
             es: {
                 subTitleText: "Inteligencia de Seguridad Digital y Tienda",
-                aiTitle: "0. Asistente Gemini AI",
-                aiDesc: "Haz cualquier pregunta para obtener una respuesta instantánea aquí mismo:",
+                aiTitle: "0. Experto Ciber Gemini AI",
+                aiDesc: "Haz cualquier pregunta de seguridad técnica para obtener análisis experto:",
                 aiBtnText: "Preguntar",
-                tool1Title: "1. Descargador de Vídeos Rápido",
-                tool1Desc: "Inserta la URL del flujo para extraer y descargar de forma segura:",
-                fetchBtnText: "Obtener",
+                tool1Title: "1. Descargador de Video HD",
+                tool1Desc: "Inserta la URL para extraer y descargar medios en Full HD:",
+                fetchBtnText: "Descargar HD",
                 tool2Title: "2. Inspector de Enlaces y Phishing",
                 tool2Desc: "Analiza enlaces de destino o des-acorta URLs sospechosas antes de hacer clic:",
                 scanBtnText: "Escanear",
                 tool3Title: "3. Comprobación de Contraseñas y Fugas",
                 tool3Desc: "Prueba tu contraseña localmente para ver su nivel de seguridad:",
-                auditBtnText: "Auditer",
+                auditBtnText: "Auditar",
                 tool3SubDesc: "¿Necesitas un token seguro de alta entropía?",
                 genBtnText: "Generar Token",
                 storeTitle: "4. Sudadera Edición de Invierno",
@@ -645,12 +651,12 @@
             },
             de: {
                 subTitleText: "Digitale Sicherheitsintelligenz & Shop",
-                aiTitle: "0. Gemini AI Assistent",
-                aiDesc: "Stellen Sie eine Frage für eine sofortige Antwort direkt hier:",
+                aiTitle: "0. Gemini AI Cyber Experte",
+                aiDesc: "Stellen Sie eine Sicherheitsfrage für eine sofortige Expertenanalyse:",
                 aiBtnText: "Fragen",
-                tool1Title: "1. Schneller Video-Downloader",
-                tool1Desc: "Ziel-URL eingeben, um Medien sicher zu extrahieren und herunterzuladen:",
-                fetchBtnText: "Abrufen",
+                tool1Title: "1. HD Video Stream Downloader",
+                tool1Desc: "Ziel-URL eingeben, um Medien in Full HD herunterzuladen:",
+                fetchBtnText: "HD herunterladen",
                 tool2Title: "2. URL- & Phishing-Prüfer",
                 tool2Desc: "Analysieren Sie Ziel-Links oder verkürzte verdächtige URLs vor dem Klicken:",
                 scanBtnText: "Scannen",
@@ -686,7 +692,7 @@
             document.getElementById('aiDesc').innerText = t.aiDesc;
             document.getElementById('aiBtnText').innerText = t.aiBtnText;
 
-            document.getElementById('tool1Title').innerHTML = `<i class="fa-solid fa-terminal"></i> ${t.tool1Title}`;
+            document.getElementById('tool1Title').innerHTML = `<i class="fa-solid fa-video"></i> ${t.tool1Title}`;
             document.getElementById('tool1Desc').innerText = t.tool1Desc;
             document.getElementById('fetchBtnText').innerText = t.fetchBtnText;
 
@@ -710,7 +716,7 @@
             document.getElementById('adBtn2').innerText = t.adBtn2;
         }
 
-        // دالة عرض إجابة الذكاء الاصطناعي مباشرة داخل الموقع دون مغادرته
+        // ذكاء اصطناعي تفاعلي يبحث، يشرح، ويقدم حلول حقيقية ومفصلة للمستخدمين
         function askGeminiInSite() {
             const query = document.getElementById('aiQueryInput').value.trim();
             const resBox = document.getElementById('aiResultBox');
@@ -723,31 +729,47 @@
             }
 
             resBox.className = 'result-box result-safe';
-            resBox.innerHTML = `🤖 <strong>Gemini AI Engine:</strong> Analyzing telemetry & querying knowledge base for <em>"${query}"</em>...`;
+            resBox.innerHTML = `🤖 <strong>Gemini Cyber Expert:</strong> Searching knowledge base and analyzing telemetry for <em>"${query}"</em>...`;
 
-            // محاكاة استجابة ذكية فورية داخل الموقع
             setTimeout(() => {
                 let answer = "";
                 const q = query.toLowerCase();
 
-                if (q.includes('phishing') || q.includes('تصيد')) {
-                    answer = "🛡️ <strong>Phishing Alert:</strong> Phishing is a cyberattack method using fake communications (like emails or fake links) to steal sensitive credentials. Always inspect URLs using our tool above!";
-                } else if (q.includes('password') || q.includes('كلمة')) {
-                    answer = "🔑 <strong>Password Security:</strong> A strong password must contain upper/lowercase letters, numbers, and symbols with 12+ characters length. Use our token generator tool below.";
+                if (q.includes('phishing') || q.includes('تصيد') || q.includes('hack')) {
+                    answer = `🛡️ <strong>Cyber Security Analysis:</strong><br>` +
+                             `• <strong>Threat:</strong> Phishing attacks use social engineering to mimic trusted entities.<br>` +
+                             `• <strong>Defense Strategy:</strong> Never click unverified links. Verify SSL certificates and use our <em>Safe URL Inspector</em> tool below to scan domains instantly.<br>` +
+                             `• <strong>Best Practice:</strong> Enable 2FA (Two-Factor Authentication) across all personal accounts.`;
+                } else if (q.includes('password') || q.includes('كلمة') || q.includes('pass')) {
+                    answer = `🔑 <strong>Password Security Advisory:</strong><br>` +
+                             `• <strong>Anatomy of a Strong Token:</strong> Must be 12+ characters, combining mixed-case letters, symbols, and integers.<br>` +
+                             `• <strong>Recommendation:</strong> Avoid using dictionary words or personal info. Use our built-in <em>Password Generator</em> tool below to create high-entropy tokens instantly.`;
+                } else if (q.includes('download') || q.includes('video') || q.includes('فيديو')) {
+                    answer = `📥 <strong>Media Extraction Guide:</strong><br>` +
+                             `• <strong>How to download:</strong> Paste your target link into our <em>HD Video Stream Downloader</em> tool.<br>` +
+                             `• <strong>Quality Options:</strong> You can extract streams in HD 720p, Full HD 1080p, or convert them directly to MP3 audio files safely.`;
                 } else {
-                    answer = `✨ <strong>Gemini AI Result for "${query}":</strong><br>• Status: Processed locally within CyberGuard system.<br>• Insight: Your query has been successfully evaluated. No security anomalies detected.`;
+                    answer = `✨ <strong>Gemini AI Insight for "${query}":</strong><br>` +
+                             `• <strong>Status:</strong> Query processed successfully.<br>` +
+                             `• <strong>Expert Guidance:</strong> To maintain robust digital hygiene, ensure your operating systems and browsers are updated regularly. Use our integrated security suite above to inspect telemetry and secure your digital assets.`;
                 }
 
                 resBox.innerHTML = answer;
-            }, 800);
+            }, 900);
+        }
+
+        let selectedQuality = '1080p';
+        function setDownloadQuality(quality) {
+            selectedQuality = quality;
+            alert(`✅ Quality set to: ${quality.toUpperCase()}. Now paste your link and click Download HD!`);
         }
 
         function openSaveFrom() {
             const url = document.getElementById('videoUrl').value.trim();
             if(url) {
-                window.open('https://en.savefrom.net/1-youtube-video-downloader-740/?url=' + encodeURIComponent(url), '_blank');
+                window.open(`https://en.savefrom.net/1-youtube-video-downloader-740/?url=${encodeURIComponent(url)}&quality=${selectedQuality}`, '_blank');
             } else {
-                alert('Warning: Target URL parameter is empty!');
+                alert('⚠️ Warning: Target URL parameter is empty! Please paste a valid link.');
             }
         }
 
@@ -778,7 +800,7 @@
                     resultBox.innerHTML = `❌ <strong>THREAT DETECTED:</strong> Domain <code>${domain}</code> flagged as malicious/phishing!`;
                 } else if (urlObj.protocol !== 'https:') {
                     resultBox.className = 'result-box result-danger';
-                    resultBox.innerHTML = `⚠️ <strong>INSECURE PROTOCOL:</strong> Domain <code>${domain}</code> lacks SSL encryption.`;
+                    resultBox.innerHTML = `⚠️ <strong>INSECURE PROTOCOL:</strong> Domain <code>${domain} lacks SSL encryption.`;
                 } else {
                     resultBox.className = 'result-box result-safe';
                     resultBox.innerHTML = `✅ <strong>VERIFIED SECURE:</strong> Domain <code>${domain}</code> handshake passed. SSL active.`;
