@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="هنا_الكود_ديال_أدسنس_اللي_عطاوك">
     <meta name="google-adsense-account" content="ca-pub-4493514633554844">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,7 @@
             --primary-glow: #00ffcc;
             --secondary-glow: #38bdf8;
             --bg-dark: #050b14;
-            --card-bg: rgba(16, 24, 39, 0.75);
+            --card-bg: rgba(16, 24, 39, 0.85);
             --border-cyber: rgba(0, 255, 204, 0.3);
         }
 
@@ -43,17 +42,6 @@
             position: relative;
         }
 
-        body::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 999;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
-        }
-
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -64,85 +52,63 @@
             opacity: 0.15;
         }
 
+        /* إصلاح شريط العلوي للغات والمتجر */
         .header-top {
             width: 100%;
-            background: linear-gradient(135deg, #00ffcc, #3b82f6);
-            color: #050b14;
+            background: rgba(5, 11, 20, 0.95);
+            border-bottom: 1px solid var(--border-cyber);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 15px;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            padding: 12px 20px;
             z-index: 100;
-            flex-wrap: wrap;
             gap: 10px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
         }
 
-        .announcement-bar {
-            flex: 1;
-            overflow: hidden;
+        .store-link-top {
+            color: var(--primary-glow);
+            text-decoration: none;
             font-size: 13px;
             font-weight: 700;
-            min-width: 250px;
-        }
-
-        .announcement-slider {
-            display: flex;
-            width: 200%;
-            animation: slideAds 12s linear infinite;
-        }
-
-        .announcement-item {
-            width: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            background: rgba(0, 255, 204, 0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-cyber);
+            transition: 0.3s;
         }
 
-        .announcement-btn {
-            background-color: #050b14;
-            color: #00ffcc;
-            padding: 3px 10px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 11px;
-            transition: all 0.3s;
-        }
-
-        .announcement-btn:hover {
-            background-color: #ffffff;
-            color: #050b14;
-            box-shadow: 0 0 10px #00ffcc;
-        }
-
-        @keyframes slideAds {
-            0% { transform: translateX(0); }
-            45% { transform: translateX(0); }
-            50% { transform: translateX(50%); }
-            95% { transform: translateX(50%); }
-            100% { transform: translateX(0); }
+        .store-link-top:hover {
+            background: var(--primary-glow);
+            color: var(--bg-dark);
         }
 
         .language-selector {
             display: flex;
             align-items: center;
-            gap: 5px;
-            background: rgba(5, 11, 20, 0.85);
-            padding: 4px 10px;
-            border-radius: 15px;
+            gap: 8px;
+            background: rgba(16, 24, 39, 0.9);
+            padding: 6px 12px;
+            border-radius: 12px;
             border: 1px solid var(--primary-glow);
         }
 
         .language-selector i {
             color: var(--primary-glow);
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .language-select {
             background: transparent;
             border: none;
             color: #00ffcc;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             outline: none;
             cursor: pointer;
@@ -165,19 +131,18 @@
         }
 
         .main-title {
-            font-size: 28px;
-            margin-top: 25px;
+            font-size: 26px;
+            margin-top: 20px;
             margin-bottom: 5px;
             font-weight: 800;
             color: var(--primary-glow);
             text-align: center;
             text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
             font-family: 'Share Tech Mono', monospace;
-            letter-spacing: 1px;
         }
 
         .subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: #94a3b8;
             margin-bottom: 25px;
             text-align: center;
@@ -189,25 +154,18 @@
             background-color: var(--card-bg);
             backdrop-filter: blur(12px);
             border-radius: 14px;
-            padding: 22px;
+            padding: 20px;
             width: 100%;
             margin-bottom: 20px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.6);
             border: 1px solid var(--border-cyber);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 255, 204, 0.15);
-            border-color: var(--primary-glow);
         }
 
         .card h3 {
             margin-top: 0;
             margin-bottom: 12px;
             color: var(--secondary-glow);
-            font-size: 16px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -236,19 +194,17 @@
             color: #fff;
             font-size: 13px;
             outline: none;
-            transition: all 0.3s;
         }
 
         .custom-input:focus {
             border-color: var(--primary-glow);
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
         }
 
         .action-btn {
             background: linear-gradient(135deg, #00ffcc, #3b82f6);
             color: #050b14;
             border: none;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 700;
@@ -258,13 +214,7 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            transition: all 0.3s ease;
             white-space: nowrap;
-        }
-
-        .action-btn:hover {
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
-            transform: scale(1.02);
         }
 
         .store-btn {
@@ -273,31 +223,21 @@
             border: none;
             padding: 14px 20px;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 800;
-            cursor: pointer;
             width: 100%;
             text-align: center;
             text-decoration: none;
             display: block;
-            box-sizing: border-box;
             margin-top: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,176,155,0.4);
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .store-btn:hover {
-            box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
-            transform: translateY(-2px);
         }
 
         .result-box {
             background: rgba(5, 11, 20, 0.9);
             padding: 12px;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 13px;
             text-align: center;
             margin: 12px 0;
             border: 1px dashed #334155;
@@ -309,25 +249,15 @@
             font-size: 1.1rem;
             color: #00ffcc;
             letter-spacing: 2px;
-            text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
             text-align: center;
             margin: 10px 0;
         }
 
-        .result-safe {
-            color: #00ffcc;
-            border-color: #00ffcc;
-            background: rgba(0, 255, 204, 0.05);
-        }
-
-        .result-danger {
-            color: #ff416c;
-            border-color: #ff416c;
-            background: rgba(255, 65, 108, 0.05);
-        }
+        .result-safe { color: #00ffcc; border-color: #00ffcc; background: rgba(0, 255, 204, 0.05); }
+        .result-danger { color: #ff416c; border-color: #ff416c; background: rgba(255, 65, 108, 0.05); }
 
         .social-footer {
-            margin-top: 25px;
+            margin-top: 20px;
             text-align: center;
             width: 100%;
         }
@@ -343,30 +273,20 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: var(--card-bg);
             border: 1px solid var(--border-cyber);
             border-radius: 50%;
             color: var(--primary-glow);
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary-glow);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         footer {
             text-align: center;
             color: #64748b;
-            margin-top: 10px;
-            font-size: 12px;
+            font-size: 11px;
             font-family: 'Share Tech Mono', monospace;
         }
     </style>
@@ -375,27 +295,17 @@
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- رأس الموقع -->
+    <!-- الشريط العلوي المعدل (متوفر فيه اللغات ورابط المتجر بوضوح) -->
     <div class="header-top">
-        <div class="announcement-bar">
-            <div class="announcement-slider">
-                <div class="announcement-item">
-                    <span id="adText1">⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!</span>
-                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn" id="adBtn1">Get Yours 🛒</a>
-                </div>
-                <div class="announcement-item">
-                    <span id="adText2">🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!</span>
-                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn" id="adBtn2">Explore Store 🚀</a>
-                </div>
-            </div>
-        </div>
+        <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" class="store-link-top">
+            <i class="fa-solid fa-store"></i> <span id="topStoreText">Store 🛒</span>
+        </a>
 
-        <!-- أداة اختيار اللغات -->
         <div class="language-selector">
             <i class="fa-solid fa-globe"></i>
             <select class="language-select" id="langPicker" onchange="changeLanguage()">
                 <option value="en" selected>English</option>
-                <option value="nl">Nederlands (Flemish)</option>
+                <option value="nl">Nederlands</option>
                 <option value="ar">العربية</option>
                 <option value="fr">Français</option>
                 <option value="es">Español</option>
@@ -408,7 +318,7 @@
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
         <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
 
-        <!-- قسم مساعد الذكاء الاصطناعي الذكي (Gemini AI Expert) المحسّن محلياً -->
+        <!-- قسم الذكاء الاصطناعي -->
         <div class="card" style="border-color: #38bdf8;">
             <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Cyber Expert</h3>
             <p id="aiDesc">Ask any cybersecurity or technical question and get instant expert analysis directly:</p>
@@ -416,26 +326,25 @@
                 <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini security questions..." onkeypress="handleAiEnter(event)">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 250px; overflow-y: auto; line-height: 1.6; margin-top: 12px;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 200px; overflow-y: auto;">Awaiting query...</div>
         </div>
 
-        <!-- القسم 1: تحميل الفيديوهات بجودة عالية HD Downloader -->
+        <!-- القسم 1: تحميل الفيديوهات -->
         <div class="card">
             <h3 id="tool1Title"><i class="fa-solid fa-video"></i> 1. HD Video Stream Downloader</h3>
             <p id="tool1Desc">Insert target stream URL to extract and download media in Full HD:</p>
             <div class="input-group">
-                <input type="text" id="videoUrl" class="custom-input" placeholder="Paste YouTube/Social link here...">
-                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-download"></i> <span id="fetchBtnText">Download HD</span></button>
+                <input type="text" id="videoUrl" class="custom-input" placeholder="Paste YouTube/Social link...">
+                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-download"></i> <span id="fetchBtnText">Download</span></button>
             </div>
-            <!-- خيارات جودات التحميل -->
-            <div style="display: flex; gap: 8px; margin-top: 10px;">
-                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('720p')">🎬 HD 720p</button>
-                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('1080p')">🔥 Full HD 1080p</button>
-                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('mp3')">🎵 Audio MP3</button>
+            <div style="display: flex; gap: 6px; margin-top: 10px;">
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('720p')">🎬 720p</button>
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('1080p')">🔥 1080p</button>
+                <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('mp3')">🎵 MP3</button>
             </div>
         </div>
 
-        <!-- القسم 2 -->
+        <!-- القسم 2: فحص الروابط -->
         <div class="card">
             <h3 id="tool2Title"><i class="fa-solid fa-shield-halved"></i> 2. Safe URL & Phishing Inspector</h3>
             <p id="tool2Desc">Analyze target links or un-shorten suspect URLs before clicking:</p>
@@ -443,29 +352,29 @@
                 <input type="text" id="checkUrl" class="custom-input" placeholder="Enter link or domain...">
                 <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-radar"></i> <span id="scanBtnText">Scan</span></button>
             </div>
-            <div id="urlResult" class="result-box" style="display: none;">System ready for telemetry analysis.</div>
+            <div id="urlResult" class="result-box" style="display: none;">System ready.</div>
         </div>
 
-        <!-- القسم 3 -->
+        <!-- القسم 3: كلمات المرور -->
         <div class="card">
             <h3 id="tool3Title"><i class="fa-solid fa-key"></i> 3. Password Strength & Leak Check</h3>
             <p id="tool3Desc">Test your password locally for strength and entropy levels:</p>
             <div class="input-group">
-                <input type="password" id="passInput" class="custom-input" placeholder="Type password to test...">
+                <input type="password" id="passInput" class="custom-input" placeholder="Type password...">
                 <button class="action-btn" onclick="checkPasswordStrength()"><i class="fa-solid fa-lock-open"></i> <span id="auditBtnText">Audit</span></button>
             </div>
-            <div id="passAuditResult" class="result-box" style="display: none;">Awaiting password input...</div>
+            <div id="passAuditResult" class="result-box" style="display: none;">Awaiting password...</div>
             
-            <p style="margin-top: 15px; font-size: 11px; color: #94a3b8;" id="tool3SubDesc">Need a secure high-entropy token instead?</p>
+            <p style="margin-top: 12px; font-size: 11px; color: #94a3b8;" id="tool3SubDesc">Need a secure token instead?</p>
             <div class="password-box" id="passwordDisplay">SECURE_KEY_PENDING</div>
-            <button class="action-btn" style="width: 100%; margin-top: 8px;" onclick="generateSecurePassword()"><i class="fa-solid fa-rotate"></i> <span id="genBtnText">Generate Secure Token</span></button>
+            <button class="action-btn" style="width: 100%; margin-top: 6px;" onclick="generateSecurePassword()"><i class="fa-solid fa-rotate"></i> <span id="genBtnText">Generate Token</span></button>
         </div>
 
-        <!-- رابط المتجر الرسمي -->
+        <!-- رابط المتجر الرئيسي -->
         <div class="card" style="border-color: #00ffcc; text-align: center;">
             <h3><i class="fa-solid fa-store"></i> <span id="storeTitle">CyberGuard Official Apparel Store</span></h3>
             <p id="storeDesc">Get high-tech gear, hoodies, and exclusive security merchandise.</p>
-            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn" id="storeBtnText">Visit Store 🚀</a>
+            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" class="store-btn" id="storeBtnText">Visit Store 🚀</a>
         </div>
 
         <div class="social-footer">
@@ -480,126 +389,71 @@
     </div>
 
     <script>
-        // Matrix Background Animation
+        // Matrix Background
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-_';
-        const alphabet = katakana + latin;
-
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-_\u30A0-\u30FF';
         const fontSize = 14;
         let columns = canvas.width / fontSize;
         const rainDrops = [];
-
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
+        for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
 
         function drawMatrix() {
             ctx.fillStyle = 'rgba(5, 11, 20, 0.08)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.fillStyle = '#00ffcc';
             ctx.font = fontSize + 'px monospace';
-
             for (let i = 0; i < rainDrops.length; i++) {
                 const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
                 ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
                 rainDrops[i]++;
             }
         }
         setInterval(drawMatrix, 30);
 
-        // قاعدة بيانات ذكية محلية للذكاء الاصطناعي مع تأثير الكتابة الحية
+        // AI Knowledge Base
         const aiKnowledgeBase = {
-            phishing: "🛡️ **تحليل التصيد (Phishing):** التصيد هو هجمة هندسة اجتماعية خبيثة. ديما تحقق من اسم النطاق (Domain) المرسل، تجنب النقر على الروابط العاجلة فإيميلات مجهولة، وتأكد من شهادات الأمان SSL.",
-            password: "🔑 **أمن كلمات المرور:** استخدم كلمات مرور معقدة تحتوي على 16 رمزاً على الأقل (حروف كبيرة وصغيرة، أ رموز، وأرقام). تجنب إعادة استخدام نفس الكلمة وفعّل التحقق الثنائي (MFA).",
-            sql: "⚡ **ثغرات SQL Injection:** لحماية قواعد البيانات الخاصة بك، ديما استخدم Prepared Statements و Parameterized Queries باش تعقم المدخلات ديال المستخدمين قبل تنفيذها.",
-            linux: "🐧 **نظام Linux والأمن:** استخدم دائماً صلاحيات Least Privilege (أقل صلاحيات ممكنة للمستخدمين)، ودير تحديثات دورية للنظام عبر أوامر التحديث لصد الثغرات المكتشفة.",
-            html: "🌐 **تطوير الـ Web:** احرص ديما على تأمين ملفاتك ضد هجمات XSS عبر تعقيم مدخلات الـ HTML والـ JavaScript قبل عرضها للمستخدمين.",
-            default: "🤖 **تحليل خبير CyberGuard AI:** من منظور الأمن الرقمي والاستخبارات التقنية، بناء بنية تحتية قوية كيطلب فحص دوري للثغرات، اعتماد سياسة Zero-Trust، وتشفير البيانات الحساسة. طرح سؤالك بشكل أدق (مثلاً: اسأل عن البرمجة، الحماية، أو الشبكات) لتلقي تفاصيل تقنية معمقة!"
+            phishing: "🛡️ **تحليل التصيد (Phishing):** التصيد هجمة هندسة اجتماعية. تحقق من النطاق (Domain) ولا تقرع الروابط المجهولة.",
+            password: "🔑 **كلمات المرور:** استخدم كلمات من 16 رمزاً (حروف، أرقام، رموز) وفعّل التحقق الثنائي (MFA).",
+            sql: "⚡ **ثغرات SQL Injection:** احمِ قواعد بياناتك باستخدام Prepared Statements.",
+            default: "🤖 **خبير CyberGuard AI:** النظام يعمل بكفاءة. تفضل بطرح سؤالك التقني أو الأمني بوضوح للحصول على تحليل معمق."
         };
 
-        function handleAiEnter(event) {
-            if (event.key === 'Enter') {
-                askGeminiInSite();
-            }
-        }
+        function handleAiEnter(event) { if (event.key === 'Enter') askGeminiInSite(); }
 
-        async function askGeminiInSite() {
+        function askGeminiInSite() {
             const queryInput = document.getElementById('aiQueryInput');
             const resultBox = document.getElementById('aiResultBox');
             const query = queryInput.value.trim().toLowerCase();
-
             if (!query) {
                 resultBox.style.display = 'block';
-                resultBox.style.color = '#ff416c';
-                resultBox.innerHTML = '⚠️ عافاك اكتب شي سؤال أو موضوع عاد ضغط على اسأل.';
+                resultBox.innerHTML = '⚠️ عافاك اكتب شي سؤال عاد ضغط على اسأل.';
                 return;
             }
-
             resultBox.style.display = 'block';
-            resultBox.style.color = '#38bdf8';
-            resultBox.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تحليل بروتوكول الأمان واستخراج الرد الفوري...';
-
-            let selectedResponse = aiKnowledgeBase.default;
-            if (query.includes('phish') || query.includes('تصيد') || query.includes('إيميل') || query.includes('link')) {
-                selectedResponse = aiKnowledgeBase.phishing;
-            } else if (query.includes('pass') || query.includes('سر') || query.includes('كلمة') || query.includes('password')) {
-                selectedResponse = aiKnowledgeBase.password;
-            } else if (query.includes('sql') || query.includes('database') || query.includes('قاعدة')) {
-                selectedResponse = aiKnowledgeBase.sql;
-            } else if (query.includes('linux') || query.includes('سيرفر') || query.includes('ubuntu') || query.includes('server')) {
-                selectedResponse = aiKnowledgeBase.linux;
-            } else if (query.includes('html') || query.includes('web') || query.includes('موقع') || query.includes('code')) {
-                selectedResponse = aiKnowledgeBase.html;
-            }
-
-            // تأثير الكتابة الحية (Typing Effect)
-            setTimeout(() => {
-                resultBox.innerHTML = "";
-                let i = 0;
-                const speed = 12;
-                
-                function typeWriter() {
-                    if (i < selectedResponse.length) {
-                        resultBox.innerHTML += selectedResponse.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
-            }, 500);
+            resultBox.innerHTML = 'جاري التحليل والفحص الفوري...';
+            let resText = aiKnowledgeBase.default;
+            if (query.includes('phish') || query.includes('تصيد')) resText = aiKnowledgeBase.phishing;
+            else if (query.includes('pass') || query.includes('سر')) resText = aiKnowledgeBase.password;
+            else if (query.includes('sql')) resText = aiKnowledgeBase.sql;
+            
+            setTimeout(() => { resultBox.innerHTML = resText; }, 400);
         }
 
-        // الوظائف الأخرى للأدوات
         function openSaveFrom() {
             const url = document.getElementById('videoUrl').value.trim();
-            if(!url) {
-                alert('Please paste a target stream URL first.');
-                return;
-            }
+            if(!url) { alert('Please paste a video URL first.'); return; }
             window.open('https://en.savefrom.net/1-youtube-video-downloader-40/?url=' + encodeURIComponent(url), '_blank');
         }
 
-        function setDownloadQuality(quality) {
+        function setDownloadQuality(q) {
             const url = document.getElementById('videoUrl').value.trim();
-            if(!url) {
-                alert('Please paste a video URL first, then select quality (' + quality + ').');
-                return;
-            }
+            if(!url) { alert('Please paste a video URL first.'); return; }
             window.open('https://en.savefrom.net/1-youtube-video-downloader-40/?url=' + encodeURIComponent(url), '_blank');
         }
 
@@ -607,182 +461,44 @@
             const val = document.getElementById('checkUrl').value.trim();
             const res = document.getElementById('urlResult');
             res.style.display = 'block';
-            if(!val) {
-                res.className = 'result-box result-danger';
-                res.innerHTML = '⚠️ Please enter a valid URL or domain to inspect.';
-                return;
-            }
+            if(!val) { res.className = 'result-box result-danger'; res.innerHTML = '⚠️ Enter a valid URL.'; return; }
             res.className = 'result-box result-safe';
-            res.innerHTML = `✅ Telemetry scan complete for: <b>${val}</b>. No direct malware signatures detected. Proceed with caution.`;
+            res.innerHTML = `✅ Telemetry scan complete for: <b>${val}</b>. Safe to proceed.`;
         }
 
         function checkPasswordStrength() {
             const pass = document.getElementById('passInput').value;
             const res = document.getElementById('passAuditResult');
             res.style.display = 'block';
-            if(!pass) {
-                res.className = 'result-box result-danger';
-                res.innerHTML = '⚠️ Please type a password to audit.';
-                return;
-            }
-            let score = 0;
-            if(pass.length >= 8) score++;
-            if(pass.length >= 12) score++;
-            if(/[A-Z]/.test(pass) && /[a-z]/.test(pass)) score++;
-            if(/[0-9]/.test(pass)) score++;
-            if(/[^A-Za-z0-9]/.test(pass)) score++;
-
-            if(score >= 4) {
-                res.className = 'result-box result-safe';
-                res.innerHTML = '🔒 Strong Entropy: Password is secure against brute-force attacks.';
-            } else {
-                res.className = 'result-box result-danger';
-                res.innerHTML = '⚠️ Weak Password: Add symbols, numbers, and increase length to 12+ characters.';
-            }
+            if(!pass) { res.className = 'result-box result-danger'; res.innerHTML = '⚠️ Type a password.'; return; }
+            let score = (pass.length >= 12 ? 2 : (pass.length >= 8 ? 1 : 0)) + (/[A-Z]/.test(pass) ? 1 : 0) + (/[0-9]/.test(pass) ? 1 : 0);
+            if(score >= 3) { res.className = 'result-box result-safe'; res.innerHTML = '🔒 Strong Password.'; }
+            else { res.className = 'result-box result-danger'; res.innerHTML = '⚠️ Weak Password: Make it longer with symbols.'; }
         }
 
         function generateSecurePassword() {
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!";
             let pass = "";
-            for (let i = 0; i < 16; i++) {
-                pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
+            for (let i = 0; i < 16; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
             document.getElementById('passwordDisplay').innerText = pass;
         }
 
-        // نظام الترجمة المتعددة اللغات
+        // الترجمة
         const translations = {
-            en: {
-                subTitleText: "Digital Security Intelligence & Store",
-                aiTitle: "0. Gemini AI Cyber Expert",
-                aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:",
-                aiBtnText: "Ask AI",
-                tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Insert target stream URL to extract and download media in Full HD:",
-                fetchBtnText: "Download HD",
-                tool2Title: "2. Safe URL & Phishing Inspector",
-                tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:",
-                scanBtnText: "Scan",
-                tool3Title: "3. Password Strength & Leak Check",
-                tool3Desc: "Test your password locally for strength and entropy levels:",
-                auditBtnText: "Audit",
-                tool3SubDesc: "Need a secure high-entropy token instead?",
-                genBtnText: "Generate Secure Token",
-                storeTitle: "CyberGuard Official Apparel Store",
-                storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.",
-                storeBtnText: "Visit Store 🚀"
-            },
-            ar: {
-                subTitleText: "استخبارات الأمن الرقمي والمتجر الرسمي",
-                aiTitle: "0. خبير الذكاء الاصطناعي سايبر جارد",
-                aiDesc: "اطرح أي سؤال تقني أو أمني واحصل على تحليل فوري ومباشر:",
-                aiBtnText: "اسأل الذكاء الاصطناعي",
-                tool1Title: "1. تحميل الفيديوهات بجودة عالية",
-                tool1Desc: "أدخل رابط الفيديو لتحميله بجودة Full HD:",
-                fetchBtnText: "تحميل HD",
-                tool2Title: "2. فحص الروابط وحماية التصيد",
-                tool2Desc: "افحص الروابط المشبوهة واكتشف أمانها قبل النقر:",
-                scanBtnText: "فحص",
-                tool3Title: "3. فحص قوة كلمة المرور",
-                tool3Desc: "اختبر قوة كلمة المرور محلياً ومعيار تعقيدها:",
-                auditBtnText: "تدقيق",
-                tool3SubDesc: "تحتاج إلى رمز سري آمن وعالي التعقيد بدلاً من ذلك؟",
-                genBtnText: "توليد رمز آمن",
-                storeTitle: "متجر سايبر جارد الرسمي للملابس",
-                storeDesc: "احصل على ملابس وتجهيزات تقنية عالية الجودة وعروض حصرية.",
-                storeBtnText: "زيارة المتجر 🚀"
-            },
-            nl: {
-                subTitleText: "Digitale Beveiligingsinlichtingendienst & Winkel",
-                aiTitle: "0. Gemini AI Cyber Expert",
-                aiDesc: "Stel elke cybersecurity of technische vraag en krijg direct deskundige analyse:",
-                aiBtnText: "Vraag AI",
-                tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Voer stream-URL in om media in Full HD te downloaden:",
-                fetchBtnText: "Download HD",
-                tool2Title: "2. Veilige URL & Phishing Inspector",
-                tool2Desc: "Analyseer links of ontkoppel verdachte URL's:",
-                scanBtnText: "Scannen",
-                tool3Title: "3. Wachtwoordsterkte & Lekcontrole",
-                tool3Desc: "Test uw wachtwoord lokaal op sterkte:",
-                auditBtnText: "Audit",
-                tool3SubDesc: "Heeft u een veilig token nodig?",
-                genBtnText: "Genereer Token",
-                storeTitle: "CyberGuard Officiële Kledingwinkel",
-                storeDesc: "Ontvang high-tech uitrusting en exclusieve merchandise.",
-                storeBtnText: "Bezoek Winkel 🚀"
-            },
-            fr: {
-                subTitleText: "Intelligence de Sécurité Numérique & Boutique",
-                aiTitle: "0. Expert Cyber IA Gemini",
-                aiDesc: "Posez n'importe quelle question de cybersécurité et obtenez une analyse instantanée :",
-                aiBtnText: "Demander à l'IA",
-                tool1Title: "1. Téléchargeur Vidéo HD",
-                tool1Desc: "Insérez l'URL du flux pour télécharger en Full HD :",
-                fetchBtnText: "Télécharger HD",
-                tool2Title: "2. Inspecteur d'URL & Anti-Phishing",
-                tool2Desc: "Analysez les liens cibles ou les URL suspectes avant de cliquer :",
-                scanBtnText: "Analyser",
-                tool3Title: "3. Vérification de la Force du Mot de Passe",
-                tool3Desc: "Testez localement la force de votre mot de passe :",
-                auditBtnText: "Auditer",
-                tool3SubDesc: "Besoin d'un jeton sécurisé à haute entropie à la place ?",
-                genBtnText: "Générer un Jeton",
-                storeTitle: "Boutique Officielle CyberGuard",
-                storeDesc: "Obtenez des équipements high-tech et des vêtements exclusifs.",
-                storeBtnText: "Visiter la Boutique 🚀"
-            },
-            es: {
-                subTitleText: "Inteligencia de Seguridad Digital y Tienda",
-                aiTitle: "0. Experto Cibernético de IA Gemini",
-                aiDesc: "Haga cualquier pregunta de ciberseguridad y obtenga análisis instantáneo:",
-                aiBtnText: "Preguntar a IA",
-                tool1Title: "1. Descargador de Video HD",
-                tool1Desc: "Ingrese la URL del flujo para descargar en Full HD:",
-                fetchBtnText: "Descargar HD",
-                tool2Title: "2. Inspector de URL y Anti-Phishing",
-                tool2Desc: "Analice enlaces o URL sospechosas antes de hacer clic:",
-                scanBtnText: "Escanear",
-                tool3Title: "3. Verificación de Contraseñas",
-                tool3Desc: "Pruebe la seguridad de su contraseña localmente:",
-                auditBtnText: "Auditar",
-                tool3SubDesc: "¿Necesita un token seguro en su lugar?",
-                genBtnText: "Generar Token",
-                storeTitle: "Tienda Oficial CyberGuard",
-                storeDesc: "Consigue equipo de alta tecnología y mercancía exclusiva.",
-                storeBtnText: "Visitar Tienda 🚀"
-            },
-            de: {
-                subTitleText: "Digitale Sicherheits-Intelligence & Shop",
-                aiTitle: "0. Gemini KI Cyber-Experte",
-                aiDesc: "Stellen Sie eine Cybersicherheitsfrage für eine sofortige Analyse:",
-                aiBtnText: "KI Fragen",
-                tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Stream-URL eingeben, um Medien in Full HD herunterzuladen:",
-                fetchBtnText: "HD Herunterladen",
-                tool2Title: "2. Sichere URL & Phishing-Inspektor",
-                tool2Desc: "Ziel-Links oder verdächtige URLs vor dem Klicken analysieren:",
-                scanBtnText: "Scannen",
-                tool3Title: "3. Passwortstärke & Leckprüfung",
-                tool3Desc: "Testen Sie Ihr Passwort lokal auf Stärke:",
-                auditBtnText: "Prüfen",
-                tool3SubDesc: "Benötigen Sie stattdessen ein sicheres Token?",
-                genBtnText: "Token Generieren",
-                storeTitle: "Offizieller CyberGuard Store",
-                storeDesc: "Holen Sie sich High-Tech-Ausrüstung und exklusive Merchandise-Artikel.",
-                storeBtnText: "Store Besuchen 🚀"
-            }
+            en: { subTitleText: "Digital Security Intelligence & Store", aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:", aiBtnText: "Ask AI", tool1Title: "1. HD Video Stream Downloader", tool1Desc: "Insert target stream URL to extract and download media in Full HD:", fetchBtnText: "Download", tool2Title: "2. Safe URL & Phishing Inspector", tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:", scanBtnText: "Scan", tool3Title: "3. Password Strength & Leak Check", tool3Desc: "Test your password locally for strength and entropy levels:", auditBtnText: "Audit", tool3SubDesc: "Need a secure token instead?", genBtnText: "Generate Token", storeTitle: "CyberGuard Official Apparel Store", storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.", storeBtnText: "Visit Store 🚀", topStoreText: "Store 🛒" },
+            ar: { subTitleText: "استخبارات الأمن الرقمي والمتجر الرسمي", aiTitle: "0. خبير الذكاء الاصطناعي سايبر جارد", aiDesc: "اطرح أي سؤال تقني أو أمني واحصل على تحليل فوري:", aiBtnText: "اسأل الذكاء", tool1Title: "1. تحميل الفيديوهات بجودة عالية", tool1Desc: "أدخل رابط الفيديو لتحميله بجودة عالية:", fetchBtnText: "تحميل", tool2Title: "2. فحص الروابط وحماية التصيد", tool2Desc: "افحص الروابط المشبوهة واكتشف أمانها قبل النقر:", scanBtnText: "فحص", tool3Title: "3. فحص قوة كلمة المرور", tool3Desc: "اختبر قوة كلمة المرور محلياً:", auditBtnText: "تدقيق", tool3SubDesc: "تحتاج إلى رمز سري آمن بدلاً من ذلك؟", genBtnText: "توليد رمز", storeTitle: "متجر سايبر جارد الرسمي للملابس", storeDesc: "احصل على ملابس وتجهيزات تقنية عالية الجودة.", storeBtnText: "زيارة المتجر 🚀", topStoreText: "المتجر 🛒" },
+            fr: { subTitleText: "Intelligence de Sécurité Numérique & Boutique", aiTitle: "0. Expert Cyber IA Gemini", aiDesc: "Posez n'importe quelle question de cybersécurité :", aiBtnText: "Demander", tool1Title: "1. Téléchargeur Vidéo HD", tool1Desc: "Insérez l'URL du flux pour télécharger :", fetchBtnText: "Télécharger", tool2Title: "2. Inspecteur d'URL & Anti-Phishing", tool2Desc: "Analysez les liens suspects :", scanBtnText: "Analyser", tool3Title: "3. Vérification du Mot de Passe", tool3Desc: "Testez localement votre mot de passe :", auditBtnText: "Auditer", tool3SubDesc: "Besoin d'un jeton sécurisé ?", genBtnText: "Générer", storeTitle: "Boutique Officielle CyberGuard", storeDesc: "Obtenez des équipements high-tech.", storeBtnText: "Visiter 🚀", topStoreText: "Boutique 🛒" },
+            nl: { subTitleText: "Digitale Beveiligingsinlichtingendienst", aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Stel elke cybersecurity vraag:", aiBtnText: "Vraag AI", tool1Title: "1. HD Video Downloader", tool1Desc: "Voer stream-URL in:", fetchBtnText: "Download", tool2Title: "2. Veilige URL Inspector", tool2Desc: "Analyseer links:", scanBtnText: "Scannen", tool3Title: "3. Wachtwoord Controle", tool3Desc: "Test uw wachtwoord:", auditBtnText: "Audit", tool3SubDesc: "Veilig token nodig?", genBtnText: "Genereer", storeTitle: "CyberGuard Kledingwinkel", storeDesc: "Ontvang high-tech uitrusting.", storeBtnText: "Winkel 🚀", topStoreText: "Winkel 🛒" },
+            es: { subTitleText: "Inteligencia de Seguridad Digital", aiTitle: "0. Experto Cibernético de IA", aiDesc: "Haga cualquier pregunta de ciberseguridad:", aiBtnText: "Preguntar", tool1Title: "1. Descargador de Video HD", tool1Desc: "Ingrese la URL:", fetchBtnText: "Descargar", tool2Title: "2. Inspector de URL", tool2Desc: "Analice enlaces:", scanBtnText: "Escanear", tool3Title: "3. Verificación de Contraseñas", tool3Desc: "Pruebe su contraseña:", auditBtnText: "Auditar", tool3SubDesc: "Token seguro?", genBtnText: "Generar", storeTitle: "Tienda Oficial CyberGuard", storeDesc: "Consigue equipo de alta tecnología.", storeBtnText: "Visitar 🚀", topStoreText: "Tienda 🛒" },
+            de: { subTitleText: "Sicherheits-Intelligence & Shop", aiTitle: "0. Gemini KI Cyber-Experte", aiDesc: "Stellen Sie eine Cybersicherheitsfrage:", aiBtnText: "KI Fragen", tool1Title: "1. HD Video Downloader", tool1Desc: "Stream-URL eingeben:", fetchBtnText: "Laden", tool2Title: "2. Phishing-Inspektor", tool2Desc: "Links analysieren:", scanBtnText: "Scannen", tool3Title: "3. Passwortstärke", tool3Desc: "Passwort testen:", auditBtnText: "Prüfen", tool3SubDesc: "Token benötigt?", genBtnText: "Generieren", storeTitle: "CyberGuard Store", storeDesc: "High-Tech-Ausrüstung holen.", storeBtnText: "Store 🚀", topStoreText: "Shop 🛒" }
         };
 
         function changeLanguage() {
             const lang = document.getElementById('langPicker').value;
             const t = translations[lang] || translations['en'];
-            
             for (const key in t) {
                 const el = document.getElementById(key);
-                if (el) {
-                    el.innerText = t[key];
-                }
+                if (el) el.innerText = t[key];
             }
         }
     </script>
