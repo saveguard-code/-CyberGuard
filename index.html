@@ -309,7 +309,7 @@
 
     <!-- الشريط العلوي -->
     <div class="header-top">
-        <a href="https://www.redbubble.com/people/Mr-seller1/shop" target="_blank" class="store-link-top">
+        <a href="https://www.redbubble.com/people/Mr-seller1/shop" target="_blank" class="store-link-top" id="topStoreLink">
             <i class="fa-solid fa-store"></i> <span id="topStoreText">Store 🛒</span>
         </a>
 
@@ -559,7 +559,7 @@
             document.getElementById('passwordDisplay').innerText = pass;
         }
 
-        // قواميس الترجمة الشاملة
+        // دالة تحديث الترجمة (مع ربط الروابط بشكل آمن وصحيح لكل اللغات)
         const translations = {
             en: { 
                 subTitleText: "Digital Security Intelligence & Store", 
@@ -584,7 +584,7 @@
             es: { 
                 subTitleText: "Inteligencia de Seguridad Digital", 
                 pingTitle: "Monitor de Red y Ping", pingDesc: "Pruebe la latencia de su conexión (Ping) y el estado de la red en tiempo real:", pingBtnText: "Ejecutar Test de Ping",
-                aiTitle: "0. Experto Cibernético de IA", aiDesc: "Haga cualquier pregunta de ciberseguridad:", aiBtnText: "Preguntar", tool1Title: "1. Descargador de Video HD", tool1Desc: "Ingrese la URL:", fetchBtnTest: "Descargar", tool2Title: "2. Inspector de URL", tool2Desc: "Analice enlaces:", scanBtnText: "Escanear", tool3Title: "3. Verificación de Contraseñas", tool3Desc: "Pruebe su contraseña:", auditBtnText: "Auditar", tool3SubDesc: "Token seguro?", genBtnText: "Generar", storeTitle: "Tienda Oficial CyberGuard", storeDesc: "Consigue equipo de alta tecnología.", storeBtnText: "Visiter 🚀", topStoreText: "Tienda 🛒" 
+                aiTitle: "0. Experto Cibernético de IA", aiDesc: "Haga cualquier pregunta de ciberseguridad:", aiBtnText: "Preguntar", tool1Title: "1. Descargador de Video HD", tool1Desc: "Ingrese la URL:", fetchBtnText: "Descargar", tool2Title: "2. Inspector de URL", tool2Desc: "Analice enlaces:", scanBtnText: "Escanear", tool3Title: "3. Verificación de Contraseñas", tool3Desc: "Pruebe su contraseña:", auditBtnText: "Auditar", tool3SubDesc: "Token seguro?", genBtnText: "Generar", storeTitle: "Tienda Oficial CyberGuard", storeDesc: "Consigue equipo de alta tecnología.", storeBtnText: "Visiter 🚀", topStoreText: "Tienda 🛒" 
             },
             de: { 
                 subTitleText: "Sicherheits-Intelligence & Shop", 
@@ -600,6 +600,12 @@
                 const el = document.getElementById(key);
                 if (el) el.innerText = t[key];
             }
+            
+            // التأكد من تثبيت الرابط الصحيح في الأزرار العلوية والسفلية دائماً عند تغيير اللغة
+            document.getElementById('topStoreLink').href = "https://www.redbubble.com/people/Mr-seller1/shop";
+            document.querySelectorAll('.store-btn').forEach(btn => {
+                btn.href = "https://www.redbubble.com/people/Mr-seller1/shop";
+            });
         }
     </script>
 </body>
