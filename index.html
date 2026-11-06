@@ -4,7 +4,7 @@
     <meta name="google-adsense-account" content="ca-pub-4493514633554844">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard & Media | Elite Security Hub</title>
+    <title id="pageTitle">CyberGuard & Media | Elite Security Hub</title>
     
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844"
@@ -63,7 +63,6 @@
             opacity: 0.15;
         }
 
-        /* رأس الموقع: يجمع شريط الإعلانات واختيار اللغات */
         .header-top {
             width: 100%;
             background: linear-gradient(135deg, #00ffcc, #3b82f6);
@@ -123,7 +122,6 @@
             100% { transform: translateX(0); }
         }
 
-        /* قائمة اللغات في الأعلى */
         .language-selector {
             display: flex;
             align-items: center;
@@ -374,22 +372,22 @@
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- رأس الموقع يضم الإعلان المتحرك + قائمة اللغات (زادت الفلامانية Nederlands) -->
+    <!-- رأس الموقع -->
     <div class="header-top">
         <div class="announcement-bar">
             <div class="announcement-slider">
                 <div class="announcement-item">
-                    <span>⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!</span>
-                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Get Yours 🛒</a>
+                    <span id="adText1">⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!</span>
+                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn" id="adBtn1">Get Yours 🛒</a>
                 </div>
                 <div class="announcement-item">
-                    <span>🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!</span>
-                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Explore Store 🚀</a>
+                    <span id="adText2">🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!</span>
+                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn" id="adBtn2">Explore Store 🚀</a>
                 </div>
             </div>
         </div>
 
-        <!-- أداة اختيار اللغات (مضافة معها الفلامانية Nederlands) -->
+        <!-- أداة اختيار اللغات -->
         <div class="language-selector">
             <i class="fa-solid fa-globe"></i>
             <select class="language-select" id="langPicker" onchange="changeLanguage()">
@@ -399,62 +397,55 @@
                 <option value="fr">Français</option>
                 <option value="es">Español</option>
                 <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="pt">Português</option>
-                <option value="ru">Русский</option>
-                <option value="zh">中文</option>
-                <option value="ja">日本語</option>
-                <option value="tr">Türkçe</option>
-                <option value="hi">हिन्दी</option>
             </select>
         </div>
     </div>
 
     <div class="container">
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
-        <div class="subtitle">Digital Security Intelligence & Store</div>
+        <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
 
-        <!-- القسم 1: تحميل الفيديوهات -->
+        <!-- القسم 1 -->
         <div class="card">
-            <h3><i class="fa-solid fa-terminal"></i> 1. Fast Video Downloader</h3>
-            <p>Insert target stream URL to extract and download media securely:</p>
+            <h3 id="tool1Title"><i class="fa-solid fa-terminal"></i> 1. Fast Video Downloader</h3>
+            <p id="tool1Desc">Insert target stream URL to extract and download media securely:</p>
             <div class="input-group">
                 <input type="text" id="videoUrl" class="custom-input" placeholder="Paste link here...">
-                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-bolt"></i> Fetch</button>
+                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-bolt"></i> <span id="fetchBtnText">Fetch</span></button>
             </div>
         </div>
 
-        <!-- القسم 2: فحص الروابط وكشف التصيد -->
+        <!-- القسم 2 -->
         <div class="card">
-            <h3><i class="fa-solid fa-shield-halved"></i> 2. Safe URL & Phishing Inspector</h3>
-            <p>Analyze target links or un-shorten suspect URLs before clicking:</p>
+            <h3 id="tool2Title"><i class="fa-solid fa-shield-halved"></i> 2. Safe URL & Phishing Inspector</h3>
+            <p id="tool2Desc">Analyze target links or un-shorten suspect URLs before clicking:</p>
             <div class="input-group">
                 <input type="text" id="checkUrl" class="custom-input" placeholder="Enter link or domain...">
-                <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-radar"></i> Scan</button>
+                <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-radar"></i> <span id="scanBtnText">Scan</span></button>
             </div>
             <div id="urlResult" class="result-box" style="display: none;">System ready for telemetry analysis.</div>
         </div>
 
-        <!-- القسم 3: فاحص قوة كلمات المرور وتوليدها -->
+        <!-- القسم 3 -->
         <div class="card">
-            <h3><i class="fa-solid fa-key"></i> 3. Password Strength & Leak Check</h3>
-            <p>Test your password locally for strength and entropy levels:</p>
+            <h3 id="tool3Title"><i class="fa-solid fa-key"></i> 3. Password Strength & Leak Check</h3>
+            <p id="tool3Desc">Test your password locally for strength and entropy levels:</p>
             <div class="input-group">
                 <input type="password" id="passInput" class="custom-input" placeholder="Type password to test...">
-                <button class="action-btn" onclick="checkPasswordStrength()"><i class="fa-solid fa-lock-open"></i> Audit</button>
+                <button class="action-btn" onclick="checkPasswordStrength()"><i class="fa-solid fa-lock-open"></i> <span id="auditBtnText">Audit</span></button>
             </div>
             <div id="passAuditResult" class="result-box" style="display: none;">Awaiting password input...</div>
             
-            <p style="margin-top: 15px; font-size: 11px; color: #94a3b8;">Need a secure high-entropy token instead?</p>
+            <p style="margin-top: 15px; font-size: 11px; color: #94a3b8;" id="tool3SubDesc">Need a secure high-entropy token instead?</p>
             <div class="password-box" id="passwordDisplay">SECURE_KEY_PENDING</div>
-            <button class="action-btn" style="width: 100%;" onclick="generatePassword()"><i class="fa-solid fa-rotate"></i> Generate Token</button>
+            <button class="action-btn" style="width: 100%;" onclick="generatePassword()"><i class="fa-solid fa-rotate"></i> <span id="genBtnText">Generate Token</span></button>
         </div>
 
-        <!-- القسم 4: متجر الملابس الحصري -->
+        <!-- القسم 4 -->
         <div class="card" style="border-color: #00b09b;">
-            <h3 style="color: #00ffcc;"><i class="fa-solid fa-shirt"></i> 4. Winter Edition Sweatshirt</h3>
-            <p>Upgrade your physical armor with our elite apparel collection designed for comfort and prestige.</p>
-            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn">Access Official Store 🛍️</a>
+            <h3 style="color: #00ffcc;" id="storeTitle"><i class="fa-solid fa-shirt"></i> 4. Winter Edition Sweatshirt</h3>
+            <p id="storeDesc">Upgrade your physical armor with our elite apparel collection designed for comfort and prestige.</p>
+            <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn" id="storeBtnText">Access Official Store 🛍️</a>
         </div>
 
         <!-- Social Media Icons Section -->
@@ -516,13 +507,173 @@
         }
         setInterval(drawMatrix, 30);
 
+        // نظام الترجمة الشامل (بما فيها الفلامانية Nederlands والعربية وباقي اللغات)
+        const translations = {
+            en: {
+                subTitleText: "Digital Security Intelligence & Store",
+                tool1Title: "1. Fast Video Downloader",
+                tool1Desc: "Insert target stream URL to extract and download media securely:",
+                fetchBtnText: "Fetch",
+                tool2Title: "2. Safe URL & Phishing Inspector",
+                tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:",
+                scanBtnText: "Scan",
+                tool3Title: "3. Password Strength & Leak Check",
+                tool3Desc: "Test your password locally for strength and entropy levels:",
+                auditBtnText: "Audit",
+                tool3SubDesc: "Need a secure high-entropy token instead?",
+                genBtnText: "Generate Token",
+                storeTitle: "4. Winter Edition Sweatshirt",
+                storeDesc: "Upgrade your physical armor with our elite apparel collection designed for comfort and prestige.",
+                storeBtnText: "Access Official Store 🛍️",
+                adText1: "⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!",
+                adBtn1: "Get Yours 🛒",
+                adText2: "🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!",
+                adBtn2: "Explore Store 🚀"
+            },
+            nl: {
+                subTitleText: "Digitale Beveiligingsinlichting & Winkel",
+                tool1Title: "1. Snelle Video Downloader",
+                tool1Desc: "Voer de doel-URL in om media veilig te extraheren en te downloaden:",
+                fetchBtnText: "Ophalen",
+                tool2Title: "2. Veilige URL & Phishing Inspecteur",
+                tool2Desc: "Analyseer links of maak verdachte URL's los voordat u klikt:",
+                scanBtnText: "Scannen",
+                tool3Title: "3. Wachtwoordsterkte & Lekcontrole",
+                tool3Desc: "Test uw wachtwoord lokaal op sterkte en entropieniveaus:",
+                auditBtnText: "Controleren",
+                tool3SubDesc: "Heeft u in plaats daarvan een veilig token nodig?",
+                genBtnText: "Token Genereren",
+                storeTitle: "4. Winter Editie Sweatshirt",
+                storeDesc: "Upgrade je fysieke uitrusting met onze exclusieve kledingcollectie.",
+                storeBtnText: "Officiële Winkel Bezoeken 🛍️",
+                adText1: "⚡ EXCLUSIEVE WINTERCOLLECTIE: Nu Beschikbaar!",
+                adBtn1: "Koop de jouwe 🛒",
+                adText2: "🛡️ Ultieme Cyberbeveiliging Tools + Kledingwinkel!",
+                adBtn2: "Winkel Verkennen 🚀"
+            },
+            ar: {
+                subTitleText: "ذكاء الأمن الرقمي والمتجر",
+                tool1Title: "1. تحميل الفيديوهات السريع",
+                tool1Desc: "أدخل رابط الوسائط المستهدف لاستخراجه وتحميله بأمان:",
+                fetchBtnText: "جلب",
+                tool2Title: "2. فحص الروابط وكشف التصيد",
+                tool2Desc: "قم بتحليل الروابط المشبوهة أو فك اختصارها قبل النقر عليها:",
+                scanBtnText: "فحص",
+                tool3Title: "3. فحص قوة كلمات المرور والتسريبات",
+                tool3Desc: "اختبر كلمة المرور الخاصة بك محلياً لمعرفة مستوى قوتها وحمايتها:",
+                auditBtnText: "تدقيق",
+                tool3SubDesc: "هل تحتاج إلى رمز سري قوي وعشوائي بدلاً من ذلك؟",
+                genBtnText: "توليد رمز",
+                storeTitle: "4. سويت شيرت الإصدار الشتوي",
+                storeDesc: "طور درعك الجادي مع تشكيلة الملابس النخبوية المصممة للراحة والفخامة.",
+                storeBtnText: "دخول المتجر الرسمي 🛍️",
+                adText1: "⚡ تشكيلة الشتاء الحصرية: متوفرة الآن!",
+                adBtn1: "احصل على نسختك 🛒",
+                adText2: "🛡️ أدوات الحماية السيبرانية + متجر الملابس الفاخر!",
+                adBtn2: "استكشف المتجر 🚀"
+            },
+            fr: {
+                subTitleText: "Intelligence de Sécurité Numérique & Boutique",
+                tool1Title: "1. Téléchargeur de Vidéos Rapide",
+                tool1Desc: "Insérez l'URL du flux cible pour extraire et télécharger en toute sécurité :",
+                fetchBtnText: "Récupérer",
+                tool2Title: "2. Inspecteur d'URL & Anti-Phishing",
+                tool2Desc: "Analysez les liens cibles ou dés-raccourcissez les URL suspectes :",
+                scanBtnText: "Analyser",
+                tool3Title: "3. Force du Mot de Passe & Fuites",
+                tool3Desc: "Testez votre mot de passe localement pour vérifier sa robustesse :",
+                auditBtnText: "Auditer",
+                tool3SubDesc: "Besoin d'un jeton sécurisé à haute entropie à la place ?",
+                genBtnText: "Générer un Jeton",
+                storeTitle: "4. Sweat-shirt Édition Hiver",
+                storeDesc: "Améliorez votre équipement avec notre collection de vêtements exclusive.",
+                storeBtnText: "Visiter la Boutique 🛍️",
+                adText1: "⚡ COLLECTION HIVER EXCLUSIVE : Disponible dès maintenant !",
+                adBtn1: "Acheter 🛒",
+                adText2: "🛡️ Outils de Cybersécurité + Boutique de Vêtements !",
+                adBtn2: "Explorer 🚀"
+            },
+            es: {
+                subTitleText: "Inteligencia de Seguridad Digital y Tienda",
+                tool1Title: "1. Descargador de Vídeos Rápido",
+                tool1Desc: "Inserta la URL del flujo para extraer y descargar de forma segura:",
+                fetchBtnText: "Obtener",
+                tool2Title: "2. Inspector de Enlaces y Phishing",
+                tool2Desc: "Analiza enlaces de destino o des-acorta URLs sospechosas antes de hacer clic:",
+                scanBtnText: "Escanear",
+                tool3Title: "3. Comprobación de Contraseñas y Fugas",
+                tool3Desc: "Prueba tu contraseña localmente para ver su nivel de seguridad:",
+                auditBtnText: "Auditar",
+                tool3SubDesc: "¿Necesitas un token seguro de alta entropía?",
+                genBtnText: "Generar Token",
+                storeTitle: "4. Sudadera Edición de Invierno",
+                storeDesc: "Mejora tu equipamiento con nuestra exclusiva colección de ropa.",
+                storeBtnText: "Visitar Tienda Oficial 🛍️",
+                adText1: "⚡ COLECCIÓN DE INVIERNO EXCLUSIVA: ¡Disponible ya!",
+                adBtn1: "Consigue la tuya 🛒",
+                adText2: "🛡️ ¡Herramientas de Ciberseguridad + Tienda de Ropa!",
+                adBtn2: "Explorar Tienda 🚀"
+            },
+            de: {
+                subTitleText: "Digitale Sicherheitsintelligenz & Shop",
+                tool1Title: "1. Schneller Video-Downloader",
+                tool1Desc: "Ziel-URL eingeben, um Medien sicher zu extrahieren und herunterzuladen:",
+                fetchBtnText: "Abrufen",
+                tool2Title: "2. URL- & Phishing-Prüfer",
+                tool2Desc: "Analysieren Sie Ziel-Links oder verkürzte verdächtige URLs vor dem Klicken:",
+                scanBtnText: "Scannen",
+                tool3Title: "3. Passwort-Stärke & Leck-Prüfung",
+                tool3Desc: "Testen Sie Ihr Passwort lokal auf Stärke und Entropiewerte:",
+                auditBtnText: "Prüfen",
+                tool3SubDesc: "Benötigen Sie stattdessen ein sicheres Token?",
+                genBtnText: "Token Generieren",
+                storeTitle: "4. Winter-Edition Sweatshirt",
+                storeDesc: "Verbessern Sie Ihre Ausrüstung mit unserer exklusiven Bekleidungskollektion.",
+                storeBtnText: "Offiziellen Shop besuchen 🛍️",
+                adText1: "⚡ EXKLUSIVE WINTERKOLLEKTION: Jetzt erhältlich!",
+                adBtn1: "Holen Sie sich Ihre 🛒",
+                adText2: "🛡️ Ultimative Cybersecurity-Tools + Bekleidungs-Shop!",
+                adBtn2: "Shop Erkunden 🚀"
+            }
+        };
+
         function changeLanguage() {
-            const selectedLang = document.getElementById('langPicker').value;
-            if(selectedLang === 'ar') {
+            const lang = document.getElementById('langPicker').value;
+            const t = translations[lang];
+
+            if (!t) return;
+
+            // تغيير اتجاه الصفحة بناءً على اللغة (RTL للعربية، LTR لباقي اللغات)
+            if (lang === 'ar') {
                 document.documentElement.dir = 'rtl';
             } else {
                 document.documentElement.dir = 'ltr';
             }
+
+            // تطبيق الترجمات على العناصر
+            document.getElementById('subTitleText').innerText = t.subTitleText;
+            document.getElementById('tool1Title').innerHTML = `<i class="fa-solid fa-terminal"></i> ${t.tool1Title}`;
+            document.getElementById('tool1Desc').innerText = t.tool1Desc;
+            document.getElementById('fetchBtnText').innerText = t.fetchBtnText;
+
+            document.getElementById('tool2Title').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${t.tool2Title}`;
+            document.getElementById('tool2Desc').innerText = t.tool2Desc;
+            document.getElementById('scanBtnText').innerText = t.scanBtnText;
+
+            document.getElementById('tool3Title').innerHTML = `<i class="fa-solid fa-key"></i> ${t.tool3Title}`;
+            document.getElementById('tool3Desc').innerText = t.tool3Desc;
+            document.getElementById('auditBtnText').innerText = t.auditBtnText;
+            document.getElementById('tool3SubDesc').innerText = t.tool3SubDesc;
+            document.getElementById('genBtnText').innerText = t.genBtnText;
+
+            document.getElementById('storeTitle').innerHTML = `<i class="fa-solid fa-shirt"></i> ${t.storeTitle}`;
+            document.getElementById('storeDesc').innerText = t.storeDesc;
+            document.getElementById('storeBtnText').innerText = t.storeBtnText;
+
+            document.getElementById('adText1').innerText = t.adText1;
+            document.getElementById('adBtn1').innerText = t.adBtn1;
+            document.getElementById('adText2').innerText = t.adText2;
+            document.getElementById('adBtn2').innerText = t.adBtn2;
         }
 
         function openSaveFrom() {
@@ -605,7 +756,7 @@
         function generatePassword() {
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&!*-_§±";
             let pwd = "";
-            for (let i = 0; i < 18; i++) {
+            for (let i. = 0; i < 18; i++) {
                 pwd += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             document.getElementById("passwordDisplay").innerText = pwd;
