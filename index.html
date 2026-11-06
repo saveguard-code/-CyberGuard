@@ -452,7 +452,7 @@
         }
         setInterval(drawMatrix, 30);
 
-        // وظيفة فحص الـ Ping وسرعة الاتصال الحقيقية
+        // وظيفة فحص الـ Ping وسرعة الاتصال المحسنة (متوافقة مع الهواتف والمتصفحات)
         function checkNetworkPing() {
             const resBox = document.getElementById('pingResultBox');
             resBox.style.display = 'block';
@@ -460,27 +460,37 @@
             resBox.innerHTML = '⚡ measuring latency (Ping)...';
 
             const startTime = performance.now();
-            fetch('https://www.cloudflare.com/cdn-cgi/trace', { mode: 'no-cors', cache: 'no-store' })
-                .then(() => {
+            const img = new Image();
+            img.src = 'https://www.cloudflare.com/favicon.ico?' + startTime;
+
+            img.onload = function() {
+                const endTime = performance.now();
+                const pingTime = Math.round(endTime - startTime);
+                let qualityClass = 'result-safe';
+                let statusText = '🟢 Excellent Connection';
+
+                if (pingTime > 150 && pingTime <= 300) {
+                    statusText = '🟡 Moderate Latency';
+                } else if (pingTime > 300) {
+                    qualityClass = 'result-danger';
+                    statusText = '🔴 High Latency / Slow Connection';
+                }
+
+                resBox.className = `result-box ${qualityClass}`;
+                resBox.innerHTML = `📡 <b>Ping:</b> ${pingTime} ms | <b>Status:</b> ${statusText}`;
+            };
+
+            img.onerror = function() {
+                if (navigator.onLine) {
                     const endTime = performance.now();
                     const pingTime = Math.round(endTime - startTime);
-                    let qualityClass = 'result-safe';
-                    let statusText = '🟢 Excellent Connection';
-
-                    if (pingTime > 150 && pingTime <= 300) {
-                        statusText = '🟡 Moderate Latency';
-                    } else if (pingTime > 300) {
-                        qualityClass = 'result-danger';
-                        statusText = '🔴 High Latency / Slow Connection';
-                    }
-
-                    resBox.className = `result-box ${qualityClass}`;
-                    resBox.innerHTML = `📡 <b>Ping:</b> ${pingTime} ms | <b>Status:</b> ${statusText}`;
-                })
-                .catch(() => {
+                    resBox.className = 'result-box result-safe';
+                    resBox.innerHTML = `📡 <b>Status:</b> 🟢 Connected Online (~${pingTime} ms)`;
+                } else {
                     resBox.className = 'result-box result-danger';
-                    resBox.innerHTML = '⚠️ Network Error: Unable to measure ping (Check your connection).';
-                });
+                    resBox.innerHTML = '⚠️ Network Error: No internet connection detected.';
+                }
+            };
         }
 
         // ذكاء اصطناعي تفاعلي ذكي وشامل لأي سؤال
@@ -503,9 +513,8 @@
             setTimeout(() => {
                 let responseText = "";
 
-                // معالجة ذكية ومخصصة بناءً على محتوى السؤال
                 if (query.includes('فورمات') || query.includes('format') || query.includes('إعادة ضبط') || query.includes('مسح الهاتف')) {
-                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع (Format):**<br>• **للهواتف (أندرويد / آيفون):** اذهب إلى الإعدادات (Settings) > النظام أو عام (General) > إعادة تعيين (Reset) > محو جميع البيانات (Factory Reset).<br>• **ملاحظة أمنية:** تأكد دائماً من عمل نسخة احتياطية (Backup) للصور والملفات الهامة قبل البدء، واستخدام أدوات تشفير أو مسح آمن إذا كنت ستبيع الجهاز.";
+                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع (Format):**<br>• **للهواتف (أندرويد / آيفون):** اذهب إلى الإعدادات (Settings) > النظام أو عام (General) > إعادة تعيين (Reset) > محو جميع البيانات (Factory Reset).<br>• **ملاحظة أمنية:** تأكد دائماً من عمل نسخة احتياطية (Backup) للصور والملفات الهامة قبل البدء.";
                 } else if (query.includes('phish') || query.includes('تصيد') || query.includes('اختراق')) {
                     responseText = "🛡️ **تحليل الهجمات والتصيد (Phishing):**<br>التصيد هو أسلوب هندسة اجتماعية لخداع المستخدمين. لتجنب ذلك:<br>1. تحقق دائماً من نطاق الموقع (Domain) بدقة.<br>2. لا تضغط على الروابط الواردة في رسائل مجهولة.<br>3. فعل خاصية التحقق الثنائي (MFA) على حساباتك.";
                 } else if (query.includes('pass') || query.includes('كلمة مرور') || query.includes('سر')) {
@@ -513,8 +522,7 @@
                 } else if (query.includes('wifi') || query.includes('واي فاي') || query.includes('إنترنت')) {
                     responseText = "📶 **أمان شبكات الواي فاي (Wi-Fi):**<br>• تأكد من تفعيل حماية التشفير القوية مثل WPA3 أو WPA2-AES على الراوتر.<br>• قم بتغيير كلمة المرور الافتراضية للراوتر وإغلاق ميزة WPS.";
                 } else {
-                    // استجابة عامة لأي سؤال آخر
-                    responseText = `🤖 **تحليل خبير CyberGuard AI:**<br>بخصوص سؤالك ("<i>${query}</i>"):<br>النظام يعمل بكفاءة عالية. ننصح دائماً باتباع معايير الأمان السيبراني، وتحديث الأنظمة باستمرار لضمان الحماية ضد الثغرات والتهديدات الرقمية. إذا كنت بحاجة لتفاصيل أكثر دقة، اطرح سؤالاً تقنياً مباشراً!`;
+                    responseText = `🤖 **تحليل خبير CyberGuard AI:**<br>بخصوص سؤالك ("<i>${query}</i>"):<br>النظام يعمل بكفاءة عالية. ننصح دائماً باتباع معايير الأمان السيبراني، وتحديث الأنظمة باستمرار لضمان الحماية ضد الثغرات والتهديدات الرقمية.`;
                 }
 
                 resultBox.innerHTML = responseText;
