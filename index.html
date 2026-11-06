@@ -63,17 +63,27 @@
             opacity: 0.15;
         }
 
-        .announcement-bar {
+        /* رأس الموقع: يجمع شريط الإعلانات واختيار اللغات */
+        .header-top {
+            width: 100%;
             background: linear-gradient(135deg, #00ffcc, #3b82f6);
             color: #050b14;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 700;
-            width: 100%;
-            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px;
             box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .announcement-bar {
+            flex: 1;
+            overflow: hidden;
+            font-size: 13px;
+            font-weight: 700;
+            min-width: 250px;
         }
 
         .announcement-slider {
@@ -85,19 +95,17 @@
         .announcement-item {
             width: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 15px;
-            flex-wrap: wrap;
         }
 
         .announcement-btn {
             background-color: #050b14;
             color: #00ffcc;
-            padding: 4px 12px;
-            border-radius: 15px;
+            padding: 3px 10px;
+            border-radius: 12px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             transition: all 0.3s;
         }
 
@@ -113,6 +121,37 @@
             50% { transform: translateX(50%); }
             95% { transform: translateX(50%); }
             100% { transform: translateX(0); }
+        }
+
+        /* قائمة اللغات في الأعلى */
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(5, 11, 20, 0.85);
+            padding: 4px 10px;
+            border-radius: 15px;
+            border: 1px solid var(--primary-glow);
+        }
+
+        .language-selector i {
+            color: var(--primary-glow);
+            font-size: 12px;
+        }
+
+        .language-select {
+            background: transparent;
+            border: none;
+            color: #00ffcc;
+            font-size: 12px;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .language-select option {
+            background-color: #050b14;
+            color: #ffffff;
         }
 
         .container {
@@ -176,15 +215,10 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        .card p, .card li {
+        .card p {
             font-size: 13px;
             color: #cbd5e1;
             line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            padding-left: 18px;
             margin-bottom: 10px;
         }
 
@@ -260,7 +294,7 @@
             transform: translateY(-2px);
         }
 
-        .password-box, .result-box, .network-box {
+        .result-box {
             background: rgba(5, 11, 20, 0.9);
             padding: 12px;
             border-radius: 8px;
@@ -283,14 +317,12 @@
             color: #00ffcc;
             border-color: #00ffcc;
             background: rgba(0, 255, 204, 0.05);
-            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.1);
         }
 
         .result-danger {
             color: #ff416c;
             border-color: #ff416c;
             background: rgba(255, 65, 108, 0.05);
-            box-shadow: inset 0 0 10px rgba(255, 65, 108, 0.1);
         }
 
         .social-footer {
@@ -327,7 +359,6 @@
             color: var(--bg-dark);
             transform: translateY(-3px);
             box-shadow: 0 0 15px var(--primary-glow);
-            border-color: var(--primary-glow);
         }
 
         footer {
@@ -343,17 +374,38 @@
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- Top Announcement Bar -->
-    <div class="announcement-bar">
-        <div class="announcement-slider">
-            <div class="announcement-item">
-                <span>⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!</span>
-                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Get Yours 🛒</a>
+    <!-- رأس الموقع يضم الإعلان الم يتحرك + قائمة اللغات الشاملة -->
+    <div class="header-top">
+        <div class="announcement-bar">
+            <div class="announcement-slider">
+                <div class="announcement-item">
+                    <span>⚡ EXCLUSIVE WINTER COLLECTION: Woven Wisdom Available Now!</span>
+                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Get Yours 🛒</a>
+                </div>
+                <div class="announcement-item">
+                    <span>🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!</span>
+                    <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Explore Store 🚀</a>
+                </div>
             </div>
-            <div class="announcement-item">
-                <span>🛡️ Ultimate Cyber Security Tools + Premium Apparel Store!</span>
-                <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="announcement-btn">Explore Store 🚀</a>
-            </div>
+        </div>
+
+        <!-- أداة اختيار اللغات (تضم تقريباً جميع اللغات العالمية) -->
+        <div class="language-selector">
+            <i class="fa-solid fa-globe"></i>
+            <select class="language-select" id="langPicker" onchange="changeLanguage()">
+                <option value="en" selected>English</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="ru">Русский</option>
+                <option value="zh">中文</option>
+                <option value="ja">日本語</option>
+                <option value="tr">Türkçe</option>
+                <option value="hi">हिन्दी</option>
+            </select>
         </div>
     </div>
 
@@ -361,9 +413,9 @@
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
         <div class="subtitle">Digital Security Intelligence & Store</div>
 
-        <!-- 1. Video Downloader Box -->
+        <!-- القسم 1: تحميل الفيديوهات -->
         <div class="card">
-            <h3><i class="fa-solid fa-terminal"></i> Fast Video Downloader</h3>
+            <h3><i class="fa-solid fa-terminal"></i> 1. Fast Video Downloader</h3>
             <p>Insert target stream URL to extract and download media securely:</p>
             <div class="input-group">
                 <input type="text" id="videoUrl" class="custom-input" placeholder="Paste link here...">
@@ -371,46 +423,35 @@
             </div>
         </div>
 
-        <!-- 2. Link Verification Box -->
+        <!-- القسم 2: فحص الروابط وكشف التصيد -->
         <div class="card">
-            <h3><i class="fa-solid fa-shield-halved"></i> URL Threat Scanner</h3>
-            <p>Analyze target links for potential malware, phishing, or malicious scripts:</p>
+            <h3><i class="fa-solid fa-shield-halved"></i> 2. Safe URL & Phishing Inspector</h3>
+            <p>Analyze target links or un-shorten suspect URLs before clicking:</p>
             <div class="input-group">
-                <input type="text" id="checkUrl" class="custom-input" placeholder="Enter domain or URL...">
+                <input type="text" id="checkUrl" class="custom-input" placeholder="Enter link or domain...">
                 <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-radar"></i> Scan</button>
             </div>
             <div id="urlResult" class="result-box" style="display: none;">System ready for telemetry analysis.</div>
         </div>
 
-        <!-- 3. Network & WiFi Strength Checker -->
+        <!-- القسم 3: فاحص قوة كلمات المرور وتوليدها -->
         <div class="card">
-            <h3><i class="fa-solid fa-wifi"></i> Network Telemetry & Ping</h3>
-            <p>Diagnose active network packets, latency, and connection bandwidth:</p>
-            <div id="networkDisplay" class="network-box" style="color: var(--secondary-glow);">Awaiting telemetry handshake...</div>
-            <button class="action-btn" style="width: 100%;" onclick="checkNetworkSpeed()"><i class="fa-solid fa-gauge-high"></i> Initialize Speed Test</button>
-        </div>
-
-        <!-- 4. Mobile Security Tips -->
-        <div class="card">
-            <h3><i class="fa-solid fa-lock"></i> Protocol Security Guidelines</h3>
-            <ul>
-                <li>Maintain core kernel & application patches to neutralize zero-days.</li>
-                <li>Prohibit execution of unverified binaries or untrusted APK packages.</li>
-                <li>Audit and revoke unauthorized privilege access permissions.</li>
-            </ul>
-        </div>
-
-        <!-- 5. Strong Password Generator -->
-        <div class="card">
-            <h3><i class="fa-solid fa-key"></i> Cryptographic Key Generator</h3>
-            <p>Generate high-entropy randomized cryptographic strings for authentication:</p>
+            <h3><i class="fa-solid fa-key"></i> 3. Password Strength & Leak Check</h3>
+            <p>Test your password locally for strength and entropy levels:</p>
+            <div class="input-group">
+                <input type="password" id="passInput" class="custom-input" placeholder="Type password to test...">
+                <button class="action-btn" onclick="checkPasswordStrength()"><i class="fa-solid fa-lock-open"></i> Audit</button>
+            </div>
+            <div id="passAuditResult" class="result-box" style="display: none;">Awaiting password input...</div>
+            
+            <p style="margin-top: 15px; font-size: 11px; color: #94a3b8;">Need a secure high-entropy token instead?</p>
             <div class="password-box" id="passwordDisplay">SECURE_KEY_PENDING</div>
             <button class="action-btn" style="width: 100%;" onclick="generatePassword()"><i class="fa-solid fa-rotate"></i> Generate Token</button>
         </div>
 
-        <!-- 6. Store Featured Card -->
+        <!-- القسم 4: متجر الملابس الحصري -->
         <div class="card" style="border-color: #00b09b;">
-            <h3 style="color: #00ffcc;"><i class="fa-solid fa-shirt"></i> Winter Edition Sweatshirt</h3>
+            <h3 style="color: #00ffcc;"><i class="fa-solid fa-shirt"></i> 4. Winter Edition Sweatshirt</h3>
             <p>Upgrade your physical armor with our elite apparel collection designed for comfort and prestige.</p>
             <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" rel="noopener noreferrer" class="store-btn">Access Official Store 🛍️</a>
         </div>
@@ -474,6 +515,16 @@
         }
         setInterval(drawMatrix, 30);
 
+        // دالة تغيير اللغة (يمكنك ربطها لاحقاً بخدمات الترجمة أو تغيير اتجاه الصفحة إذا اخترت العربية)
+        function changeLanguage() {
+            const selectedLang = document.getElementById('langPicker').value;
+            if(selectedLang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+        }
+
         function openSaveFrom() {
             const url = document.getElementById('videoUrl').value.trim();
             if(url) {
@@ -503,8 +554,7 @@
                 }
 
                 const domain = urlObj.hostname.toLowerCase();
-                const suspicious = ['phishing', 'malware', 'hack', 'free-gift', 'update-secure'];
-                const trusted = ['google.com', 'youtube.com', 'github.com', 'redbubble.com', 'microsoft.com'];
+                const suspicious = ['phishing', 'malware', 'hack', 'free-gift', 'update-secure', 'login-verify'];
 
                 if (suspicious.some(s => domain.includes(s))) {
                     resultBox.className = 'result-box result-danger';
@@ -522,24 +572,34 @@
             }
         }
 
-        function checkNetworkSpeed() {
-            const netDisplay = document.getElementById('networkDisplay');
-            netDisplay.innerHTML = '🔄 Executing telemetry handshake & ping...';
-            
-            setTimeout(() => {
-                if (!navigator.onLine) {
-                    netDisplay.className = 'network-box result-danger';
-                    netDisplay.innerHTML = `❌ <strong>Link Failure:</strong> Device is offline.`;
-                    return;
-                }
-                const connection = navigator.connection || {};
-                let type = connection.effectiveType ? connection.effectiveType.toUpperCase() : "SECURE_WIFI";
-                let speed = connection.downlink ? connection.downlink + " Mbps" : "OPTIMIZED";
+        function checkPasswordStrength() {
+            const pwd = document.getElementById('passInput').value;
+            const resBox = document.getElementById('passAuditResult');
+            resBox.style.display = 'block';
 
-                netDisplay.className = 'network-box result-safe';
-                netDisplay.innerHTML = `✅ <strong>Status: ONLINE (${type})</strong><br>
-                ⚡ Bandwidth: ~${speed} | Latency: 14ms (Optimal)`;
-            }, 1200);
+            if(!pwd) {
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '⚠️ Please enter a password to audit.';
+                return;
+            }
+
+            let score = 0;
+            if (pwd.length >= 8) score++;
+            if (pwd.length >= 12) score++;
+            if (/[A-Z]/.test(pwd)) score++;
+            if (/[0-9]/.test(pwd)) score++;
+            if (/[^A-Za-z0-9]/.test(pwd)) score++;
+
+            if (score <= 2) {
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '❌ Weak Password: Vulnerable to brute-force attacks!';
+            } else if (score <= 4) {
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '⚠️ Moderate Password: Consider adding symbols and length.';
+            } else {
+                resBox.className = 'result-box result-safe';
+                resBox.innerHTML = '✅ Strong Entropy: High resistance against cracking tools.';
+            }
         }
 
         function generatePassword() {
