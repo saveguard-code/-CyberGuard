@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google AdSense Code - وضعناه في أعلى الـ Head مباشرة لتسهيل التحقق -->
+    <!-- Google AdSense Code - تم وضعه في أعلى الـ Head مباشرة لتحقيق أفضل توافق -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-4493514633554844">
 
@@ -552,4 +552,17 @@
         }
 
         function generateSecurePassword() {
-            const chars = "
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+-!";
+            let password = "";
+            for (let i = 0; i < 16; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('passwordDisplay').innerText = password;
+        }
+
+        function changeLanguage() {
+            // دالة تغيير اللغات المستقبلية
+        }
+    </script>
+</body>
+</html>
