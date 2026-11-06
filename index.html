@@ -10,6 +10,11 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4493514633554844"
      crossorigin="anonymous"></script>
 
+    <!-- رؤوس الأمان والحماية المتقدمة للموقع -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
+
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,6 +33,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            /* منع تحديد النصوص لحمايتها من النسخ المباشر */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -52,7 +62,7 @@
             opacity: 0.15;
         }
 
-        /* إصلاح شريط العلوي للغات والمتجر */
+        /* شريط العلوي للغات والمتجر */
         .header-top {
             width: 100%;
             background: rgba(5, 11, 20, 0.95);
@@ -194,6 +204,11 @@
             color: #fff;
             font-size: 13px;
             outline: none;
+            /* السماح بالكتابة في خانات الإدخال بشكل طبيعي */
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         .custom-input:focus {
@@ -295,7 +310,7 @@
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- الشريط العلوي المعدل (متوفر فيه اللغات ورابط المتجر بوضوح) -->
+    <!-- الشريط العلوي -->
     <div class="header-top">
         <a href="https://www.redbubble.com/i/sweatshirt/Winter-Crafted-Cultures-Woven-Wisdom-by-Mr-seller1/185336626/du6s" target="_blank" class="store-link-top">
             <i class="fa-solid fa-store"></i> <span id="topStoreText">Store 🛒</span>
@@ -317,6 +332,16 @@
     <div class="container">
         <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
         <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
+
+        <!-- قسم فحص الـ Ping وسرعة الاتصال -->
+        <div class="card" style="border-color: #f59e0b;">
+            <h3 id="pingTitle" style="color: #f59e0b;"><i class="fa-solid fa-network-wired"></i> Network & Ping Monitor</h3>
+            <p id="pingDesc">Test your connection latency (Ping) and check your active network status in real-time:</p>
+            <button class="action-btn" style="background: linear-gradient(135deg, #f59e0b, #ef4444); width: 100%; margin-top: 6px;" onclick="checkNetworkPing()">
+                <i class="fa-solid fa-wave-square"></i> <span id="pingBtnText">Run Ping Test</span>
+            </button>
+            <div id="pingResultBox" class="result-box" style="display: none;">Awaiting test...</div>
+        </div>
 
         <!-- قسم الذكاء الاصطناعي -->
         <div class="card" style="border-color: #38bdf8;">
@@ -389,7 +414,25 @@
     </div>
 
     <script>
-        // Matrix Background
+        // --- طبقة الحماية الأمنية المتقدمة ضد السرقة والفحص ---
+        
+        // 1. منع النقر بزر الماوس الأيمن لمنع حفظ أو فحص الصفحة
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. منع اختصارات المطورين (F12, عرض المصدر Ctrl+U، وأدوات الفحص)
+        document.addEventListener('keydown', function (e) {
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+                (e.ctrlKey && e.key === 'U')
+            ) {
+                e.preventDefault();
+                alert('⚠️ Security Alert: Unauthorized source inspection attempt logged by CyberGuard!');
+                return false;
+            }
+        });
+
+        // --- Matrix Background ---
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -415,6 +458,37 @@
             }
         }
         setInterval(drawMatrix, 30);
+
+        // وظيفة فحص الـ Ping وسرعة الاستجابة الحقيقية
+        function checkNetworkPing() {
+            const resBox = document.getElementById('pingResultBox');
+            resBox.style.display = 'block';
+            resBox.className = 'result-box';
+            resBox.innerHTML = '⚡ measuring latency (Ping)...';
+
+            const startTime = performance.now();
+            fetch('https://www.cloudflare.com/cdn-cgi/trace', { mode: 'no-cors', cache: 'no-store' })
+                .then(() => {
+                    const endTime = performance.now();
+                    const pingTime = Math.round(endTime - startTime);
+                    let qualityClass = 'result-safe';
+                    let statusText = '🟢 Excellent Connection';
+
+                    if (pingTime > 150 && pingTime <= 300) {
+                        statusText = '🟡 Moderate Latency';
+                    } else if (pingTime > 300) {
+                        qualityClass = 'result-danger';
+                        statusText = '🔴 High Latency / Slow Connection';
+                    }
+
+                    resBox.className = `result-box ${qualityClass}`;
+                    resBox.innerHTML = `📡 <b>Ping:</b> ${pingTime} ms | <b>Status:</b> ${statusText}`;
+                })
+                .catch(() => {
+                    resBox.className = 'result-box result-danger';
+                    resBox.innerHTML = '⚠️ Network Error: Unable to measure ping (Check your connection).';
+                });
+        }
 
         // AI Knowledge Base
         const aiKnowledgeBase = {
@@ -483,14 +557,38 @@
             document.getElementById('passwordDisplay').innerText = pass;
         }
 
-        // الترجمة
+        // قواميس الترجمة الشاملة
         const translations = {
-            en: { subTitleText: "Digital Security Intelligence & Store", aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:", aiBtnText: "Ask AI", tool1Title: "1. HD Video Stream Downloader", tool1Desc: "Insert target stream URL to extract and download media in Full HD:", fetchBtnText: "Download", tool2Title: "2. Safe URL & Phishing Inspector", tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:", scanBtnText: "Scan", tool3Title: "3. Password Strength & Leak Check", tool3Desc: "Test your password locally for strength and entropy levels:", auditBtnText: "Audit", tool3SubDesc: "Need a secure token instead?", genBtnText: "Generate Token", storeTitle: "CyberGuard Official Apparel Store", storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.", storeBtnText: "Visit Store 🚀", topStoreText: "Store 🛒" },
-            ar: { subTitleText: "استخبارات الأمن الرقمي والمتجر الرسمي", aiTitle: "0. خبير الذكاء الاصطناعي سايبر جارد", aiDesc: "اطرح أي سؤال تقني أو أمني واحصل على تحليل فوري:", aiBtnText: "اسأل الذكاء", tool1Title: "1. تحميل الفيديوهات بجودة عالية", tool1Desc: "أدخل رابط الفيديو لتحميله بجودة عالية:", fetchBtnText: "تحميل", tool2Title: "2. فحص الروابط وحماية التصيد", tool2Desc: "افحص الروابط المشبوهة واكتشف أمانها قبل النقر:", scanBtnText: "فحص", tool3Title: "3. فحص قوة كلمة المرور", tool3Desc: "اختبر قوة كلمة المرور محلياً:", auditBtnText: "تدقيق", tool3SubDesc: "تحتاج إلى رمز سري آمن بدلاً من ذلك؟", genBtnText: "توليد رمز", storeTitle: "متجر سايبر جارد الرسمي للملابس", storeDesc: "احصل على ملابس وتجهيزات تقنية عالية الجودة.", storeBtnText: "زيارة المتجر 🚀", topStoreText: "المتجر 🛒" },
-            fr: { subTitleText: "Intelligence de Sécurité Numérique & Boutique", aiTitle: "0. Expert Cyber IA Gemini", aiDesc: "Posez n'importe quelle question de cybersécurité :", aiBtnText: "Demander", tool1Title: "1. Téléchargeur Vidéo HD", tool1Desc: "Insérez l'URL du flux pour télécharger :", fetchBtnText: "Télécharger", tool2Title: "2. Inspecteur d'URL & Anti-Phishing", tool2Desc: "Analysez les liens suspects :", scanBtnText: "Analyser", tool3Title: "3. Vérification du Mot de Passe", tool3Desc: "Testez localement votre mot de passe :", auditBtnText: "Auditer", tool3SubDesc: "Besoin d'un jeton sécurisé ?", genBtnText: "Générer", storeTitle: "Boutique Officielle CyberGuard", storeDesc: "Obtenez des équipements high-tech.", storeBtnText: "Visiter 🚀", topStoreText: "Boutique 🛒" },
-            nl: { subTitleText: "Digitale Beveiligingsinlichtingendienst", aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Stel elke cybersecurity vraag:", aiBtnText: "Vraag AI", tool1Title: "1. HD Video Downloader", tool1Desc: "Voer stream-URL in:", fetchBtnText: "Download", tool2Title: "2. Veilige URL Inspector", tool2Desc: "Analyseer links:", scanBtnText: "Scannen", tool3Title: "3. Wachtwoord Controle", tool3Desc: "Test uw wachtwoord:", auditBtnText: "Audit", tool3SubDesc: "Veilig token nodig?", genBtnText: "Genereer", storeTitle: "CyberGuard Kledingwinkel", storeDesc: "Ontvang high-tech uitrusting.", storeBtnText: "Winkel 🚀", topStoreText: "Winkel 🛒" },
-            es: { subTitleText: "Inteligencia de Seguridad Digital", aiTitle: "0. Experto Cibernético de IA", aiDesc: "Haga cualquier pregunta de ciberseguridad:", aiBtnText: "Preguntar", tool1Title: "1. Descargador de Video HD", tool1Desc: "Ingrese la URL:", fetchBtnText: "Descargar", tool2Title: "2. Inspector de URL", tool2Desc: "Analice enlaces:", scanBtnText: "Escanear", tool3Title: "3. Verificación de Contraseñas", tool3Desc: "Pruebe su contraseña:", auditBtnText: "Auditar", tool3SubDesc: "Token seguro?", genBtnText: "Generar", storeTitle: "Tienda Oficial CyberGuard", storeDesc: "Consigue equipo de alta tecnología.", storeBtnText: "Visitar 🚀", topStoreText: "Tienda 🛒" },
-            de: { subTitleText: "Sicherheits-Intelligence & Shop", aiTitle: "0. Gemini KI Cyber-Experte", aiDesc: "Stellen Sie eine Cybersicherheitsfrage:", aiBtnText: "KI Fragen", tool1Title: "1. HD Video Downloader", tool1Desc: "Stream-URL eingeben:", fetchBtnText: "Laden", tool2Title: "2. Phishing-Inspektor", tool2Desc: "Links analysieren:", scanBtnText: "Scannen", tool3Title: "3. Passwortstärke", tool3Desc: "Passwort testen:", auditBtnText: "Prüfen", tool3SubDesc: "Token benötigt?", genBtnText: "Generieren", storeTitle: "CyberGuard Store", storeDesc: "High-Tech-Ausrüstung holen.", storeBtnText: "Store 🚀", topStoreText: "Shop 🛒" }
+            en: { 
+                subTitleText: "Digital Security Intelligence & Store", 
+                pingTitle: "Network & Ping Monitor", pingDesc: "Test your connection latency (Ping) and check your active network status in real-time:", pingBtnText: "Run Ping Test",
+                aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:", aiBtnText: "Ask AI", tool1Title: "1. HD Video Stream Downloader", tool1Desc: "Insert target stream URL to extract and download media in Full HD:", fetchBtnText: "Download", tool2Title: "2. Safe URL & Phishing Inspector", tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:", scanBtnText: "Scan", tool3Title: "3. Password Strength & Leak Check", tool3Desc: "Test your password locally for strength and entropy levels:", auditBtnText: "Audit", tool3SubDesc: "Need a secure token instead?", genBtnText: "Generate Token", storeTitle: "CyberGuard Official Apparel Store", storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.", storeBtnText: "Visit Store 🚀", topStoreText: "Store 🛒" 
+            },
+            ar: { 
+                subTitleText: "استخبارات الأمن الرقمي والمتجر الرسمي", 
+                pingTitle: "مراقب شبكة الإنترنت والـ Ping", pingDesc: "اختبر سرعة استجابة الاتصال (Ping) وحالة الشبكة الحالية لديك بشكل فوري:", pingBtnText: "بدء فحص الـ Ping",
+                aiTitle: "0. خبير الذكاء الاصطناعي سايبر جارد", aiDesc: "اطرح أي سؤال تقني أو أمني واحصل على تحليل فوري:", aiBtnText: "اسأل الذكاء", tool1Title: "1. تحميل الفيديوهات بجودة عالية", tool1Desc: "أدخل رابط الفيديو لتحميله بجودة عالية:", fetchBtnText: "تحميل", tool2Title: "2. فحص الروابط وحماية التصيد", tool2Desc: "افحص الروابط المشبوهة واكتشف أمانها قبل النقر:", scanBtnText: "فحص", tool3Title: "3. فحص قوة كلمة المرور", tool3Desc: "اختبر قوة كلمة المرور محلياً:", auditBtnText: "تدقيق", tool3SubDesc: "تحتاج إلى رمز سري آمن بدلاً من ذلك؟", genBtnText: "توليد رمز", storeTitle: "متجر سايبر جارد الرسمي للملابس", storeDesc: "احصل على ملابس وتجهيزات تقنية عالية الجودة.", storeBtnText: "زيارة المتجر 🚀", topStoreText: "المتجر 🛒" 
+            },
+            fr: { 
+                subTitleText: "Intelligence de Sécurité Numérique & Boutique", 
+                pingTitle: "Moniteur Réseau & Ping", pingDesc: "Testez la latence de votre connexion (Ping) et l'état du réseau en temps réel:", pingBtnText: "Lancer le Test Ping",
+                aiTitle: "0. Expert Cyber IA Gemini", aiDesc: "Posez n'importe quelle question de cybersécurité :", aiBtnText: "Demander", tool1Title: "1. Téléchargeur Vidéo HD", tool1Desc: "Insérez l'URL du flux pour télécharger :", fetchBtnText: "Télécharger", tool2Title: "2. Inspecteur d'URL & Anti-Phishing", tool2Desc: "Analysez les liens suspects :", scanBtnText: "Analyser", tool3Title: "3. Vérification du Mot de Passe", tool3Desc: "Testez localement votre mot de passe :", auditBtnText: "Auditer", tool3SubDesc: "Besoin d'un jeton sécurisé ?", genBtnText: "Générer", storeTitle: "Boutique Officielle CyberGuard", storeDesc: "Obtenez des équipements high-tech.", storeBtnText: "Visiter 🚀", topStoreText: "Boutique 🛒" 
+            },
+            nl: { 
+                subTitleText: "Digitale Beveiligingsinlichtingendienst", 
+                pingTitle: "Netwerk & Ping Monitor", pingDesc: "Test uw verbindingslatentie (Ping) en actieve netwerkstatus in realtime:", pingBtnText: "Start Ping Test",
+                aiTitle: "0. Gemini AI Cyber Expert", aiDesc: "Stel elke cybersecurity vraag:", aiBtnText: "Vraag AI", tool1Title: "1. HD Video Downloader", tool1Desc: "Voer stream-URL in:", fetchBtnText: "Download", tool2Title: "2. Veilige URL Inspector", tool2Desc: "Analyseer links:", scanBtnText: "Scannen", tool3Title: "3. Wachtwoord Controle", tool3Desc: "Test uw wachtwoord:", auditBtnText: "Audit", tool3SubDesc: "Veilig token nodig?", genBtnText: "Genereer", storeTitle: "CyberGuard Kledingwinkel", storeDesc: "Ontvang high-tech uitrusting.", storeBtnText: "Winkel 🚀", topStoreText: "Winkel 🛒" 
+            },
+            es: { 
+                subTitleText: "Inteligencia de Seguridad Digital", 
+                pingTitle: "Monitor de Red y Ping", pingDesc: "Pruebe la latencia de su conexión (Ping) y el estado de la red en tiempo real:", pingBtnText: "Ejecutar Test de Ping",
+                aiTitle: "0. Experto Cibernético de IA", aiDesc: "Haga cualquier pregunta de ciberseguridad:", aiBtnText: "Preguntar", tool1Title: "1. Descargador de Video HD", tool1Desc: "Ingrese la URL:", fetchBtnText: "Descargar", tool2Title: "2. Inspector de URL", tool2Desc: "Analice enlaces:", scanBtnText: "Escanear", tool3Title: "3. Verificación de Contraseñas", tool3Desc: "Pruebe su contraseña:", auditBtnText: "Auditar", tool3SubDesc: "Token seguro?", genBtnText: "Generar", storeTitle: "Tienda Oficial CyberGuard", storeDesc: "Consigue equipo de alta tecnología.", storeBtnText: "Visitar 🚀", topStoreText: "Tienda 🛒" 
+            },
+            de: { 
+                subTitleText: "Sicherheits-Intelligence & Shop", 
+                pingTitle: "Netzwerk & Ping Monitor", pingDesc: "Testen Sie Ihre Latenz (Ping) und den Netzwerkstatus in Echtzeit:", pingBtnText: "Ping-Test starten",
+                aiTitle: "0. Gemini KI Cyber-Experte", aiDesc: "Stellen Sie eine Cybersicherheitsfrage:", aiBtnText: "KI Fragen", tool1Title: "1. HD Video Downloader", tool1Desc: "Stream-URL eingeben:", fetchBtnText: "Laden", tool2Title: "2. Phishing-Inspektor", tool2Desc: "Links analysieren:", scanBtnText: "Scannen", tool3Title: "3. Passwortstärke", tool3Desc: "Passwort testen:", auditBtnText: "Prüfen", tool3SubDesc: "Token benötigt?", genBtnText: "Generieren", storeTitle: "CyberGuard Store", storeDesc: "High-Tech-Ausrüstung holen.", storeBtnText: "Store 🚀", topStoreText: "Shop 🛒" 
+            }
         };
 
         function changeLanguage() {
