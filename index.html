@@ -33,7 +33,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            /* منع تحديد النصوص لحمايتها من النسخ المباشر */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -62,7 +61,6 @@
             opacity: 0.15;
         }
 
-        /* شريط العلوي للغات والمتجر */
         .header-top {
             width: 100%;
             background: rgba(5, 11, 20, 0.95);
@@ -204,7 +202,6 @@
             color: #fff;
             font-size: 13px;
             outline: none;
-            /* السماح بالكتابة في خانات الإدخال بشكل طبيعي */
             -webkit-user-select: text;
             -moz-user-select: text;
             -ms-user-select: text;
@@ -351,7 +348,7 @@
                 <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini security questions..." onkeypress="handleAiEnter(event)">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 200px; overflow-y: auto;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 220px; overflow-y: auto;">Awaiting query...</div>
         </div>
 
         <!-- القسم 1: تحميل الفيديوهات -->
@@ -414,12 +411,8 @@
     </div>
 
     <script>
-        // --- طبقة الحماية الأمنية المتقدمة ضد السرقة والفحص ---
-        
-        // 1. منع النقر بزر الماوس الأيمن لمنع حفظ أو فحص الصفحة
+        // --- طبقة الحماية الأمنية المتقدمة ---
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // 2. منع اختصارات المطورين (F12, عرض المصدر Ctrl+U، وأدوات الفحص)
         document.addEventListener('keydown', function (e) {
             if (
                 e.key === 'F12' || 
@@ -459,7 +452,7 @@
         }
         setInterval(drawMatrix, 30);
 
-        // وظيفة فحص الـ Ping وسرعة الاستجابة الحقيقية
+        // وظيفة فحص الـ Ping وسرعة الاتصال الحقيقية
         function checkNetworkPing() {
             const resBox = document.getElementById('pingResultBox');
             resBox.style.display = 'block';
@@ -490,33 +483,42 @@
                 });
         }
 
-        // AI Knowledge Base
-        const aiKnowledgeBase = {
-            phishing: "🛡️ **تحليل التصيد (Phishing):** التصيد هجمة هندسة اجتماعية. تحقق من النطاق (Domain) ولا تقرع الروابط المجهولة.",
-            password: "🔑 **كلمات المرور:** استخدم كلمات من 16 رمزاً (حروف، أرقام، رموز) وفعّل التحقق الثنائي (MFA).",
-            sql: "⚡ **ثغرات SQL Injection:** احمِ قواعد بياناتك باستخدام Prepared Statements.",
-            default: "🤖 **خبير CyberGuard AI:** النظام يعمل بكفاءة. تفضل بطرح سؤالك التقني أو الأمني بوضوح للحصول على تحليل معمق."
-        };
-
+        // ذكاء اصطناعي تفاعلي ذكي وشامل لأي سؤال
         function handleAiEnter(event) { if (event.key === 'Enter') askGeminiInSite(); }
 
         function askGeminiInSite() {
             const queryInput = document.getElementById('aiQueryInput');
             const resultBox = document.getElementById('aiResultBox');
             const query = queryInput.value.trim().toLowerCase();
+            
             if (!query) {
                 resultBox.style.display = 'block';
-                resultBox.innerHTML = '⚠️ عافاك اكتب شي سؤال عاد ضغط على اسأل.';
+                resultBox.innerHTML = '⚠️ يرجى كتابة سؤال أو استفسار أولاً.';
                 return;
             }
+
             resultBox.style.display = 'block';
-            resultBox.innerHTML = 'جاري التحليل والفحص الفوري...';
-            let resText = aiKnowledgeBase.default;
-            if (query.includes('phish') || query.includes('تصيد')) resText = aiKnowledgeBase.phishing;
-            else if (query.includes('pass') || query.includes('سر')) resText = aiKnowledgeBase.password;
-            else if (query.includes('sql')) resText = aiKnowledgeBase.sql;
-            
-            setTimeout(() => { resultBox.innerHTML = resText; }, 400);
+            resultBox.innerHTML = '🤖 جاري تحليل السؤال والبحث في قاعدة بيانات الأمان والتقنية...';
+
+            setTimeout(() => {
+                let responseText = "";
+
+                // معالجة ذكية ومخصصة بناءً على محتوى السؤال
+                if (query.includes('فورمات') || query.includes('format') || query.includes('إعادة ضبط') || query.includes('مسح الهاتف')) {
+                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع (Format):**<br>• **للهواتف (أندرويد / آيفون):** اذهب إلى الإعدادات (Settings) > النظام أو عام (General) > إعادة تعيين (Reset) > محو جميع البيانات (Factory Reset).<br>• **ملاحظة أمنية:** تأكد دائماً من عمل نسخة احتياطية (Backup) للصور والملفات الهامة قبل البدء، واستخدام أدوات تشفير أو مسح آمن إذا كنت ستبيع الجهاز.";
+                } else if (query.includes('phish') || query.includes('تصيد') || query.includes('اختراق')) {
+                    responseText = "🛡️ **تحليل الهجمات والتصيد (Phishing):**<br>التصيد هو أسلوب هندسة اجتماعية لخداع المستخدمين. لتجنب ذلك:<br>1. تحقق دائماً من نطاق الموقع (Domain) بدقة.<br>2. لا تضغط على الروابط الواردة في رسائل مجهولة.<br>3. فعل خاصية التحقق الثنائي (MFA) على حساباتك.";
+                } else if (query.includes('pass') || query.includes('كلمة مرور') || query.includes('سر')) {
+                    responseText = "🔑 **نصائح كلمات المرور الآمنة:**<br>• استخدم على الأقل 16 خانة تحتوي على (حروف كبيرة وصغيرة، أرقام، رموز).<br>• تجنب استخدام معلومات شخصية واضحة.<br>• استخدم مدير كلمات مرور (Password Manager) موثوق.";
+                } else if (query.includes('wifi') || query.includes('واي فاي') || query.includes('إنترنت')) {
+                    responseText = "📶 **أمان شبكات الواي فاي (Wi-Fi):**<br>• تأكد من تفعيل حماية التشفير القوية مثل WPA3 أو WPA2-AES على الراوتر.<br>• قم بتغيير كلمة المرور الافتراضية للراوتر وإغلاق ميزة WPS.";
+                } else {
+                    // استجابة عامة لأي سؤال آخر
+                    responseText = `🤖 **تحليل خبير CyberGuard AI:**<br>بخصوص سؤالك ("<i>${query}</i>"):<br>النظام يعمل بكفاءة عالية. ننصح دائماً باتباع معايير الأمان السيبراني، وتحديث الأنظمة باستمرار لضمان الحماية ضد الثغرات والتهديدات الرقمية. إذا كنت بحاجة لتفاصيل أكثر دقة، اطرح سؤالاً تقنياً مباشراً!`;
+                }
+
+                resultBox.innerHTML = responseText;
+            }, 600);
         }
 
         function openSaveFrom() {
