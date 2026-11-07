@@ -7,7 +7,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">CyberGuard & Media | Elite Security Hub</title>
+    <title id="pageTitle">SaveGuard & Media | Elite Security Hub</title>
 
     <!-- رأس الأمان متوافق مع أدسنس -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -244,16 +244,17 @@
 
         .result-box {
             background: rgba(5, 11, 20, 0.9);
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             font-size: 13px;
-            text-align: center;
+            text-align: left;
             margin: 12px 0;
             border: 1px dashed #334155;
-            word-break: break-all;
-            font-family: 'Share Tech Mono', monospace;
+            word-break: break-word;
+            font-family: 'Inter', sans-serif;
             -webkit-user-select: text;
             user-select: text;
+            line-height: 1.6;
         }
 
         .password-box {
@@ -326,7 +327,7 @@
     </div>
 
     <div class="container">
-        <h1 class="main-title">&gt; CYBER_GUARD.SYS</h1>
+        <h1 class="main-title">&gt; SAVE_GUARD.SYS</h1>
         <div class="subtitle" id="subTitleText">Digital Security Intelligence & Store</div>
 
         <!-- قسم فحص الـ Ping وسرعة الاتصال -->
@@ -336,7 +337,7 @@
             <button class="action-btn" style="background: linear-gradient(135deg, #f59e0b, #ef4444); width: 100%; margin-top: 6px;" onclick="checkNetworkPing()">
                 <i class="fa-solid fa-wave-square"></i> <span id="pingBtnText">Run Ping Test</span>
             </button>
-            <div id="pingResultBox" class="result-box" style="display: none;">Awaiting test...</div>
+            <div id="pingResultBox" class="result-box" style="display: none; text-align: center;">Awaiting test...</div>
         </div>
 
         <!-- بوت الذكاء الاصطناعي الحقيقي (Gemini AI Real Bot) -->
@@ -347,7 +348,7 @@
                 <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini anything..." onkeypress="handleAiEnter(event)">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 320px; overflow-y: auto; line-height: 1.6; user-select: text;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; color: #38bdf8; max-height: 320px; overflow-y: auto;">Awaiting query...</div>
         </div>
 
         <!-- القسم 1: تحميل الفيديوهات مباشرة -->
@@ -374,7 +375,7 @@
                 <input type="text" id="checkUrl" class="custom-input" placeholder="Enter link or domain...">
                 <button class="action-btn" onclick="checkUrlSecurity()"><i class="fa-solid fa-radar"></i> <span id="scanBtnText">Scan</span></button>
             </div>
-            <div id="urlResult" class="result-box" style="display: none;">System ready.</div>
+            <div id="urlResult" class="result-box" style="display: none; text-align: center;">System ready.</div>
         </div>
 
         <!-- القسم 3: كلمات المرور -->
@@ -385,7 +386,7 @@
                 <input type="password" id="passInput" class="custom-input" placeholder="Type password...">
                 <button class="action-btn" onclick="checkPasswordStrength()"><i class="fa-solid fa-lock-open"></i> <span id="auditBtnText">Audit</span></button>
             </div>
-            <div id="passAuditResult" class="result-box" style="display: none;">Awaiting password...</div>
+            <div id="passAuditResult" class="result-box" style="display: none; text-align: center;">Awaiting password...</div>
             
             <p style="margin-top: 12px; font-size: 11px; color: #94a3b8;" id="tool3SubDesc">Need a secure token instead?</p>
             <div class="password-box" id="passwordDisplay">SECURE_KEY_PENDING</div>
@@ -394,19 +395,19 @@
 
         <!-- رابط المتجر الرئيسي -->
         <div class="card" style="border-color: #00ffcc; text-align: center;">
-            <h3><i class="fa-solid fa-store"></i> <span id="storeTitle">CyberGuard Official Apparel Store</span></h3>
+            <h3><i class="fa-solid fa-store"></i> <span id="storeTitle">SaveGuard Official Apparel Store</span></h3>
             <p id="storeDesc">Get high-tech gear, hoodies, and exclusive security merchandise.</p>
             <a href="https://www.redbubble.com/people/Mr-seller1/shop" target="_blank" class="store-btn" id="storeBtnText">Visit Store 🚀</a>
         </div>
 
         <div class="social-footer">
             <div class="social-icons">
-                <a href="https://github.com/safeguard-code" target="_blank" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/saveguard-code" target="_blank" class="social-icon"><i class="fa-brands fa-github"></i></a>
                 <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <footer>&copy; 2026 CYBER_GUARD.SYS // ALL RIGHTS RESERVED.</footer>
+            <footer>&copy; 2026 SAVE_GUARD.SYS // ALL RIGHTS RESERVED.</footer>
         </div>
     </div>
 
@@ -420,7 +421,7 @@
                 (e.ctrlKey && e.key === 'U')
             ) {
                 e.preventDefault();
-                alert('⚠️ Security Alert: Unauthorized source inspection attempt logged by CyberGuard!');
+                alert('⚠️ Security Alert: Unauthorized source inspection attempt logged by SaveGuard!');
                 return false;
             }
         });
@@ -478,7 +479,7 @@
                 auditBtn: "Audit",
                 tool3SubDesc: "Need a secure token instead?",
                 genBtn: "Generate Token",
-                storeTitle: "CyberGuard Official Apparel Store",
+                storeTitle: "SaveGuard Official Apparel Store",
                 storeDesc: "Get high-tech gear, hoodies, and exclusive security merchandise.",
                 storeBtn: "Visit Store 🚀"
             },
@@ -506,7 +507,7 @@
                 auditBtn: "تدقيق",
                 tool3SubDesc: "تحتاج إلى رمز سري آمن وعشوائي بدلاً من ذلك؟",
                 genBtn: "توليد رمز آمن",
-                storeTitle: "متجر ملابس CyberGuard الرسمي",
+                storeTitle: "متجر ملابس SaveGuard الرسمي",
                 storeDesc: "احصل على معدات تقنية عالية الجودة، هوديز، ومرشانديز حصرية.",
                 storeBtn: "زيارة المتجر 🚀"
             },
@@ -534,7 +535,7 @@
                 auditBtn: "Auditer",
                 tool3SubDesc: "Besoin d'un jeton sécurisé à la place ?",
                 genBtn: "Générer un jeton",
-                storeTitle: "Boutique Officielle CyberGuard",
+                storeTitle: "Boutique Officielle SaveGuard",
                 storeDesc: "Obtenez des équipements high-tech, des sweats à capuche et des articles exclusifs.",
                 storeBtn: "Visiter la boutique 🚀"
             },
@@ -562,7 +563,7 @@
                 auditBtn: "Audit",
                 tool3SubDesc: "Heeft u in plaats daarvan een beveiligde token nodig?",
                 genBtn: "Token genereren",
-                storeTitle: "CyberGuard Officiële Kledingwinkel",
+                storeTitle: "SaveGuard Officiële Kledingwinkel",
                 storeDesc: "Ontvang hightechuitrusting, hoodies en exclusieve beveiligingsmerchandise.",
                 storeBtn: "Bezoek winkel 🚀"
             },
@@ -590,7 +591,7 @@
                 auditBtn: "Auditer",
                 tool3SubDesc: "¿Necesita un token seguro en su lugar?",
                 genBtn: "Generar token",
-                storeTitle: "Tienda Oficial de Ropa CyberGuard",
+                storeTitle: "Tienda Oficial de Ropa SaveGuard",
                 storeDesc: "Obtenga equipo de alta tecnología, sudaderas y mercancía de seguridad exclusiva.",
                 storeBtn: "Visitar tienda 🚀"
             },
@@ -610,15 +611,15 @@
                 fetchBtn: "Abrufen",
                 tool2Title: "2. Sichere URL & Phishing Inspector",
                 tool2Desc: "Analysieren Sie Ziel-Links oder verdächtige URLs vor dem Klicken:",
-                urlInputPlaceholder: "Link أو Domain eingeben...",
+                urlInputPlaceholder: "Link oder Domain eingeben...",
                 scanBtn: "Scannen",
                 tool3Title: "3. Passwort-Stärke & Leck-Prüfung",
-                tool3Desc: "Testen Sie Ihr Passwort lokal على Stärke und Entropie:",
+                tool3Desc: "Testen Sie Ihr Passwort lokal auf Stärke und Entropie:",
                 passInputPlaceholder: "Passwort eingeben...",
                 auditBtn: "Prüfen",
                 tool3SubDesc: "Benötigen Sie stattdessen ein sicheres Token?",
                 genBtn: "Token generieren",
-                storeTitle: "CyberGuard Offizieller Bekleidungsshop",
+                storeTitle: "SaveGuard Offizieller Bekleidungsshop",
                 storeDesc: "Holen Sie sich High-Tech-Ausrüstung, Hoodies und exklusive Sicherheitsartikel.",
                 storeBtn: "Shop besuchen 🚀"
             }
@@ -697,7 +698,7 @@
 
         function handleAiEnter(event) { if (event.key === 'Enter') askGeminiInSite(); }
 
-        // --- محرك الذكاء الاصطناعي الذكي والمطور محلياً (فوري، متجاوب، ودقيق لأي سؤال) ---
+        // --- محرك الذكاء الاصطناعي الجيل الجديد الجاهز (SaveGuard AI Core) ---
         function askGeminiInSite() {
             const queryInput = document.getElementById('aiQueryInput');
             const resultBox = document.getElementById('aiResultBox');
@@ -706,38 +707,35 @@
             if (!query) {
                 resultBox.style.display = 'block';
                 resultBox.className = 'result-box result-danger';
-                resultBox.innerHTML = '⚠️ يرجى كتابة سؤال أو استفسار أولاً.';
+                resultBox.innerHTML = '⚠️ يرجى كتابة سؤالك أولاً.';
                 return;
             }
 
             resultBox.style.display = 'block';
             resultBox.className = 'result-box';
-            resultBox.innerHTML = '🤖 جاري معالجة السؤال وصياغة الإجابة الفورية...';
+            resultBox.innerHTML = '🤖 جاري التفكير واستخراج الإجابة...';
 
             setTimeout(() => {
                 const q = query.toLowerCase();
                 let answer = "";
 
-                // قاعدة استجابة ذكية متعددة المواضيع واللغات
-                if (q.includes('سلام') || q.includes('salam') || q.includes('hello') || q.includes('hi') || q.includes('مرحباً')) {
-                    answer = `👋 أهلاً بك يا صديقي في منصة **CyberGuard**! أنا مساعدك الذكي Gemini، مستعد للإجابة على أي سؤال تقني، برمجي، أو عام تطرحه علي الآن.`;
-                } else if (q.includes('شكون') || q.includes('من أنت') || q.includes('who')) {
-                    answer = `🤖 أنا نظام الذكاء الاصطناعي **Gemini AI** المدمج حصرياً في منصة **CyberGuard** لمساعدتك في فحص الروابط، اختبار الشبكات، وتحليل المعلومات بدقة عالية.`;
+                if (q.includes('سلام') || q.includes('salam') || q.includes('مرحبا') || q.includes('hello') || q.includes('hi')) {
+                    answer = "وعليكم السلام ورحمة الله! مرحباً بك في منصة SaveGuard. كيف يمكنني مساعدتك اليوم في مجالات التقنية، البرمجة، والأمان السيبراني؟";
+                } else if (q.includes('شكون') || q.includes('من انت') || q.includes('who')) {
+                    answer = "أنا المساعد الذكي الخاص بمنصة SaveGuard. أقوم بإجابة استفساراتك وتحليل البيانات التفاعلية في الحين لضمان أفضل تجربة للمستخدم.";
                 } else if (q.includes('بايتون') || q.includes('python')) {
-                    answer = `🐍 **لغة Python:**<br>هي لغة برمجة عالية المستوى وسهلة التعلم، وتعتبر الخيار الأول عالمياً في مجالات الذكاء الاصطناعي، تحليل البيانات، وتطوير السيرفرات.`;
+                    answer = "لغة Python هي إحدى أشهر لغات البرمجة عالمياً، تمتاز بإنتاجيتها العالية وتُستعمل بكثرة في بناء أنظمة الذكاء الاصطناعي، الأمن السيبراني، وتطوير التطبيقات.";
                 } else if (q.includes('جافا') || q.includes('javascript') || q.includes('js')) {
-                    answer = `⚡ **لغة JavaScript:**<br>هي عصب الويب التفاعلي؛ تُستخدم لتطوير الواجهات والصفحات الحية (مثل هذا الموقع الذي تتصفحه الآن).`;
-                } else if (q.includes('أمان') || q.includes('حماية') || q.includes('security') || q.includes('hack')) {
-                    answer = `🛡️ **الأمان السيبراني:**<br>يتطلب حماية بياناتك استخدام كلمات مرور معقدة، تفعيل التحقق الثنائي (2FA)، وتجنب النقر على الروابط مجهولة المصدر لصد هجمات التصيد (Phishing).`;
-                } else if (q.includes('موقع') || q.includes('github') || q.includes('adsense')) {
-                    answer = `🌐 **منظومة CyberGuard:**<br>هذا الموقع مستضاف باحترافية على GitHub Pages ومجهز بالكامل بملف ` + "`ads.txt`" + ` لتحقيق الدخل عبر Google AdSense بكفاءة تالية.`;
+                    answer = "لغة JavaScript هي المحرك الأساسي لصفحات الويب التفاعلية. تُمكنك من جعل موقعك SaveGuard يستجيب بشكل حي وديناميكي لجميع طلبات الزوار.";
+                } else if (q.includes('امان') || q.includes('حماية') || q.includes('security')) {
+                    answer = "منظومة الأمان في SaveGuard توصي دائماً بتحديث الأنظمة، استخدام التشفير القوي، عدم النقر على الروابط مجهولة المصدر، وتفعيل نظام التحقق من الهوية.";
                 } else {
-                    answer = `🤖 <b>Gemini AI Assistant:</b><br>بخصوص سؤالك ("<b>${query}</b>"):<br>بناءً على تحليل البيانات والمنظومة التقنية، هذا الموضوع يعتمد على التخطيط السليم، فهم المعايير التقنية، وتطبيق الخطوات العملية بدقة لضمان أفضل نتيجة ممكنة. هل ترغب في توضيح إضافي حول هذه النقطة؟`;
+                    answer = "بخصوص سؤالك: (" + query + ")\nهذا استفسار ممتاز! للحصول على أفضل نتيجة عملية، ننصحك بالاعتماد على أدوات SaveGuard التقنية والتأكد من تطبيق الخطوات بشكل منظم ومحمي.";
                 }
 
                 resultBox.className = 'result-box result-safe';
-                resultBox.innerHTML = answer;
-            }, 250);
+                resultBox.innerHTML = "<b>🤖 SaveGuard AI:</b><br>" + answer.replace(/\n/g, "<br>");
+            }, 300);
         }
 
         function fetchAndDownloadVideo() {
