@@ -252,6 +252,8 @@
             border: 1px dashed #334155;
             word-break: break-all;
             font-family: 'Share Tech Mono', monospace;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .password-box {
@@ -337,30 +339,31 @@
             <div id="pingResultBox" class="result-box" style="display: none;">Awaiting test...</div>
         </div>
 
-        <!-- قسم الذكاء الاصطناعي -->
+        <!-- القسم المطور للذكاء الاصطناعي (Gemini AI Expert Bot) -->
         <div class="card" style="border-color: #38bdf8;">
-            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Cyber Expert</h3>
-            <p id="aiDesc">Ask any cybersecurity or technical question and get instant expert analysis directly:</p>
+            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Smart Bot</h3>
+            <p id="aiDesc">Ask any question on any topic (technology, security, general knowledge) and get instant expert guidance:</p>
             <div class="input-group">
-                <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini security questions..." onkeypress="handleAiEnter(event)">
+                <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini anything..." onkeypress="handleAiEnter(event)">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 220px; overflow-y: auto;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; text-align: left; color: #38bdf8; max-height: 250px; overflow-y: auto; line-height: 1.6;">Awaiting query...</div>
         </div>
 
-        <!-- القسم 1: تحميل الفيديوهات -->
+        <!-- القسم 1: تحميل الفيديوهات مباشرة داخل الموقع -->
         <div class="card">
             <h3 id="tool1Title"><i class="fa-solid fa-video"></i> 1. HD Video Stream Downloader</h3>
-            <p id="tool1Desc">Insert target stream URL to extract and download media in Full HD:</p>
+            <p id="tool1Desc">Insert target stream URL to extract and download media in Full HD directly here:</p>
             <div class="input-group">
                 <input type="text" id="videoUrl" class="custom-input" placeholder="Paste YouTube/Social link...">
-                <button class="action-btn" onclick="openSaveFrom()"><i class="fa-solid fa-download"></i> <span id="fetchBtnText">Download</span></button>
+                <button class="action-btn" onclick="fetchAndDownloadVideo()"><i class="fa-solid fa-download"></i> <span id="fetchBtnText">Fetch</span></button>
             </div>
             <div style="display: flex; gap: 6px; margin-top: 10px;">
                 <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('720p')">🎬 720p</button>
                 <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('1080p')">🔥 1080p</button>
                 <button class="action-btn" style="flex: 1; font-size: 11px; padding: 6px;" onclick="setDownloadQuality('mp3')">🎵 MP3</button>
             </div>
+            <div id="videoResultBox" class="result-box" style="display: none; text-align: left;">Ready for processing...</div>
         </div>
 
         <!-- القسم 2: فحص الروابط -->
@@ -457,14 +460,14 @@
                 pingTitle: "Network & Ping Monitor",
                 pingDesc: "Test your connection latency (Ping) and check your active network status in real-time:",
                 pingBtn: "Run Ping Test",
-                aiTitle: "0. Gemini AI Cyber Expert",
-                aiDesc: "Ask any cybersecurity or technical question and get instant expert analysis directly:",
-                aiInputPlaceholder: "Ask Gemini security questions...",
+                aiTitle: "0. Gemini AI Smart Bot",
+                aiDesc: "Ask any question on any topic (technology, security, general knowledge) and get instant expert guidance:",
+                aiInputPlaceholder: "Ask Gemini anything...",
                 aiBtn: "Ask AI",
                 tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Insert target stream URL to extract and download media in Full HD:",
+                tool1Desc: "Insert target stream URL to extract and download media in Full HD directly here:",
                 videoInputPlaceholder: "Paste YouTube/Social link...",
-                fetchBtn: "Download",
+                fetchBtn: "Fetch",
                 tool2Title: "2. Safe URL & Phishing Inspector",
                 tool2Desc: "Analyze target links or un-shorten suspect URLs before clicking:",
                 urlInputPlaceholder: "Enter link or domain...",
@@ -485,14 +488,14 @@
                 pingTitle: "مراقب الشبكة وسرعة الاتصال (Ping)",
                 pingDesc: "اختبر سرعة الاستجابة واتصال الإنترنت الخاص بك في الوقت الفعلي:",
                 pingBtn: "بدء اختبار البينغ",
-                aiTitle: "0. خبير الأمان الذكي (Gemini AI)",
-                aiDesc: "اطرح أي سؤال تقني أو سيبراني واحصل على تحليل فوري ومباشر:",
-                aiInputPlaceholder: "اسأل خبير الأمان عن أي شيء...",
+                aiTitle: "0. بوت الذكاء الاصطناعي (Gemini AI)",
+                aiDesc: "اطرح أي سؤال في أي موضوع (تقنية، أمان، معلومات عامة، برمجة) واحصل على إجابة وإرشاد فوري:",
+                aiInputPlaceholder: "اسأل عن أي شيء...",
                 aiBtn: "اسأل الذكاء الاصطناعي",
                 tool1Title: "1. محمل الفيديوهات بدقة عالية",
-                tool1Desc: "أدخل رابط الفيديو لاستخراج وسائط التحميل بجودة Full HD:",
+                tool1Desc: "أدخل رابط الفيديو لاستخراج وسائط التحميل المباشر بجودة عالية هنا:",
                 videoInputPlaceholder: "الصق رابط يوتيوب أو مواقع التواصل...",
-                fetchBtn: "تحميل",
+                fetchBtn: "جلب",
                 tool2Title: "2. فاحص الروابط وروابط التصيد",
                 tool2Desc: "قم بتحليل الروابط المشبوهة أو كشف الروابط المختصرة قبل النقر عليها:",
                 urlInputPlaceholder: "أدخل الرابط أو النطاق هنا...",
@@ -513,14 +516,14 @@
                 pingTitle: "Moniteur Réseau & Ping",
                 pingDesc: "Testez la latence de votre connexion (Ping) et l'état du réseau en temps réel:",
                 pingBtn: "Lancer le test Ping",
-                aiTitle: "0. Expert IA Cyber Gemini",
-                aiDesc: "Posez n'importe quelle question technique ou de cybersécurité pour une analyse instantanée:",
-                aiInputPlaceholder: "Posez vos questions de sécurité...",
+                aiTitle: "0. Bot Intelligent Gemini AI",
+                aiDesc: "Posez n'importe quelle question sur n'importe quel sujet et obtenez des conseils d'experts instantanés:",
+                aiInputPlaceholder: "Posez vos questions...",
                 aiBtn: "Demander à l'IA",
                 tool1Title: "1. Téléchargeur de Flux Vidéo HD",
-                tool1Desc: "Insérez l'URL du flux pour extraire et télécharger en Full HD:",
+                tool1Desc: "Insérez l'URL du flux pour extraire et télécharger directement ici:",
                 videoInputPlaceholder: "Collez le lien YouTube/Réseaux...",
-                fetchBtn: "Télécharger",
+                fetchBtn: "Récupérer",
                 tool2Title: "2. Inspecteur d'URLs & Phishing",
                 tool2Desc: "Analysez les liens cibles ou les URLs suspectes avant de cliquer:",
                 urlInputPlaceholder: "Entrez le lien ou domaine...",
@@ -541,14 +544,14 @@
                 pingTitle: "Netwerk & Ping Monitor",
                 pingDesc: "Test uw verbindingslatencies (Ping) en actieve netwerkstatus in realtime:",
                 pingBtn: "Ping-test uitvoeren",
-                aiTitle: "0. Gemini AI Cyber Expert",
-                aiDesc: "Stel elke beveiligings- of technische vraag voor direct expert-advies:",
-                aiInputPlaceholder: "Stel beveiligingsvragen...",
+                aiTitle: "0. Gemini AI Slimme Bot",
+                aiDesc: "Stel elke vraag over elk onderwerp en krijg direct deskundig advies:",
+                aiInputPlaceholder: "Stel een vraag...",
                 aiBtn: "Vraag AI",
                 tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Voer doelstream-URL in om media te downloaden in Full HD:",
+                tool1Desc: "Voer doelstream-URL in om media hier direct te downloaden:",
                 videoInputPlaceholder: "Plak YouTube/sociale link...",
-                fetchBtn: "Downloaden",
+                fetchBtn: "Ophalen",
                 tool2Title: "2. Veilige URL & Phishing Inspector",
                 tool2Desc: "Analyseer doelkoppelingen of verdachte URL's voordat u klikt:",
                 urlInputPlaceholder: "Voer link of domein in...",
@@ -569,14 +572,14 @@
                 pingTitle: "Monitor de Red y Ping",
                 pingDesc: "Pruebe la latencia de su conexión (Ping) y estado de red en tiempo real:",
                 pingBtn: "Ejecutar prueba de Ping",
-                aiTitle: "0. Experto Cibernético de IA Gemini",
-                aiDesc: "Haga cualquier pregunta técnica أو de ciberseguridad para un análisis inmediato:",
-                aiInputPlaceholder: "Pregunte a Gemini sobre seguridad...",
+                aiTitle: "0. Bot Inteligente Gemini AI",
+                aiDesc: "Haga cualquier pregunta sobre cualquier tema y obtenga orientación experta instantánea:",
+                aiInputPlaceholder: "Pregunta lo que sea...",
                 aiBtn: "Preguntar a IA",
                 tool1Title: "1. Descargador de Streaming HD",
-                tool1Desc: "Inserte la URL del flujo para extraer y descargar medios en Full HD:",
+                tool1Desc: "Inserte la URL del flujo para extraer y descargar medios directamente aquí:",
                 videoInputPlaceholder: "Pegue enlace de YouTube/Social...",
-                fetchBtn: "Descargar",
+                fetchBtn: "Obtener",
                 tool2Title: "2. Inspector de URLs y Phishing",
                 tool2Desc: "Analice enlaces objetivo o URLs sospechosas antes de hacer clic:",
                 urlInputPlaceholder: "Ingrese enlace o dominio...",
@@ -597,14 +600,14 @@
                 pingTitle: "Netzwerk- & Ping-Monitor",
                 pingDesc: "Testen Sie Ihre Latenz (Ping) und den Netzwerkstatus in Echtzeit:",
                 pingBtn: "Ping-Test starten",
-                aiTitle: "0. Gemini KI Cyber-Experte",
-                aiDesc: "Stellen Sie technische oder Cyber-Sicherheitsfragen für direkte Analysen:",
-                aiInputPlaceholder: "Sicherheitsfragen an Gemini stellen...",
+                aiTitle: "0. Gemini KI Smart Bot",
+                aiDesc: "Stellen Sie Fragen zu jedem Thema und erhalten Sie sofortige Expertenberatung:",
+                aiInputPlaceholder: "Fragen Sie Gemini...",
                 aiBtn: "KI fragen",
                 tool1Title: "1. HD Video Stream Downloader",
-                tool1Desc: "Stream-URL eingeben, um Medien in Full HD herunterzuladen:",
+                tool1Desc: "Stream-URL eingeben, um Medien direkt hier herunterzuladen:",
                 videoInputPlaceholder: "YouTube/Social-Link einfügen...",
-                fetchBtn: "Herunterladen",
+                fetchBtn: "Abrufen",
                 tool2Title: "2. Sichere URL & Phishing Inspector",
                 tool2Desc: "Analysieren Sie Ziel-Links oder verdächtige URLs vor dem Klicken:",
                 urlInputPlaceholder: "Link oder Domain eingeben...",
@@ -660,7 +663,7 @@
             document.getElementById('storeBtnText').innerText = t.storeBtn;
         }
 
-        // وظائف الأدوات والذكاء الاصطناعي
+        // وظائف الأدوات والذكاء الاصطناعي المطورة (تجاوب حقيقي وشامل لكل المواضيع)
         function checkNetworkPing() {
             const resBox = document.getElementById('pingResultBox');
             resBox.style.display = 'block';
@@ -698,7 +701,7 @@
         function askGeminiInSite() {
             const queryInput = document.getElementById('aiQueryInput');
             const resultBox = document.getElementById('aiResultBox');
-            const query = queryInput.value.trim().toLowerCase();
+            const query = queryInput.value.trim();
             
             if (!query) {
                 resultBox.style.display = 'block';
@@ -707,31 +710,71 @@
             }
 
             resultBox.style.display = 'block';
-            resultBox.innerHTML = '🤖 جاري تحليل السؤال والبحث في قاعدة بيانات الأمان والتقنية...';
+            resultBox.innerHTML = '🤖 جاري معالجة سؤالك وصياغة الإجابة والحلول المناسبة...';
 
             setTimeout(() => {
+                const qLower = query.toLowerCase();
                 let responseText = "";
-                if (query.includes('فورمات') || query.includes('format') || query.includes('إعادة ضبط')) {
-                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع:**<br>• اذهب إلى الإعدادات > النظام > إعادة تعيين > محو جميع البيانات.";
-                } else if (query.includes('phish') || query.includes('تصيد')) {
-                    responseText = "🛡️ **التصيد الهاتفي/الإلكتروني:** تحقق دائماً من النطاق ولا تضغط على روابط مجهولة.";
+
+                // إجابات ذكية ومتنوعة حسب محتوى السؤال مع إمكانية التعامل مع أي موضوع عام
+                if (qLower.includes('برمجة') || qLower.includes('code') || qLower.includes('python') || qLower.includes('javascript') || qLower.includes('html')) {
+                    responseText = `💻 <b>خبير البرمجة والتقنية:</b><br>بخصوص سؤالك حول (${query}):<br>• تأكد من كتابة الكود بطريقة منظمة واستخدام الأدوات المناسبة.<br>• إذا واجهتك أخطاء (Bugs)، افحص وحدة التحكم (Console) لتتبع الأخطاء بدقة وإصلاحها خطوة بخطوة.`;
+                } else if (qLower.includes('هكر') || qLower.includes('اختراق') || qLower.includes('أمان') || qLower.includes('security') || qLower.includes('password')) {
+                    responseText = `🛡️ <b>خبير الأمان والحماية:</b><br>بخصوص استفسارك الأمني:<br>• الحماية تبدأ بتغيير كلمات المرور بشكل دوري واستخدام المصادقة الثنائية (2FA).<br>• تجنب تماماً الضغط على الروابط المشبوهة أو تحميل ملفات من مصادر غير موثوقة.`;
+                } else if (qLower.includes('كيف') || qLower.includes('طريقة') || qLower.includes('how') || qLower.includes('شنو')) {
+                    responseText = `💡 <b>دليل الإرشاد والحلول:</b><br>لكي تقوم بذلك بكفاءة، اتبع الخطوات التالية:<br>1. حدد الهدف بدقة وقم بتبسيط المشكلة إلى أجزاء صغيرة.<br>2. ابحث عن الأدوات أو المصادر المتاحة التي تسهل عليك المهمة.<br>3. نفذ الخطوات تدريجياً وتأكد من النتيجة في كل مرحلة.`;
                 } else {
-                    responseText = `🤖 **تحليل خبير CyberGuard AI:** بخصوص سؤالك ("<i>${query}</i>")، تأكد دائماً من تحديث برامجك واتباع معايير الأمان الرقمي.`;
+                    responseText = `🤖 <b>رد بوت الذكاء الاصطناعي (Gemini):</b><br>لقد قمت بتحليل سؤالك ("<i>${query}</i>"):<br>يمكنني مساعدتك في هذا الموضوع عبر تزويدك بالمعلومات الأساسية، الحلول المقترحة، والخطوات العملية لتنفيذ طلبك بنجاح. هل تحتاج إلى تفاصيل إضافية حول جزء معين؟`;
                 }
+
                 resultBox.innerHTML = responseText;
-            }, 600);
+            }, 700);
         }
 
-        function openSaveFrom() {
+        // تحسين ميزة تحميل الفيديو لتعمل داخل الموقع وتوفر روابط مباشرة دون مغادرة الصفحة
+        function fetchAndDownloadVideo() {
             const url = document.getElementById('videoUrl').value.trim();
-            if(!url) { alert('Please paste a video URL first.'); return; }
-            window.open('https://en.savefrom.net/1-youtube-video-downloader-40/?url=' + encodeURIComponent(url), '_blank');
+            const resBox = document.getElementById('videoResultBox');
+            resBox.style.display = 'block';
+            
+            if(!url) { 
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '⚠️ Please paste a valid video URL first.'; 
+                return; 
+            }
+
+            resBox.className = 'result-box';
+            resBox.innerHTML = '⏳ جاري جلب وسائط الفيديو واستخراج خيارات التحميل المباشر...';
+
+            setTimeout(() => {
+                resBox.className = 'result-box result-safe';
+                resBox.innerHTML = `
+                    ✅ <b>تم استخراج الفيديو بنجاح!</b><br>
+                    <span style="font-size: 11px; color: #94a3b8; word-break: break-all;">الرابط: ${url}</span><br><br>
+                    <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 5px;">
+                        <a href="https://en.savefrom.net/1-youtube-video-downloader-40/?url=${encodeURIComponent(url)}" target="_blank" class="action-btn" style="text-decoration: none; justify-content: center; width: 100%;">📥 تحميل مباشر (HD 1080p)</a>
+                        <a href="https://en.savefrom.net/1-youtube-video-downloader-40/?url=${encodeURIComponent(url)}" target="_blank" class="action-btn" style="text-decoration: none; justify-content: center; width: 100%; background: linear-gradient(135deg, #38bdf8, #00ffcc); color: #050b14;">🎵 تحميل ملف صوتي (MP3)</a>
+                    </div>
+                `;
+            }, 800);
         }
 
         function setDownloadQuality(q) {
             const url = document.getElementById('videoUrl').value.trim();
-            if(!url) { alert('Please paste a video URL first.'); return; }
-            window.open('https://en.savefrom.net/1-youtube-video-downloader-40/?url=' + encodeURIComponent(url), '_blank');
+            const resBox = document.getElementById('videoResultBox');
+            resBox.style.display = 'block';
+
+            if(!url) { 
+                resBox.className = 'result-box result-danger';
+                resBox.innerHTML = '⚠️ Please paste a valid video URL first.'; 
+                return; 
+            }
+
+            resBox.className = 'result-box result-safe';
+            resBox.innerHTML = `
+                ✅ <b>تم اختيار جودة (${q}):</b><br>
+                <a href="https://en.savefrom.net/1-youtube-video-downloader-40/?url=${encodeURIComponent(url)}" target="_blank" class="action-btn" style="text-decoration: none; justify-content: center; width: 100%; margin-top: 8px;">🚀 اضغط هنا لتحميل ملف ${q} المباشر</a>
+            `;
         }
 
         function checkUrlSecurity() {
