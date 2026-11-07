@@ -9,10 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">CyberGuard & Media | Elite Security Hub</title>
 
-    <!-- رأس الأمان المتوافق تماماً مع أدسنس والهواتف -->
+    <!-- رأس الأمان متوافق مع أدسنس -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: https:;">
 
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -572,7 +570,7 @@
                 pingDesc: "Pruebe la latencia de su conexión (Ping) y estado de red en tiempo real:",
                 pingBtn: "Ejecutar prueba de Ping",
                 aiTitle: "0. Experto Cibernético de IA Gemini",
-                aiDesc: "Haga cualquier pregunta técnica o de ciberseguridad para un análisis inmediato:",
+                aiDesc: "Haga cualquier pregunta técnica أو de ciberseguridad para un análisis inmediato:",
                 aiInputPlaceholder: "Pregunte a Gemini sobre seguridad...",
                 aiBtn: "Preguntar a IA",
                 tool1Title: "1. Descargador de Streaming HD",
@@ -628,7 +626,6 @@
             const t = translations[lang] || translations.en;
             const htmlRoot = document.getElementById('htmlRoot');
 
-            // تغيير اتجاه الصفحة تلقائياً حسب اللغة (RTL للعربية)
             if (lang === 'ar') {
                 htmlRoot.setAttribute('dir', 'rtl');
             } else {
@@ -663,7 +660,7 @@
             document.getElementById('storeBtnText').innerText = t.storeBtn;
         }
 
-        // وظيفة فحص الـ Ping المحلية السريعة والآمنة
+        // وظائف الأدوات والذكاء الاصطناعي
         function checkNetworkPing() {
             const resBox = document.getElementById('pingResultBox');
             resBox.style.display = 'block';
@@ -696,7 +693,6 @@
             }, 80);
         }
 
-        // ذكاء اصطناعي تفاعلي ذكي وشامل لأي سؤال
         function handleAiEnter(event) { if (event.key === 'Enter') askGeminiInSite(); }
 
         function askGeminiInSite() {
@@ -715,19 +711,13 @@
 
             setTimeout(() => {
                 let responseText = "";
-
-                if (query.includes('فورمات') || query.includes('format') || query.includes('إعادة ضبط') || query.includes('مسح الهاتف')) {
-                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع (Format):**<br>• **للهواتف (أندرويد / آيفون):** اذهب إلى الإعدادات (Settings) > النظام أو عام (General) > إعادة تعيين (Reset) > محو جميع البيانات (Factory Reset).<br>• **ملاحظة أمنية:** تأكد دائماً من عمل نسخة احتياطية (Backup) للصور والملفات الهامة قبل البدء.";
-                } else if (query.includes('phish') || query.includes('تصيد') || query.includes('اختراق')) {
-                    responseText = "🛡️ **تحليل الهجمات والتصيد (Phishing):**<br>التصيد هو أسلوب هندسة اجتماعية لخداع المستخدمين. لتجنب ذلك:<br>1. تحقق دائماً من نطاق الموقع (Domain) بدقة.<br>2. لا تضغط على الروابط الواردة في رسائل مجهولة.<br>3. فعل خاصية التحقق الثنائي (MFA) على حساباتك.";
-                } else if (query.includes('pass') || query.includes('كلمة مرور') || query.includes('سر')) {
-                    responseText = "🔑 **نصائح كلمات المرور الآمنة:**<br>• استخدم على الأقل 16 خانة تحتوي على (حروف كبيرة وصغيرة، أرقام، رموز).<br>• تجنب استخدام معلومات شخصية واضحة.<br>• استخدم مدير كلمات مرور (Password Manager) موثوق.";
-                } else if (query.includes('wifi') || query.includes('واي فاي') || query.includes('إنترنت')) {
-                    responseText = "📶 **أمان شبكات الواي فاي (Wi-Fi):**<br>• تأكد من تفعيل حماية التشفير القوية مثل WPA3 أو WPA2-AES على الراوتر.<br>• قم بتغيير كلمة المرور الافتراضية للراوتر وإغلاق ميزة WPS.";
+                if (query.includes('فورمات') || query.includes('format') || query.includes('إعادة ضبط')) {
+                    responseText = "📱 **طريقة الفورمات وإعادة ضبط المصنع:**<br>• اذهب إلى الإعدادات > النظام > إعادة تعيين > محو جميع البيانات.";
+                } else if (query.includes('phish') || query.includes('تصيد')) {
+                    responseText = "🛡️ **التصيد الهاتفي/الإلكتروني:** تحقق دائماً من النطاق ولا تضغط على روابط مجهولة.";
                 } else {
-                    responseText = `🤖 **تحليل خبير CyberGuard AI:**<br>بخصوص سؤالك ("<i>${query}</i>"):<br>النظام يعمل بكفاءة عالية. ننصح دائماً باتباع معايير الأمان السيبراني، وتحديث الأنظمة باستمرار لضمان الحماية ضد الثغرات والتهديدات الرقمية.`;
+                    responseText = `🤖 **تحليل خبير CyberGuard AI:** بخصوص سؤالك ("<i>${query}</i>")، تأكد دائماً من تحديث برامجك واتباع معايير الأمان الرقمي.`;
                 }
-
                 resultBox.innerHTML = responseText;
             }, 600);
         }
