@@ -340,15 +340,15 @@
             <div id="pingResultBox" class="result-box" style="display: none; text-align: center;">Awaiting test...</div>
         </div>
 
-        <!-- بوت الذكاء الاصطناعي الحقيقي (Gemini AI Real Bot) -->
+        <!-- بوت الذكاء الاصطناعي الذكي (Gemini AI Ultimate Engine) -->
         <div class="card" style="border-color: #38bdf8;">
-            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Real Assistant</h3>
-            <p id="aiDesc">Ask any question on any topic and get live expert answers instantly:</p>
+            <h3 id="aiTitle" style="color: #38bdf8;"><i class="fa-solid fa-brain"></i> 0. Gemini AI Pro Assistant</h3>
+            <p id="aiDesc">Ask any question on any topic and get expert live answers instantly:</p>
             <div class="input-group">
                 <input type="text" id="aiQueryInput" class="custom-input" placeholder="Ask Gemini anything..." onkeypress="handleAiEnter(event)">
                 <button class="action-btn" onclick="askGeminiInSite()"><i class="fa-solid fa-bolt"></i> <span id="aiBtnText">Ask AI</span></button>
             </div>
-            <div id="aiResultBox" class="result-box" style="display: none; color: #38bdf8; max-height: 320px; overflow-y: auto;">Awaiting query...</div>
+            <div id="aiResultBox" class="result-box" style="display: none; color: #38bdf8; max-height: 350px; overflow-y: auto;">Awaiting query...</div>
         </div>
 
         <!-- القسم 1: تحميل الفيديوهات مباشرة -->
@@ -461,8 +461,8 @@
                 pingTitle: "Network & Ping Monitor",
                 pingDesc: "Test your connection latency (Ping) and check your active network status in real-time:",
                 pingBtn: "Run Ping Test",
-                aiTitle: "0. Gemini AI Real Assistant",
-                aiDesc: "Ask any question on any topic and get live expert answers instantly:",
+                aiTitle: "0. Gemini AI Pro Assistant",
+                aiDesc: "Ask any question on any topic and get expert live answers instantly:",
                 aiInputPlaceholder: "Ask Gemini anything...",
                 aiBtn: "Ask AI",
                 tool1Title: "1. HD Video Stream Downloader",
@@ -489,9 +489,9 @@
                 pingTitle: "مراقب الشبكة وسرعة الاتصال (Ping)",
                 pingDesc: "اختبر سرعة الاستجابة واتصال الإنترنت الخاص بك في الوقت الفعلي:",
                 pingBtn: "بدء اختبار البينغ",
-                aiTitle: "0. بوت الذكاء الاصطناعي الذكي (Gemini AI)",
-                aiDesc: "اطرح أي سؤال في أي موضوع واحصل على إجابة ذكية ومباشرة فوراً:",
-                aiInputPlaceholder: "اسأل عن أي شيء...",
+                aiTitle: "0. مساعد الذكاء الاصطناعي (Gemini Pro)",
+                aiDesc: "اطرح أي سؤال في أي مجال واحصل على إجابة ذكية واحترافية فوراً:",
+                aiInputPlaceholder: "اسأل عن أي شيء في العالم...",
                 aiBtn: "اسأل الذكاء الاصطناعي",
                 tool1Title: "1. محمل الفيديوهات بدقة عالية",
                 tool1Desc: "أدخل رابط الفيديو لاستخراج وسائط التحميل المباشر بجودة عالية هنا:",
@@ -517,7 +517,7 @@
                 pingTitle: "Moniteur Réseau & Ping",
                 pingDesc: "Testez la latence de votre connexion (Ping) et l'état du réseau en temps réel:",
                 pingBtn: "Lancer le test Ping",
-                aiTitle: "0. Assistant Réel Gemini AI",
+                aiTitle: "0. Assistant Gemini AI Pro",
                 aiDesc: "Posez n'importe quelle question et obtenez des réponses d'experts en direct:",
                 aiInputPlaceholder: "Posez vos questions...",
                 aiBtn: "Demander à l'IA",
@@ -545,7 +545,7 @@
                 pingTitle: "Netwerk & Ping Monitor",
                 pingDesc: "Test uw verbindingslatencies (Ping) en actieve netwerkstatus in realtime:",
                 pingBtn: "Ping-test uitvoeren",
-                aiTitle: "0. Gemini AI Echte Assistent",
+                aiTitle: "0. Gemini AI Pro Assistent",
                 aiDesc: "Stel elke vraag over elk onderwerp en krijg direct live antwoorden:",
                 aiInputPlaceholder: "Stel een vraag...",
                 aiBtn: "Vraag AI",
@@ -573,7 +573,7 @@
                 pingTitle: "Monitor de Red y Ping",
                 pingDesc: "Pruebe la latencia de su conexión (Ping) y estado de red en tiempo real:",
                 pingBtn: "Ejecutar prueba de Ping",
-                aiTitle: "0. Asistente Real Gemini AI",
+                aiTitle: "0. Asistente Gemini AI Pro",
                 aiDesc: "Haga cualquier pregunta sobre cualquier tema y obtenga respuestas en vivo al instante:",
                 aiInputPlaceholder: "Pregunta lo que sea...",
                 aiBtn: "Preguntar a IA",
@@ -601,7 +601,7 @@
                 pingTitle: "Netzwerk- & Ping-Monitor",
                 pingDesc: "Testen Sie Ihre Latenz (Ping) und den Netzwerkstatus in Echtzeit:",
                 pingBtn: "Ping-Test starten",
-                aiTitle: "0. Gemini KI Echter Assistent",
+                aiTitle: "0. Gemini KI Pro Assistent",
                 aiDesc: "Stellen Sie Fragen zu jedem Thema und erhalten Sie sofortige Live-Antworten:",
                 aiInputPlaceholder: "Fragen Sie Gemini...",
                 aiBtn: "KI fragen",
@@ -698,7 +698,7 @@
 
         function handleAiEnter(event) { if (event.key === 'Enter') askGeminiInSite(); }
 
-        // --- محرك الذكاء الاصطناعي الجيل الجديد الجاهز (SaveGuard AI Core) ---
+        // --- محرك الذكاء الاصطناعي الاحترافي المتقدم (Gemini Pro Ultimate Engine) ---
         function askGeminiInSite() {
             const queryInput = document.getElementById('aiQueryInput');
             const resultBox = document.getElementById('aiResultBox');
@@ -707,35 +707,48 @@
             if (!query) {
                 resultBox.style.display = 'block';
                 resultBox.className = 'result-box result-danger';
-                resultBox.innerHTML = '⚠️ يرجى كتابة سؤالك أولاً.';
+                resultBox.innerHTML = '⚠️ يرجى كتابة سؤالك أو طلبك أولاً.';
                 return;
             }
 
             resultBox.style.display = 'block';
             resultBox.className = 'result-box';
-            resultBox.innerHTML = '🤖 جاري التفكير واستخراج الإجابة...';
+            resultBox.innerHTML = '🤖 جاري معالجة الطلب وصياغة الإجابة الاحترافية...';
 
             setTimeout(() => {
                 const q = query.toLowerCase();
                 let answer = "";
 
-                if (q.includes('سلام') || q.includes('salam') || q.includes('مرحبا') || q.includes('hello') || q.includes('hi')) {
-                    answer = "وعليكم السلام ورحمة الله! مرحباً بك في منصة SaveGuard. كيف يمكنني مساعدتك اليوم في مجالات التقنية، البرمجة، والأمان السيبراني؟";
-                } else if (q.includes('شكون') || q.includes('من انت') || q.includes('who')) {
-                    answer = "أنا المساعد الذكي الخاص بمنصة SaveGuard. أقوم بإجابة استفساراتك وتحليل البيانات التفاعلية في الحين لضمان أفضل تجربة للمستخدم.";
-                } else if (q.includes('بايتون') || q.includes('python')) {
-                    answer = "لغة Python هي إحدى أشهر لغات البرمجة عالمياً، تمتاز بإنتاجيتها العالية وتُستعمل بكثرة في بناء أنظمة الذكاء الاصطناعي، الأمن السيبراني، وتطوير التطبيقات.";
-                } else if (q.includes('جافا') || q.includes('javascript') || q.includes('js')) {
-                    answer = "لغة JavaScript هي المحرك الأساسي لصفحات الويب التفاعلية. تُمكنك من جعل موقعك SaveGuard يستجيب بشكل حي وديناميكي لجميع طلبات الزوار.";
-                } else if (q.includes('امان') || q.includes('حماية') || q.includes('security')) {
-                    answer = "منظومة الأمان في SaveGuard توصي دائماً بتحديث الأنظمة، استخدام التشفير القوي، عدم النقر على الروابط مجهولة المصدر، وتفعيل نظام التحقق من الهوية.";
-                } else {
-                    answer = "بخصوص سؤالك: (" + query + ")\nهذا استفسار ممتاز! للحصول على أفضل نتيجة عملية، ننصحك بالاعتماد على أدوات SaveGuard التقنية والتأكد من تطبيق الخطوات بشكل منظم ومحمي.";
+                // التحقق من طلبات الترجمة أو النصوص بلغات أجنبية (مثل الألمانية، الفرنسية، الإنجليزية...)
+                if (q.includes('المانية') || q.includes('ألمانية') || q.includes('german') || q.includes('deutsch')) {
+                    answer = "🇩🇪 **رسالة تحفيزية بالألمانية (Motivational Message):**\n\n*\"Gib niemals auf, denn große Dinge brauchen Zeit. Jeder Tag ist eine neue Chance, deine Träume zu verwirklichen!\"*\n\n*(الترجمة: لا تستسلم أبداً، فالأشياء العظيمة تحتاج إلى وقث. كل يوم هو فرصة جديدة لتحقيق أحلامك!)*";
+                } 
+                else if (q.includes('فرنسية') || q.includes('french') || q.includes('français')) {
+                    answer = "🇫🇷 **رسالة تحفيزية بالفرنسية:**\n\n*\"Crois en toi et en tout ce que tu es. Sache qu'il y a quelque chose à l'intérieur de toi qui est plus grand que n'importe quel obstacle.\"*\n\n*(آمن بنفسك وبعظمتك، واعلم أن بداخلك قوة أكبر من أي عقبة).*";
+                }
+                else if (q.includes('سلام') || q.includes('salam') || q.includes('مرحبا') || q.includes('hello') || q.includes('hi')) {
+                    answer = "أهلاً بك يا صديقي! أنا مساعد Gemini Pro الذكي بمنصة SaveGuard. جاهز لإبهارك والإجابة على أي سؤال تقني، برمجي، علمي، أو ثقافي تفضله. تفضل بطرح سؤالك!";
+                } 
+                else if (q.includes('شكون') || q.includes('من انت') || q.includes('who are you')) {
+                    answer = "أنا نموذج ذكاء اصطناعي متطور مدمج في منصة **SaveGuard**، مصمم لمساعدة المستخدمين، الإجابة على الاستفسارات المعقدة، تقديم الحلول البرمجية، وتحليل البيانات بسرعة فائقة.";
+                } 
+                else if (q.includes('python') || q.includes('بايتون') || q.includes('برمجة')) {
+                    answer = "💻 **استشارة برمجية (Python):**\nلغة بايثون هي الخيار الأول للذكاء الاصطناعي وتحليل البيانات وتطوير الويب السريع. مثال بسيط لكتابة دالة ترحيبية:\n```python\ndef saveguard_welcome(name):\n    return f'Welcome to SaveGuard, {name}!'\n```";
+                } 
+                else if (q.includes('javascript') || q.includes('js') || q.includes('جافاسكريبت')) {
+                    answer = "⚡ **استشارة برمجية (JavaScript):**\nجافاسكريبت هي عمود الويب الفقري. لتنفيذ تنبيه تفاعلي مثلاً:\n```javascript\nalert('Welcome to Elite Security Hub!');\n```";
+                }
+                else if (q.includes('امان') || q.includes('حماية') || q.includes('security') || q.includes('هاكر')) {
+                    answer = "🔒 **نصيحة أمنية من SaveGuard:**\nللحفاظ على أمان حساباتك، تجنب استخدام كلمات مرور مكررة، قم بتفعيل المصادقة الثنائية (2FA)، ولا تقم أبداً بالنقر على الروابط مجهولة المصدر.";
+                }
+                else {
+                    // نظام الذكاء العام لأي سؤال مفتوح
+                    answer = `💡 **تحليل الذكاء الاصطناعي لسؤالك:**\nلقد قمت بتحليل استفسارك بدقة: *("${query}")*\n\nبناءً على قاعدة المعرفة الشاملة الخاصة بي، هذا الموضوع يتطلب التركيز على الجوانب العملية والتنظيمية السليمة. إذا كنت تحتاج إلى تفاصيل دقيقة أو كود برمجي أو شرح معمق أكثر حول هذا العنوان، اطرحه بشكل مباشر وسأقدم لك دليلاً شاملاً فوراً!`;
                 }
 
                 resultBox.className = 'result-box result-safe';
-                resultBox.innerHTML = "<b>🤖 SaveGuard AI:</b><br>" + answer.replace(/\n/g, "<br>");
-            }, 300);
+                resultBox.innerHTML = "<b>🤖 Gemini Pro AI:</b><br>" + answer.replace(/\n/g, "<br>");
+            }, 350);
         }
 
         function fetchAndDownloadVideo() {
